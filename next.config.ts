@@ -1,12 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',  
   images: {
-    unoptimized: true,  
+    unoptimized: true,
   },
-  basePath: '/curriculo',
-  trailingSlash: true,  
+  trailingSlash: true,
 };
 
 export default nextConfig;

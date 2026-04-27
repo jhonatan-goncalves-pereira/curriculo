@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 
-/* ─── DATA ─────────────────────────────────────────────────── */
+/* ── DATA ────────────────────────────────────────────────────── */
 
-const nav = [
+const NAV = [
   { id: "home",       label: "Início" },
   { id: "about",      label: "Sobre" },
   { id: "experience", label: "Experiência" },
@@ -12,55 +12,40 @@ const nav = [
   { id: "contact",    label: "Contato" },
 ];
 
-const skillCategories = [
-  {
-    id: "backend",
-    label: "Backend",
-    color: "#f59e0b",
-    items: ["Java", "Spring Boot", "Node.js", "Express.js", "PHP", "REST APIs", "JWT"],
-  },
-  {
-    id: "frontend",
-    label: "Frontend",
-    color: "#00d4ff",
-    items: ["React", "Next.js", "TypeScript", "JavaScript", "HTML/CSS", "Tailwind", "Bootstrap"],
-  },
-  {
-    id: "database",
-    label: "Banco de Dados",
-    color: "#10b981",
-    items: ["PostgreSQL", "MySQL", "SQL Server", "Prisma ORM", "Oracle"],
-  },
-  {
-    id: "devops",
-    label: "Infra & DevOps",
-    color: "#ef4444",
-    items: ["Docker", "Linux", "AWS EC2/S3/Lambda", "Proxmox/KVM", "NGINX", "Git", "GitHub Actions", "CI/CD"],
-  },
-  {
-    id: "qa",
-    label: "QA & Testes",
-    color: "#8b5cf6",
-    items: ["Cypress", "Selenium", "JUnit", "REST Assured", "Postman", "Testes Ágeis"],
-  },
-  {
-    id: "ml",
-    label: "ML / AI / IoT",
-    color: "#ec4899",
-    items: ["Python", "scikit-learn", "Machine Learning", "DistilBERT / NLP", "AWS SageMaker", "Power BI", "Raspberry Pi", "MQTT", "Edge AI"],
-  },
+const PHRASES = ["Full Stack Developer.", "QA Engineer.", "Power BI Analyst.", "ML & IoT Enthusiast."];
+
+const STATS = [
+  { v: "4+",  l: "Anos de experiência" },
+  { v: "15+", l: "Projetos entregues" },
+  { v: "8+",  l: "Empresas & institutos" },
+  { v: "AWS", l: "Certificação cloud" },
 ];
 
-const experiences = [
+const CERTS = [
+  { name: "AWS Certified Cloud Practitioner",         issuer: "Amazon Web Services" },
+  { name: "Postman API Fundamentals Student Expert",  issuer: "Postman" },
+  { name: "Formação QA Analyst",                      issuer: "DBC Company" },
+  { name: "Fundamentos do Desenvolvimento de Sistemas", issuer: "EV Bradesco" },
+];
+
+const SKILLS = [
+  { cat: "cat-backend",  color: "#f59e0b", label: "Backend",        items: ["Java","Spring Boot","Node.js","Express.js","PHP","REST APIs","JWT"] },
+  { cat: "cat-frontend", color: "#00e5ff", label: "Frontend",       items: ["React","Next.js","TypeScript","JavaScript","HTML/CSS","Tailwind","Bootstrap"] },
+  { cat: "cat-db",       color: "#10b981", label: "Banco de Dados", items: ["PostgreSQL","MySQL","SQL Server","Prisma ORM","Oracle"] },
+  { cat: "cat-devops",   color: "#ef4444", label: "Infra & DevOps", items: ["Docker","Linux","AWS EC2/S3/Lambda","Proxmox/KVM","NGINX","Git","CI/CD"] },
+  { cat: "cat-qa",       color: "#8b5cf6", label: "QA & Testes",    items: ["Cypress","Selenium","JUnit","REST Assured","Postman","Testes Ágeis"] },
+  { cat: "cat-ml",       color: "#ec4899", label: "ML / AI / IoT",  items: ["Python","scikit-learn","DistilBERT / NLP","AWS SageMaker","Power BI","Raspberry Pi","MQTT","Edge AI"] },
+];
+
+const EXP = [
   {
     company: "Universidade Regional do Cariri – URCA",
     role: "Desenvolvedor Full Stack · Analista de Sistemas",
     period: "Ago 2024 – Presente",
     location: "Crato, CE",
     current: true,
-    tags: ["Node.js", "Spring Boot", "React", "PostgreSQL"],
-    description:
-      "Desenvolvimento, manutenção e evolução de sistemas institucionais. APIs RESTful com Java/Spring Boot e Node.js/Express. Frontend em React com Chart.js, FullCalendar. Modelagem com PostgreSQL, MySQL, SQL Server e Prisma ORM.",
+    tags: ["Node.js","Spring Boot","React","PostgreSQL","Proxmox"],
+    desc: "Desenvolvimento e manutenção de sistemas institucionais de média e alta complexidade. APIs RESTful com Java/Spring Boot e Node.js/Express. Frontend em React com Chart.js e FullCalendar. Gerência de 8+ VMs em produção com Proxmox/KVM.",
     logo: "https://www.urca.br/wp-content/uploads/2020/08/logo-footer.png",
   },
   {
@@ -69,9 +54,8 @@ const experiences = [
     period: "Ago 2025 – Presente",
     location: "Juazeiro do Norte, CE",
     current: true,
-    tags: ["DATASUS", "e-SUS", "Power BI", "Interoperabilidade"],
-    description:
-      "Análise e sistematização de dados em saúde. Mapeamento de 18 sistemas em uso na SESAU. Proposição de painéis BI vinculados ao financiamento Previne Brasil/ID-APS.",
+    tags: ["DATASUS","e-SUS","Power BI","Interoperabilidade","SUS"],
+    desc: "Mapeamento de 18 sistemas de informação em saúde em uso na SESAU. Proposição de 7 painéis BI vinculados ao financiamento Previne Brasil/ID-APS. Diagnóstico de zero interoperabilidade entre sistemas.",
     logo: "https://www.gov.br/saude/pt-br/composicao/sgtes/pet-saude/imagens/PETSAUDE.png/@@images/d5c89d72-fbca-4829-b024-602106508ffc.png",
   },
   {
@@ -80,9 +64,8 @@ const experiences = [
     period: "Nov 2024 – Abr 2025",
     location: "Porto Alegre, RS",
     current: false,
-    tags: ["Cypress", "Selenium", "CI/CD", "Docker"],
-    description:
-      "Automação de testes web e de APIs REST. Integração de pipelines CI/CD com GitHub Actions. Cobertura de regressão e testes de performance com estratégia ágil.",
+    tags: ["Cypress","Selenium","JUnit","CI/CD","Docker","GitHub Actions"],
+    desc: "Automação de testes de aplicações web e APIs REST. Integração com pipelines CI/CD via GitHub Actions. Redução de retrabalho manual e cobertura de regressão em projetos ágeis.",
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOsx9H5V2xgDSMKC6vib2FHat2R8yn-zoedQ&s",
   },
   {
@@ -91,9 +74,8 @@ const experiences = [
     period: "Nov 2023 – Set 2024",
     location: "Crato, CE",
     current: false,
-    tags: ["Linux", "Redes", "Servidores", "Proxmox"],
-    description:
-      "Gestão de infraestrutura de redes e hardware. Manutenção de servidores, roteadores e impressoras. Monitoramento de desempenho, segurança de rede e documentação de procedimentos.",
+    tags: ["Linux","Redes","Servidores","NGINX","TLS"],
+    desc: "Gestão de infraestrutura de redes e hardware. Manutenção de servidores, roteadores e impressoras. Segurança de rede, renovação de certificados TLS e documentação técnica.",
     logo: "https://www.urca.br/wp-content/uploads/2020/08/logo-footer.png",
   },
   {
@@ -102,9 +84,8 @@ const experiences = [
     period: "Jun 2024 – Nov 2024",
     location: "Rio de Janeiro, RJ",
     current: false,
-    tags: ["perfSONAR", "Linux", "Docker", "Automação"],
-    description:
-      "Implementação e manutenção de ferramentas de monitoramento de rede (perfSONAR). Testes de throughput, latência, RTT, traceroute. Geração de relatórios e apresentações em eventos técnicos.",
+    tags: ["perfSONAR","Linux","Docker","Automação","Latência"],
+    desc: "Implementação e manutenção de ferramentas de monitoramento de rede (perfSONAR). Testes de throughput, latência, RTT e traceroute. Relatórios e apresentações em eventos técnicos nacionais.",
     logo: "https://www.rnp.br/wp-content/uploads/2024/08/default.png",
   },
   {
@@ -113,9 +94,8 @@ const experiences = [
     period: "Ago 2022 – Ago 2023",
     location: "Juazeiro do Norte, CE",
     current: false,
-    tags: ["PHP", "MySQL", "Power BI", "JavaScript"],
-    description:
-      "Digitalização de processos administrativos da secretaria de saúde. Criação de dashboards em Power BI para monitoramento de indicadores de saúde municipal.",
+    tags: ["PHP","MySQL","Power BI","JavaScript","HTML/CSS"],
+    desc: "Digitalização de processos administrativos da secretaria de saúde. Dashboards em Power BI para monitoramento de indicadores de saúde utilizados pela gestão municipal.",
     logo: "https://juazeirodonorte.ce.gov.br/link/link179.jpg",
   },
   {
@@ -124,9 +104,8 @@ const experiences = [
     period: "Nov 2022 – Abr 2023",
     location: "Brasil (remoto)",
     current: false,
-    tags: ["AWS", "Python", "ML", "SageMaker"],
-    description:
-      "Formação intensiva em cloud AWS e Machine Learning. Desenvolvimento com EC2, S3, Lambda, API Gateway. Implementação de modelos com SageMaker. Certificação AWS obtida.",
+    tags: ["AWS","Python","ML","SageMaker","Lambda"],
+    desc: "Formação intensiva em cloud AWS e Machine Learning. Projetos com EC2, S3, Lambda, API Gateway. Certificação AWS obtida. Modelos de ML com SageMaker e Python/scikit-learn.",
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8x6lISMxfcPaPSEvXjcIyhK3pCdVv31pCTA&s",
   },
   {
@@ -135,326 +114,277 @@ const experiences = [
     period: "Set 2021 – Set 2022",
     location: "Crato, CE",
     current: false,
-    tags: ["R", "Análise de Dados", "Estatística", "Educação"],
-    description:
-      "Análise de bases nacionais públicas e sua influência no fator educacional. Utilização do software R para identificação de padrões em grandes conjuntos de dados.",
+    tags: ["R","Análise de Dados","Estatística","Big Data"],
+    desc: "Análise de bases nacionais públicas e sua influência no fator educacional. Software R para identificação de padrões em grandes conjuntos de dados e contribuição em políticas públicas.",
     logo: "https://www2.ifal.edu.br/noticias/cnpq-divulga-chamada-para-pesquisas-para-enfrentamento-da-covid-19/cnpq.png/@@images/image.png",
   },
 ];
 
-const certifications = [
-  { name: "AWS Certified Cloud Practitioner", issuer: "Amazon Web Services" },
-  { name: "Postman API Fundamentals Student Expert", issuer: "Postman" },
-  { name: "Formação QA Analyst", issuer: "DBC Company" },
-  { name: "Fundamentos do Desenvolvimento de Sistemas", issuer: "EV Bradesco" },
+const CONTACT_LINKS = [
+  { icon: "✉", label: "Email",      value: "jhonatan.pereira@urca.br", href: "mailto:jhonatan.pereira@urca.br" },
+  { icon: "💼", label: "LinkedIn",   value: "jhonatan-goncalves-pereira",       href: "https://www.linkedin.com/in/jhonatan-goncalves-pereira", blank: true },
+  { icon: "📍", label: "Localização",value: "Juazeiro do Norte, CE – Brasil",   href: undefined },
 ];
 
-const stats = [
-  { value: "15+", label: "Projetos entregues" },
-  { value: "4+",  label: "Anos de experiência" },
-  { value: "8+",  label: "Empresas e institutos" },
-  { value: "1",   label: "Certificação AWS" },
-];
+/* ── ICONS ───────────────────────────────────────────────────── */
+const GhIcon = () => (
+  <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+  </svg>
+);
+const LiIcon = () => (
+  <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+  </svg>
+);
+const MailIcon = () => (
+  <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+  </svg>
+);
+const ArrowIcon = () => (
+  <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+  </svg>
+);
+const SendIcon = () => (
+  <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+  </svg>
+);
+const MenuIcon = () => (
+  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+  </svg>
+);
+const CloseIcon = () => (
+  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/>
+  </svg>
+);
 
-/* ─── COMPONENT ─────────────────────────────────────────────── */
-
+/* ── COMPONENT ───────────────────────────────────────────────── */
 export default function Home() {
-  const [active, setActive]   = useState("home");
-  const [scrolled, setScrolled] = useState(false);
-  const [typed, setTyped]     = useState("");
+  const [active, setActive]       = useState("home");
+  const [scrolled, setScrolled]   = useState(false);
+  const [menuOpen, setMenuOpen]   = useState(false);
+  const [typed, setTyped]         = useState("");
   const [showCursor, setShowCursor] = useState(true);
 
-  const phrases = ["Full Stack Developer.", "QA Engineer.", "Power BI Analyst.", "ML Enthusiast."];
   const phraseIdx = useRef(0);
   const charIdx   = useRef(0);
   const deleting  = useRef(false);
 
   /* typewriter */
   useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
+    let t: ReturnType<typeof setTimeout>;
     const tick = () => {
-      const phrase = phrases[phraseIdx.current];
+      const ph = PHRASES[phraseIdx.current];
       if (!deleting.current) {
         charIdx.current++;
-        setTyped(phrase.slice(0, charIdx.current));
-        if (charIdx.current === phrase.length) {
+        setTyped(ph.slice(0, charIdx.current));
+        if (charIdx.current === ph.length) {
           deleting.current = true;
-          timeout = setTimeout(tick, 2200);
+          t = setTimeout(tick, 2000);
         } else {
-          timeout = setTimeout(tick, 62);
+          t = setTimeout(tick, 60);
         }
       } else {
         charIdx.current--;
-        setTyped(phrase.slice(0, charIdx.current));
+        setTyped(ph.slice(0, charIdx.current));
         if (charIdx.current === 0) {
           deleting.current = false;
-          phraseIdx.current = (phraseIdx.current + 1) % phrases.length;
-          timeout = setTimeout(tick, 400);
+          phraseIdx.current = (phraseIdx.current + 1) % PHRASES.length;
+          t = setTimeout(tick, 380);
         } else {
-          timeout = setTimeout(tick, 38);
+          t = setTimeout(tick, 36);
         }
       }
     };
-    timeout = setTimeout(tick, 900);
-    return () => clearTimeout(timeout);
+    t = setTimeout(tick, 800);
+    return () => clearTimeout(t);
   }, []);
 
-  /* cursor blink */
+  /* cursor */
   useEffect(() => {
-    const t = setInterval(() => setShowCursor(v => !v), 530);
+    const t = setInterval(() => setShowCursor(v => !v), 520);
     return () => clearInterval(t);
   }, []);
 
   /* scroll spy */
   useEffect(() => {
-    const handler = () => {
+    const fn = () => {
       setScrolled(window.scrollY > 40);
-      const ids = nav.map(n => n.id);
-      for (const id of [...ids].reverse()) {
+      for (const { id } of [...NAV].reverse()) {
         const el = document.getElementById(id);
-        if (el && window.scrollY >= el.offsetTop - 140) {
+        if (el && window.scrollY >= el.offsetTop - 150) {
           setActive(id);
           break;
         }
       }
     };
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
   }, []);
 
-  const goto = (id: string) =>
+  const goto = (id: string) => {
+    setMenuOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <main style={{ minHeight: "100vh" }}>
+    <main>
 
       {/* ── NAV ── */}
-      <nav
-        style={{
-          position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-          transition: "all 0.4s ease",
-          ...(scrolled ? {
-            background: "rgba(6,6,9,0.85)",
-            backdropFilter: "blur(24px)",
-            borderBottom: "1px solid rgba(0,212,255,0.08)",
-          } : {}),
-        }}
-      >
-        <div style={{ maxWidth: 1120, margin: "0 auto", padding: "18px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <button
-            onClick={() => goto("home")}
-            style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 20, background: "none", border: "none", cursor: "pointer" }}
-            className="gradient-text"
-          >
-            JG<span style={{ color: "var(--primary)" }}>.</span>
+      <nav className={`nav${scrolled ? " scrolled" : ""}`}>
+        <div className="nav-inner">
+          <button onClick={() => goto("home")} className="nav-logo grad">
+            JG<span style={{ color: "var(--c-cyan)" }}>.</span>
           </button>
-          <div style={{ display: "flex", alignItems: "center", gap: 36 }}>
-            {nav.map(n => (
-              <button
-                key={n.id}
-                onClick={() => goto(n.id)}
-                style={{
-                  background: "none", border: "none", cursor: "pointer",
-                  fontSize: 13, fontWeight: 500, letterSpacing: "0.04em",
-                  color: active === n.id ? "var(--primary)" : "var(--text-2)",
-                  transition: "color 0.2s",
-                  display: "flex", flexDirection: "column", alignItems: "center", gap: 4,
-                }}
-              >
+
+          {/* desktop */}
+          <div className="nav-links">
+            {NAV.map(n => (
+              <button key={n.id} onClick={() => goto(n.id)} className={`nav-link${active === n.id ? " active" : ""}`}>
                 {n.label}
-                {active === n.id && (
-                  <span style={{ width: 4, height: 4, borderRadius: "50%", background: "var(--primary)", display: "block" }} />
-                )}
+                {active === n.id && <span className="nav-dot" />}
               </button>
             ))}
           </div>
+
+          {/* mobile toggle */}
+          <button className="nav-toggle" onClick={() => setMenuOpen(v => !v)} aria-label="Menu">
+            {menuOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
+        </div>
+
+        {/* mobile menu */}
+        <div className={`mobile-menu${menuOpen ? " open" : ""}`}>
+          {NAV.map(n => (
+            <button key={n.id} onClick={() => goto(n.id)} className={`mobile-link${active === n.id ? " active" : ""}`}>
+              {n.label}
+            </button>
+          ))}
         </div>
       </nav>
 
       {/* ── HERO ── */}
-      <section id="home" style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
-        {/* bg layers */}
-        <div className="hero-grid" style={{ position: "absolute", inset: 0 }} />
-        <div className="blob" style={{ width: 500, height: 500, background: "rgba(0,212,255,0.07)", top: "10%", left: "5%" }} />
-        <div className="blob" style={{ width: 400, height: 400, background: "rgba(124,58,237,0.06)", bottom: "10%", right: "8%" }} />
-        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 600, height: 600, borderRadius: "50%", border: "1px solid rgba(0,212,255,0.04)", pointerEvents: "none" }} />
+      <section id="home" className="hero">
+        <div className="hero-grid" />
+        <div className="hero-blob1" />
+        <div className="hero-blob2" />
 
-        <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "0 24px", maxWidth: 780 }}>
-          {/* badge */}
-          <div
-            className="animate-glow-pulse"
-            style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              padding: "8px 20px", borderRadius: 100,
-              background: "rgba(0,212,255,0.07)",
-              border: "1px solid rgba(0,212,255,0.2)",
-              fontSize: 12, fontWeight: 600, letterSpacing: "0.08em",
-              color: "var(--primary)", marginBottom: 32,
-            }}
-          >
-            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#22c55e", display: "inline-block", boxShadow: "0 0 8px #22c55e" }} />
+        <div className="hero-content">
+          <div className="hero-badge">
+            <span className="status-dot" />
             Disponível para novas oportunidades
           </div>
 
-          {/* name */}
-          <h1
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(2.6rem, 6vw, 4.8rem)",
-              fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.03em",
-              marginBottom: 20,
-            }}
-          >
+          <h1 className="display-xl hero-title">
             Jhonatan{" "}
-            <span className="gradient-text">Gonçalves</span>
+            <span className="grad">Gonçalves</span>
           </h1>
 
-          {/* typewriter */}
-          <p
-            style={{
-              fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)",
-              fontWeight: 300, color: "var(--text-2)",
-              minHeight: "2rem", marginBottom: 20,
-              fontFamily: "var(--font-display)",
-            }}
-          >
+          <p className="hero-typewriter">
             {typed}
-            <span style={{ opacity: showCursor ? 1 : 0, color: "var(--primary)" }}>|</span>
+            <span className="cursor" style={{ opacity: showCursor ? 1 : 0 }}>|</span>
           </p>
 
-          <p style={{ color: "var(--text-3)", fontSize: 15, maxWidth: 560, margin: "0 auto 40px", lineHeight: 1.75 }}>
+          <p className="hero-sub">
             Graduando em Sistemas de Informação · IFCE Crato · Cariri, CE<br />
             Construindo sistemas que importam — do backend ao edge.
           </p>
 
-          <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-            <button onClick={() => goto("contact")} className="btn-primary">
-              Vamos conversar
-              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          <div className="hero-actions">
+            <button onClick={() => goto("contact")} className="btn btn-primary">
+              Vamos conversar <ArrowIcon />
             </button>
-            <button onClick={() => goto("experience")} className="btn-ghost">
+            <button onClick={() => goto("experience")} className="btn btn-outline">
               Ver experiência
             </button>
           </div>
 
-          {/* social */}
-          <div style={{ display: "flex", justifyContent: "center", gap: 20, marginTop: 48 }}>
+          <div className="hero-socials">
             {[
-              { href: "https://github.com/jhonatan-goncalves-pereira", label: "GitHub",
-                icon: <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>,
-              },
-              { href: "https://www.linkedin.com/in/jhonatan-goncalves-pereira", label: "LinkedIn",
-                icon: <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>,
-              },
-              { href: "mailto:jhonatan.pereira@urca.br", label: "Email",
-                icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>,
-                stroke: true,
-              },
+              { href: "https://github.com/jhonatan-goncalves-pereira", icon: <GhIcon />, label: "GitHub" },
+              { href: "https://www.linkedin.com/in/jhonatan-goncalves-pereira", icon: <LiIcon />, label: "LinkedIn" },
+              { href: "mailto:jhonatan.pereira@urca.br", icon: <MailIcon />, label: "Email" },
             ].map(s => (
-              <a
-                key={s.label}
-                href={s.href}
-                target={s.label !== "Email" ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                aria-label={s.label}
-                style={{
-                  width: 40, height: 40, borderRadius: "50%",
-                  border: "1px solid var(--border)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  color: "var(--text-3)", transition: "all 0.2s",
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.color = "var(--primary)";
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,212,255,0.3)";
-                  (e.currentTarget as HTMLElement).style.background = "rgba(0,212,255,0.07)";
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.color = "var(--text-3)";
-                  (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
-                  (e.currentTarget as HTMLElement).style.background = "transparent";
-                }}
-              >
-                <svg width="18" height="18" fill={s.stroke ? "none" : "currentColor"} stroke={s.stroke ? "currentColor" : undefined} viewBox="0 0 24 24">
-                  {s.icon}
-                </svg>
+              <a key={s.label} href={s.href} target={s.label !== "Email" ? "_blank" : undefined}
+                rel="noopener noreferrer" aria-label={s.label} className="social-btn">
+                {s.icon}
               </a>
             ))}
           </div>
         </div>
 
-        {/* scroll hint */}
-        <div style={{ position: "absolute", bottom: 32, left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
-          <span style={{ fontSize: 10, letterSpacing: "0.15em", color: "var(--text-3)", textTransform: "uppercase" }}>scroll</span>
-          <div style={{ width: 1, height: 32, background: "linear-gradient(to bottom, var(--text-3), transparent)" }} />
+        <div className="scroll-hint">
+          <span className="scroll-hint-text">scroll</span>
+          <div className="scroll-line" />
         </div>
       </section>
 
       {/* ── ABOUT ── */}
-      <section id="about" style={{ padding: "120px 24px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ marginBottom: 64 }}>
-            <span className="section-label">Sobre</span>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 800, letterSpacing: "-0.03em", marginTop: 12 }}>
-              Quem sou<span style={{ color: "var(--primary)" }}>.</span>
-            </h2>
-          </div>
+      <section id="about" className="section-pad" style={{ background: "var(--c-bg2)" }}>
+        <div className="container">
+          <span className="eyebrow">Sobre</span>
+          <h2 className="display-lg" style={{ marginBottom: "clamp(40px,6vw,64px)" }}>
+            Quem sou<span style={{ color: "var(--c-cyan)" }}>.</span>
+          </h2>
 
-          <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: 72, alignItems: "start" }}>
+          <div className="about-grid">
             {/* photo */}
-            <div>
-              <div className="animate-float photo-ring">
-                <div className="photo-ring-img">
-                  <img
-                    src="https://avatars.githubusercontent.com/u/94761781?v=4"
-                    alt="Jhonatan Gonçalves"
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                  />
-                </div>
+            <div className="photo-wrap">
+              <div className="photo-ring1" />
+              <div className="photo-ring2" />
+              <div className="photo-img">
+                <img
+                  src="https://avatars.githubusercontent.com/u/94761781?v=4"
+                  alt="Jhonatan Gonçalves"
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
               </div>
             </div>
 
-            {/* text */}
+            {/* content */}
             <div>
-              <h3 style={{ fontFamily: "var(--font-display)", fontSize: "1.6rem", fontWeight: 700, marginBottom: 16, lineHeight: 1.3 }}>
+              <h3 className="display-md" style={{ marginBottom: "16px", lineHeight: 1.3 }}>
                 Desenvolvedor Full Stack<br />
-                <span className="gradient-text">& Pesquisador em ML</span>
+                <span className="grad">& Pesquisador em ML</span>
               </h3>
-              <p style={{ color: "var(--text-2)", lineHeight: 1.85, marginBottom: 16, fontSize: 15 }}>
-                Meu nome é <strong style={{ color: "var(--text-1)" }}>Jhonatan Gonçalves Pereira</strong>. Atuo como Analista de Sistemas na URCA,
-                onde construo e mantenho sistemas institucionais de média e alta complexidade. Tenho perfil de profundidade técnica —
-                gosto de entender o sistema de ponta a ponta, do banco ao frontend.
+              <p style={{ color: "var(--c-t2)", lineHeight: 1.85, marginBottom: 14, fontSize: "clamp(13px,1.8vw,15px)" }}>
+                Meu nome é <strong style={{ color: "var(--c-t1)" }}>Jhonatan Gonçalves Pereira</strong>. Atuo como Analista de Sistemas
+                na URCA, construindo e mantendo sistemas institucionais de média e alta complexidade com perfil técnico de ponta a ponta.
               </p>
-              <p style={{ color: "var(--text-2)", lineHeight: 1.85, marginBottom: 32, fontSize: 15 }}>
-                Meu TCC aplica <strong style={{ color: "var(--text-1)" }}>Machine Learning e NLP</strong> (Random Forest, DistilBERT) para predição de
-                defeitos em commits. Paralelamente, atuo no <strong style={{ color: "var(--text-1)" }}>PET-Saúde Digital</strong> mapeando sistemas
-                de saúde pública e propondo painéis BI para gestão municipal.
+              <p style={{ color: "var(--c-t2)", lineHeight: 1.85, marginBottom: "clamp(20px,3vw,32px)", fontSize: "clamp(13px,1.8vw,15px)" }}>
+                Meu TCC aplica <strong style={{ color: "var(--c-t1)" }}>Machine Learning e NLP</strong> (Random Forest, DistilBERT)
+                para predição de defeitos em commits. Atuo também no <strong style={{ color: "var(--c-t1)" }}>PET-Saúde Digital</strong>,
+                mapeando sistemas de saúde pública e propondo painéis BI para gestão municipal com foco em interoperabilidade SUS.
               </p>
 
               {/* stats */}
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 36 }}>
-                {stats.map(s => (
-                  <div key={s.label} className="glass card-lift" style={{ borderRadius: 16, padding: "18px 16px", textAlign: "center" }}>
-                    <div style={{ fontFamily: "var(--font-display)", fontSize: "1.8rem", fontWeight: 800, letterSpacing: "-0.04em" }} className="gradient-text">
-                      {s.value}
-                    </div>
-                    <div style={{ fontSize: 11, color: "var(--text-3)", marginTop: 4, lineHeight: 1.4 }}>{s.label}</div>
+              <div className="stats-grid">
+                {STATS.map(s => (
+                  <div key={s.l} className="glass card stat-card">
+                    <div className="stat-num grad">{s.v}</div>
+                    <div className="stat-lbl">{s.l}</div>
                   </div>
                 ))}
               </div>
 
               {/* certs */}
-              <div>
-                <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--text-3)", marginBottom: 12 }}>Certificações</p>
-                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  {certifications.map((c, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 13, color: "var(--text-2)" }}>
-                      <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--primary)", flexShrink: 0, display: "inline-block" }} />
-                      <span style={{ color: "var(--text-1)", fontWeight: 500 }}>{c.name}</span>
-                      <span style={{ color: "var(--text-3)" }}>·</span>
-                      <span>{c.issuer}</span>
-                    </div>
-                  ))}
-                </div>
+              <p className="mono" style={{ color: "var(--c-t3)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>
+                Certificações
+              </p>
+              <div className="cert-list">
+                {CERTS.map((c, i) => (
+                  <div key={i} className="cert-item">
+                    <span className="cert-dot" />
+                    <span style={{ color: "var(--c-t1)", fontWeight: 500 }}>{c.name}</span>
+                    <span style={{ color: "var(--c-t3)" }}>·</span>
+                    <span style={{ color: "var(--c-t2)" }}>{c.issuer}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -462,73 +392,48 @@ export default function Home() {
       </section>
 
       {/* ── EXPERIENCE ── */}
-      <section id="experience" style={{ padding: "120px 24px", background: "var(--dark-2)" }}>
-        <div style={{ maxWidth: 860, margin: "0 auto" }}>
-          <div style={{ marginBottom: 64 }}>
-            <span className="section-label">Carreira</span>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 800, letterSpacing: "-0.03em", marginTop: 12 }}>
-              Experiência<span style={{ color: "var(--primary)" }}>.</span>
-            </h2>
-          </div>
+      <section id="experience" className="section-pad">
+        <div className="container">
+          <span className="eyebrow">Carreira</span>
+          <h2 className="display-lg" style={{ marginBottom: "clamp(40px,6vw,64px)" }}>
+            Experiência<span style={{ color: "var(--c-cyan)" }}>.</span>
+          </h2>
 
-          {/* timeline */}
-          <div style={{ position: "relative", paddingLeft: 48 }}>
+          <div className="timeline">
             <div className="timeline-line" />
-            <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
-              {experiences.map((exp, i) => (
-                <div key={i} style={{ display: "flex", gap: 24 }}>
-                  {/* dot */}
-                  <div style={{ position: "absolute", left: 0, marginTop: 8 }}>
-                    <div className={`timeline-dot${exp.current ? " active" : ""}`} />
+            <div className="timeline-items">
+              {EXP.map((e, i) => (
+                <div key={i} className="timeline-item">
+                  <div className="tl-dot-wrap">
+                    <div className={`tl-dot${e.current ? " active" : ""}`} />
                   </div>
-
-                  {/* card */}
-                  <div
-                    className="glass card-lift"
-                    style={{
-                      borderRadius: 20, padding: "24px 28px", width: "100%",
-                      ...(exp.current ? { borderColor: "rgba(0,212,255,0.15)" } : {}),
-                    }}
-                  >
-                    <div style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
-                      {exp.logo && (
-                        <div style={{
-                          width: 48, height: 48, borderRadius: 12,
-                          background: "#fff", padding: 4, flexShrink: 0,
-                          display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden",
-                        }}>
-                          <img src={exp.logo} alt={exp.company} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                  <div className={`tl-card glass card${e.current ? " current glass-cyan" : ""}`}>
+                    <div className="tl-header">
+                      {e.logo && (
+                        <div className="tl-logo">
+                          <img src={e.logo} alt={e.company} />
                         </div>
                       )}
-                      <div style={{ flex: 1 }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 4 }}>
-                          {exp.current && (
-                            <span style={{
-                              fontSize: 11, fontWeight: 700, letterSpacing: "0.08em",
-                              padding: "3px 10px", borderRadius: 100,
-                              background: "rgba(34,197,94,0.12)", color: "#4ade80",
-                              display: "inline-flex", alignItems: "center", gap: 5,
-                            }}>
+                      <div className="tl-meta">
+                        <div className="tl-badges">
+                          {e.current && (
+                            <span className="badge-current">
                               <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
                               Atual
                             </span>
                           )}
-                          <span style={{ fontSize: 12, color: "var(--text-3)" }}>{exp.period}</span>
-                          <span style={{ fontSize: 12, color: "var(--text-3)" }}>· {exp.location}</span>
+                          <span className="badge-period mono">{e.period}</span>
+                          <span className="badge-period mono" style={{ color: "var(--c-t3)" }}>· {e.location}</span>
                         </div>
-                        <h3 style={{ fontWeight: 700, fontSize: 16, marginBottom: 2, color: "var(--text-1)" }}>{exp.role}</h3>
-                        <p style={{ fontSize: 13, color: "var(--primary)", fontWeight: 500, marginBottom: 10 }}>{exp.company}</p>
-                        <p style={{ fontSize: 13.5, color: "var(--text-2)", lineHeight: 1.7, marginBottom: 14 }}>{exp.description}</p>
-                        <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                          {exp.tags.map(t => (
-                            <span key={t} style={{
-                              fontSize: 11, padding: "3px 10px", borderRadius: 100,
-                              background: "rgba(0,212,255,0.07)", border: "1px solid rgba(0,212,255,0.12)",
-                              color: "var(--primary)", fontWeight: 500,
-                            }}>{t}</span>
-                          ))}
-                        </div>
+                        <div className="tl-role">{e.role}</div>
+                        <div className="tl-company">{e.company}</div>
                       </div>
+                    </div>
+                    <p className="tl-desc">{e.desc}</p>
+                    <div className="tl-tags">
+                      {e.tags.map(t => (
+                        <span key={t} className="tag tag-cyan">{t}</span>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -539,27 +444,24 @@ export default function Home() {
       </section>
 
       {/* ── SKILLS ── */}
-      <section id="skills" style={{ padding: "120px 24px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ marginBottom: 64 }}>
-            <span className="section-label">Skills</span>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 800, letterSpacing: "-0.03em", marginTop: 12 }}>
-              Conhecimentos<span style={{ color: "var(--primary)" }}>.</span>
-            </h2>
-          </div>
+      <section id="skills" className="section-pad" style={{ background: "var(--c-bg2)" }}>
+        <div className="container">
+          <span className="eyebrow">Skills</span>
+          <h2 className="display-lg" style={{ marginBottom: "clamp(40px,6vw,64px)" }}>
+            Conhecimentos<span style={{ color: "var(--c-cyan)" }}>.</span>
+          </h2>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 20 }}>
-            {skillCategories.map(cat => (
-              <div key={cat.id} className="glass card-lift" style={{ borderRadius: 20, padding: "24px 24px", borderTop: `2px solid ${cat.color}20` }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
-                  <span style={{ width: 10, height: 10, borderRadius: "50%", background: cat.color, boxShadow: `0 0 10px ${cat.color}` }} />
-                  <h3 style={{ fontSize: 14, fontWeight: 700, letterSpacing: "0.04em", color: "var(--text-1)" }}>{cat.label}</h3>
+          <div className="skills-grid">
+            {SKILLS.map(sk => (
+              <div key={sk.cat} className={`skill-card glass card ${sk.cat}`}
+                style={{ "--cat-c": sk.color } as React.CSSProperties}>
+                <div className="skill-header">
+                  <span className="skill-dot" />
+                  <span className="skill-label">{sk.label}</span>
                 </div>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                  {cat.items.map(item => (
-                    <span key={item} className="skill-chip" style={{ "--chip-color": cat.color } as React.CSSProperties}>
-                      {item}
-                    </span>
+                <div className="skill-chips">
+                  {sk.items.map(item => (
+                    <span key={item} className="chip">{item}</span>
                   ))}
                 </div>
               </div>
@@ -569,56 +471,43 @@ export default function Home() {
       </section>
 
       {/* ── CONTACT ── */}
-      <section id="contact" style={{ padding: "120px 24px", background: "var(--dark-2)" }}>
-        <div style={{ maxWidth: 760, margin: "0 auto" }}>
-          <div style={{ marginBottom: 64, textAlign: "center" }}>
-            <span className="section-label" style={{ justifyContent: "center" }}>Contato</span>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 800, letterSpacing: "-0.03em", marginTop: 12 }}>
-              Vamos conversar<span style={{ color: "var(--primary)" }}>.</span>
+      <section id="contact" className="section-pad">
+        <div className="container" style={{ maxWidth: 760 }}>
+          <div style={{ textAlign: "center", marginBottom: "clamp(40px,6vw,64px)" }}>
+            <span className="eyebrow" style={{ justifyContent: "center" }}>Contato</span>
+            <h2 className="display-lg">
+              Vamos conversar<span style={{ color: "var(--c-cyan)" }}>.</span>
             </h2>
-            <p style={{ color: "var(--text-3)", marginTop: 12, fontSize: 15 }}>Aberto a oportunidades remotas, híbridas e presenciais.</p>
+            <p style={{ color: "var(--c-t3)", marginTop: 12, fontSize: 15 }}>
+              Aberto a oportunidades remotas, híbridas e presenciais.
+            </p>
           </div>
 
-          {/* contact links */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 36 }}>
-            {[
-              { icon: "💼", label: "LinkedIn", value: "jhonatan-goncalves-pereira", href: "https://www.linkedin.com/in/jhonatan-goncalves-pereira" },
-              { icon: "📍", label: "Localização", value: "Cariri, CE – Brasil", href: undefined },
-            ].map(c => (
-              <a
-                key={c.label}
-                href={c.href}
-                target={c.label === "LinkedIn" ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                className="glass card-lift"
-                style={{
-                  borderRadius: 16, padding: "18px 20px", display: "flex", alignItems: "center", gap: 14,
-                  textDecoration: "none", color: "inherit",
-                  pointerEvents: c.href ? "auto" : "none",
-                }}
-              >
-                <span style={{ fontSize: 22 }}>{c.icon}</span>
+          <div className="contact-links">
+            {CONTACT_LINKS.map(c => (
+              <a key={c.label} href={c.href} target={c.blank ? "_blank" : undefined}
+                rel="noopener noreferrer" className="contact-card glass"
+                style={{ pointerEvents: c.href ? "auto" : "none" }}>
+                <div className="contact-icon">{c.icon}</div>
                 <div>
-                  <p style={{ fontSize: 11, color: "var(--text-3)", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase" }}>{c.label}</p>
-                  <p style={{ fontSize: 13, color: "var(--text-1)", fontWeight: 500, marginTop: 2 }}>{c.value}</p>
+                  <div className="contact-lbl">{c.label}</div>
+                  <div className="contact-val">{c.value}</div>
                 </div>
               </a>
             ))}
           </div>
 
-          {/* form */}
-          <div className="glass" style={{ borderRadius: 24, padding: "36px 32px" }}>
+          <div className="form-wrap glass">
             <form action="https://formsubmit.co/jhonatan.pereira@urca.br" method="POST">
               <input type="hidden" name="_subject" value="Contato pelo portfólio" />
               <input type="hidden" name="_captcha" value="false" />
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 14 }}>
+              <div className="form-row">
                 <input className="form-input" type="text" name="name" placeholder="Seu nome" required />
                 <input className="form-input" type="email" name="email" placeholder="Seu email" required />
               </div>
-              <textarea className="form-input" name="message" placeholder="Sua mensagem..." rows={5} required style={{ resize: "none", marginBottom: 14 }} />
-              <button type="submit" className="btn-primary" style={{ width: "100%", justifyContent: "center" }}>
-                Enviar mensagem
-                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+              <textarea className="form-input form-textarea" name="message" placeholder="Sua mensagem..." required />
+              <button type="submit" className="form-submit">
+                Enviar mensagem <SendIcon />
               </button>
             </form>
           </div>
@@ -626,12 +515,10 @@ export default function Home() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer style={{ padding: "28px 24px", borderTop: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "space-between", maxWidth: 1120, margin: "0 auto" }}>
-        <p style={{ fontSize: 13, color: "var(--text-3)" }}>© 2025 Jhonatan Gonçalves Pereira</p>
-        <p style={{ fontSize: 12, color: "var(--text-3)" }}>
-          Cariri, CE · Brasil
-        </p>
-      </footer>
+      <div className="footer">
+        <span className="footer-text">© 2025 Jhonatan Gonçalves Pereira</span>
+        <span className="footer-text">Cariri, CE · Brasil</span>
+      </div>
 
     </main>
   );
