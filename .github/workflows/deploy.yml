@@ -30,11 +30,15 @@ jobs:
       
       - name: Build with Next.js
         run: npm run build
+
+      # Necessário para que o GitHub Pages sirva arquivos que começam com _
+      - name: Add .nojekyll
+        run: touch ./out/.nojekyll
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out  # Pasta gerada pelo Next.js export
+          path: ./out
 
   deploy:
     needs: build
