@@ -2,8 +2,8 @@ import type { NextConfig } from "next";
  
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: "/curriculo",      // nome exato do repositório no GitHub
-  assetPrefix: "/curriculo/",  // garante que JS/CSS sejam carregados do caminho correto
+  basePath: "/curriculo",
+  assetPrefix: "/curriculo/",
   images: {
     unoptimized: true,
   },
@@ -11,3 +11,4 @@ const nextConfig: NextConfig = {
 };
  
 export default nextConfig;
+ 
