@@ -501,6 +501,7 @@ export default function Home() {
             <form action="https://formsubmit.co/jhonatan.pereira@urca.br" method="POST">
               <input type="hidden" name="_subject" value="Contato pelo portfólio" />
               <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_next" value="https://jhonatan-goncalves-pereira.github.io/curriculo/" />
               <div className="form-row">
                 <input className="form-input" type="text" name="name" placeholder="Seu nome" required />
                 <input className="form-input" type="email" name="email" placeholder="Seu email" required />
