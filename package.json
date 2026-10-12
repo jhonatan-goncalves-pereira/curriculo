@@ -1,27 +1,35 @@
 {
-  "name": "nextjs-template",
-  "version": "0.1.0",
+  "name": "curriculo",
+  "version": "2.0.0",
+  "description": "Portfólio pessoal de Jhonatan Gonçalves — Next.js estático, cena de partículas em WebGL puro, bilíngue.",
   "private": true,
+  "homepage": "https://jhonatan-goncalves-pereira.github.io/curriculo/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check": "npm run lint && npm run build"
+  },
+  "engines": {
+    "node": ">=20.9"
   },
   "dependencies": {
+    "lenis": "^1.3.26",
+    "motion": "^13.4.6",
     "next": "^16.1.3",
     "react": "^19.2.3",
     "react-dom": "^19.2.3"
   },
   "devDependencies": {
-    "typescript": "^5.9.3",
+    "@tailwindcss/postcss": "^4.1.17",
     "@types/node": "^24.10.2",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "@tailwindcss/postcss": "^4.1.17",
-    "tailwindcss": "^4.1.17",
     "eslint": "^9.39.1",
-    "eslint-config-next": "^16.0.0"
+    "eslint-config-next": "^16.0.0",
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5.9.3"
   }
 }
