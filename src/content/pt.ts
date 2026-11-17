@@ -1,3 +1,4 @@
+import { BASE_PATH } from "@/lib/site";
 import type { Dictionary } from "./types";
 
 const GH = "https://github.com/jhonatan-goncalves-pereira";
@@ -6,7 +7,8 @@ export const pt: Dictionary = {
   meta: {
     title: "Jhonatan Gonçalves — Desenvolvedor Full Stack · Sistemas & Infra",
     description:
-      "Desenvolvedor Full Stack e Analista de Sistemas. React, TypeScript, Java/Spring Boot, Node.js, infraestrutura Linux com Proxmox, automação de testes, BI e Edge AI.",
+      "Desenvolvedor Full Stack e Analista de Sistemas com sistemas em produção na saúde pública e na universidade. React, Next.js, TypeScript, Java/Spring Boot, Node.js, infraestrutura Linux com Proxmox, testes automatizados, BI e Edge AI.",
+    cv: `${BASE_PATH}/cv-jhonatan-goncalves-pereira.pdf`,
   },
   nav: {
     items: [
@@ -23,10 +25,10 @@ export const pt: Dictionary = {
     search: "Abrir busca rápida",
   },
   hero: {
-    status: "Disponível para novas oportunidades",
+    status: "Disponível para vagas remotas e projetos",
     rolesPrefix: "Desenvolvedor Full Stack",
-    roles: ["Sistemas & Infra", "Automação de QA", "BI & Dados", "Edge AI"],
-    lead: "Entrego de ponta a ponta: da interface em React à API em Java ou Node, do banco de dados ao servidor que mantém tudo no ar.",
+    roles: ["Saúde digital", "Sistemas & Infra", "Automação de QA", "BI & Dados"],
+    lead: "Entrego de ponta a ponta: da interface em React à API em Java ou Node, do banco de dados ao servidor que mantém tudo no ar. Meus sistemas rodam em produção numa universidade pública e numa secretaria municipal de saúde.",
     primary: "Ver projetos",
     secondary: "Baixar CV",
     location: "Juazeiro do Norte, CE · Brasil",
@@ -37,16 +39,16 @@ export const pt: Dictionary = {
   about: {
     eyebrow: "Sobre",
     statement:
-      "Transformo processos confusos em software que as pessoas realmente usam. Já levei sistemas do zero à produção em universidade pública, automatizei testes em consultoria e coloquei machine learning para rodar dentro de um microcontrolador.",
+      "Transformo processos confusos em software que as pessoas realmente usam. Já levei sistemas do zero à produção numa universidade pública e numa secretaria municipal de saúde, automatizei testes em consultoria e coloquei machine learning para rodar dentro de um microcontrolador.",
     paragraphs: [
       "Sou Desenvolvedor Full Stack e Analista de Sistemas na Universidade Regional do Cariri (URCA), onde construo e mantenho sistemas institucionais e cuido da infraestrutura virtualizada que os sustenta.",
-      "Concluo o bacharelado em Sistemas de Informação no IFCE em 2026, com TCC sobre predição de defeitos em commits usando Machine Learning e NLP. No PET-Saúde Digital, mapeio sistemas do SUS e proponho painéis de BI para a gestão municipal.",
+      "Estou na reta final do bacharelado em Sistemas de Informação no IFCE: falta a defesa do TCC, sobre predição de defeitos em commits com Machine Learning e NLP. No PET-Saúde Digital, criei o SESAU Digital, plataforma de gestão em produção na Secretaria de Saúde de Juazeiro do Norte.",
     ],
     stats: [
       { value: 5, suffix: "+", label: "anos atuando em tecnologia" },
       { value: 8, suffix: "+", label: "VMs em produção sob minha gestão" },
       { value: 18, label: "sistemas de saúde mapeados no SUS" },
-      { value: 2, label: "sistemas institucionais criados do zero" },
+      { value: 3, label: "sistemas institucionais criados do zero" },
     ],
     principlesTitle: "Como eu trabalho",
     principles: [
@@ -89,17 +91,18 @@ export const pt: Dictionary = {
         tags: ["React", "Node.js", "Spring Boot", "MySQL", "SQL Server", "Proxmox", "NGINX"],
       },
       {
-        company: "PET-Saúde · Informação e Saúde Digital",
+        company: "PET-Saúde Digital · Secretaria de Saúde de Juazeiro do Norte",
         mark: "PS",
-        role: "Monitor bolsista",
+        role: "Monitor bolsista · Desenvolvedor do SESAU Digital",
         period: "Ago 2025 — Presente",
         location: "Juazeiro do Norte, CE",
         current: true,
         points: [
-          "Mapeei 18 sistemas de informação em saúde em uso na Secretaria Municipal e documentei a ausência de interoperabilidade entre eles.",
-          "Propus 7 painéis de BI ligados aos indicadores de financiamento da Atenção Primária (Previne Brasil / ID-APS).",
+          "Criei o SESAU Digital, em produção na Secretaria: protocolo digital com assinatura eletrônica e validação pública por QR Code, gestão da PPI cruzada com a produção do DATASUS e RDQA por setor.",
+          "O sistema cobre os 72 setores da estrutura oficial, com 236 testes automatizados, trilha de auditoria encadeada e conformidade com a LGPD e a Lei 14.063/2020 (assinaturas eletrônicas).",
+          "Mapeei 18 sistemas de informação em saúde em uso na Secretaria e documentei a ausência de interoperabilidade entre eles.",
         ],
-        tags: ["Power BI", "DATASUS", "e-SUS", "Interoperabilidade"],
+        tags: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "DATASUS", "LGPD"],
       },
       {
         company: "DBC Company",
@@ -198,9 +201,24 @@ export const pt: Dictionary = {
   projects: {
     eyebrow: "Projetos",
     title: ["Trabalho", "selecionado"],
-    lead: "Seis entregas que mostram o alcance: firmware, web, pesquisa, dados e qualidade.",
+    lead: "Seis entregas que mostram o alcance: saúde pública, firmware, web, pesquisa, dados e qualidade.",
     all: "Ver todos os repositórios",
     items: [
+      {
+        id: "sesau",
+        kicker: "Em produção · Saúde pública",
+        title: "SESAU Digital",
+        description:
+          "Plataforma de gestão da Secretaria de Saúde de Juazeiro do Norte, com três módulos sobre a mesma base: protocolo digital com assinatura eletrônica e validação pública por QR Code, gestão da PPI cruzada com a produção do DATASUS e RDQA por setor. A integridade vem de hashes criptográficos, selos nas assinaturas e trilha de auditoria encadeada.",
+        stack: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "Zod", "React PDF"],
+        metrics: [
+          { value: "72", label: "setores cobertos" },
+          { value: "236", label: "testes automatizados" },
+          { value: "132/132", label: "relatórios da PPI conferidos" },
+        ],
+        links: [],
+        note: "Sistema institucional",
+      },
       {
         id: "pulso",
         kicker: "Edge AI · IoT",
@@ -260,15 +278,6 @@ export const pt: Dictionary = {
           },
         ],
       },
-      {
-        id: "labs",
-        kicker: "Backend · API REST",
-        title: "API de Laboratórios",
-        description:
-          "API em Node.js e Express com autenticação JWT, upload de imagens, relatório em PDF e testes com Jest e Supertest.",
-        stack: ["Node.js", "Express", "MongoDB", "JWT", "Jest"],
-        links: [{ label: "Código", href: `${GH}/api-gerenciamento-salas` }],
-      },
     ],
   },
   skills: {
@@ -310,8 +319,8 @@ export const pt: Dictionary = {
       {
         title: "Bacharelado em Sistemas de Informação",
         school: "IFCE · Campus Crato",
-        period: "2021 — 2026",
-        note: "TCC: predição de defeitos em commits com Machine Learning e NLP.",
+        period: "2021 — atual",
+        note: "Reta final: falta a defesa do TCC, sobre predição de defeitos em commits com Machine Learning e NLP.",
       },
       {
         title: "Técnico em Informática",

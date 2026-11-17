@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState, type FormEvent } from "react";
 import { copyText, useT } from "@/lib/hooks";
 import { SITE } from "@/lib/site";
-import { ArrowUpRight, Check, Copy, GitHub, LinkedIn, Mail, Send } from "../ui/Icons";
+import { ArrowUpRight, Check, Copy, GitHub, LinkedIn, Mail, Send, WhatsApp } from "../ui/Icons";
 import { Magnetic } from "../ui/Interactive";
 import { Reveal } from "../ui/Reveal";
 import { SectionHeading } from "../ui/SectionHeading";
@@ -187,6 +187,7 @@ export function Contact() {
           <Reveal delay={0.24}>
             <div className="mt-8 flex flex-wrap gap-2">
               {[
+                { label: "WhatsApp", href: SITE.whatsapp, icon: <WhatsApp /> },
                 { label: "LinkedIn", href: SITE.linkedin, icon: <LinkedIn /> },
                 { label: "GitHub", href: SITE.github, icon: <GitHub /> },
               ].map((link) => (

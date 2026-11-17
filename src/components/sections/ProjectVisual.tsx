@@ -223,42 +223,92 @@ function Qa() {
   );
 }
 
-const ROUTES = [
-  ["POST", "/logar", "JWT"],
-  ["POST", "/laboratorio/novo", "multipart"],
-  ["GET", "/laboratorio/relatorio", "PDF"],
-];
+/* Decorative QR-like pattern for the public validation stamp. */
+const QR = ["1110111", "1010100", "1110101", "0001010", "1101011", "0101100", "1011101"];
 
-function Labs() {
+/** Stops of a document moving between departments. */
+const HOPS = [18, 70, 122];
+
+function Sesau() {
   return (
-    <div className="absolute inset-0 flex flex-col justify-center gap-2 p-5 font-mono text-[0.72rem]">
-      {ROUTES.map(([method, path, tag]) => (
-        <p
-          key={path}
-          className="flex items-center gap-2.5 rounded-lg border border-line bg-white/[0.02] px-3 py-2"
-        >
-          <span
-            className={`w-10 rounded px-1 py-0.5 text-center text-[0.62rem] font-semibold ${
-              method === "GET" ? "bg-violet/15 text-violet" : "bg-mint/15 text-mint"
-            }`}
-          >
-            {method}
+    <div className="absolute inset-0 flex items-center gap-5 p-5 md:gap-8 md:p-8">
+      <div className="relative flex h-full max-h-[15rem] flex-1 flex-col gap-2 rounded-xl border border-line bg-ink-3 p-4">
+        <p className="flex items-center justify-between font-mono text-[0.62rem] text-dim">
+          <span>#0142/2026</span>
+          <span className="flex items-center gap-1.5 text-mint">
+            <span className="size-1.5 animate-pulse-dot rounded-full bg-mint" />
+            sha256
           </span>
-          <span className="flex-1 truncate text-muted">{path}</span>
-          <span className="text-dim">{tag}</span>
         </p>
-      ))}
+        <span className="mt-1 h-1.5 w-4/5 rounded-full bg-white/20" />
+        <span className="h-1.5 w-3/5 rounded-full bg-white/10" />
+        <span className="h-1.5 w-2/3 rounded-full bg-white/10" />
+        <svg viewBox="0 0 160 40" className="mt-auto h-10 w-1/2 overflow-visible">
+          <path
+            d="M4 30C16 8 24 8 28 22S42 36 50 18 64 6 72 20 88 34 100 16 124 14 156 24"
+            fill="none"
+            stroke="#5ef2c2"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            pathLength={1}
+            strokeDasharray="1"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              values="1;0;0;1"
+              keyTimes="0;0.45;0.85;1"
+              dur="4.8s"
+              repeatCount="indefinite"
+            />
+          </path>
+        </svg>
+        <div className="absolute bottom-4 right-4 grid grid-cols-7 gap-[2px] rounded-md border border-line bg-ink/60 p-1.5">
+          {QR.join("")
+            .split("")
+            .map((bit, i) => (
+              <span
+                key={i}
+                className={`size-[5px] rounded-[1px] ${bit === "1" ? "bg-mint/80" : "bg-transparent"}`}
+              />
+            ))}
+        </div>
+      </div>
+      <svg viewBox="0 0 40 140" className="hidden h-full max-h-[15rem] w-10 sm:block">
+        <path d="M20 18V122" stroke="rgb(255 255 255 / 0.16)" strokeWidth="1.5" />
+        {HOPS.map((y, i) => (
+          <circle
+            key={y}
+            cx="20"
+            cy={y}
+            r="6"
+            fill="#0a0c11"
+            stroke={i === HOPS.length - 1 ? "#8b7cff" : "#5ef2c2"}
+            strokeWidth="1.75"
+          />
+        ))}
+        <circle cx="20" cy="18" r="3" fill="#5ef2c2">
+          <animate attributeName="cy" values="18;122" dur="3.2s" repeatCount="indefinite" />
+          <animate
+            attributeName="opacity"
+            values="0;1;1;0"
+            keyTimes="0;0.15;0.85;1"
+            dur="3.2s"
+            repeatCount="indefinite"
+          />
+        </circle>
+      </svg>
     </div>
   );
 }
 
 const VISUALS: Record<ProjectId, () => React.JSX.Element> = {
+  sesau: Sesau,
   pulso: Pulso,
   sis: Sis,
   tcc: Tcc,
   bi: Bi,
   qa: Qa,
-  labs: Labs,
 };
 
 export function ProjectVisual({ id }: { id: ProjectId }) {

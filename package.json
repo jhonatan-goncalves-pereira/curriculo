@@ -10,7 +10,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "check": "npm run lint && npm run build"
+    "check": "npm run lint && npm run build",
+    "cv": "node scripts/cv.mjs"
   },
   "engines": {
     "node": ">=20.9"

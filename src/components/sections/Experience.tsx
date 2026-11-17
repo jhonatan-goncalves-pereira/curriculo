@@ -4,7 +4,6 @@ import { AnimatePresence, motion, useScroll, useSpring } from "motion/react";
 import { useRef, useState } from "react";
 import type { ExperienceItem } from "@/content/types";
 import { useT } from "@/lib/hooks";
-import { SITE } from "@/lib/site";
 import { Download, Plus } from "../ui/Icons";
 import { Reveal } from "../ui/Reveal";
 import { SectionHeading } from "../ui/SectionHeading";
@@ -91,7 +90,7 @@ export function Experience() {
             <SectionHeading index="02" eyebrow={e.eyebrow} title={e.title} lead={e.lead} />
             <Reveal delay={0.18}>
               <a
-                href={SITE.cv}
+                href={t.meta.cv}
                 download
                 className="mt-8 inline-flex items-center gap-2 border-b border-white/20 pb-1 text-[0.95rem] transition-colors hover:border-mint hover:text-mint"
               >

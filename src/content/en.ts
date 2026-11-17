@@ -1,3 +1,4 @@
+import { BASE_PATH } from "@/lib/site";
 import type { Dictionary } from "./types";
 
 const GH = "https://github.com/jhonatan-goncalves-pereira";
@@ -6,7 +7,8 @@ export const en: Dictionary = {
   meta: {
     title: "Jhonatan Gonçalves — Full Stack Developer · Systems & Infra",
     description:
-      "Full Stack Developer and Systems Analyst. React, TypeScript, Java/Spring Boot, Node.js, Linux infrastructure on Proxmox, test automation, BI and Edge AI.",
+      "Full Stack Developer with systems in production in public health and higher education. React, Next.js, TypeScript, Java/Spring Boot, Node.js, Linux infrastructure on Proxmox, test automation, BI and Edge AI. Open to remote roles.",
+    cv: `${BASE_PATH}/cv-jhonatan-goncalves-pereira-en.pdf`,
   },
   nav: {
     items: [
@@ -23,10 +25,10 @@ export const en: Dictionary = {
     search: "Open quick search",
   },
   hero: {
-    status: "Open to new opportunities",
+    status: "Open to remote roles · UTC−3",
     rolesPrefix: "Full Stack Developer",
-    roles: ["Systems & Infra", "QA Automation", "BI & Data", "Edge AI"],
-    lead: "I ship end to end: from the React interface to the Java or Node API, from the database to the server that keeps it all running.",
+    roles: ["Digital Health", "Systems & Infra", "QA Automation", "BI & Data"],
+    lead: "I ship end to end, from the React interface to the Java or Node API, and from the database to the server that keeps it all running. My systems run in production at a public university and a city health department.",
     primary: "View projects",
     secondary: "Download CV",
     location: "Juazeiro do Norte, CE · Brazil",
@@ -37,16 +39,16 @@ export const en: Dictionary = {
   about: {
     eyebrow: "About",
     statement:
-      "I turn messy processes into software people actually use. I have taken systems from zero to production at a public university, automated testing at a consultancy, and put machine learning to work inside a microcontroller.",
+      "I turn messy processes into software people actually use. I have taken systems from zero to production at a public university and a city health department, automated testing at a consultancy, and put machine learning to work inside a microcontroller.",
     paragraphs: [
       "I am a Full Stack Developer and Systems Analyst at the Regional University of Cariri (URCA), where I build and maintain institutional systems and run the virtualized infrastructure behind them.",
-      "I finish my B.Sc. in Information Systems at IFCE in 2026, with a thesis on predicting defects in commits using Machine Learning and NLP. At PET-Saúde Digital, I map public health systems and propose BI dashboards for city management.",
+      "I am in the final stage of my B.Sc. in Information Systems at IFCE, with only the thesis defense left; my research predicts defects in commits using Machine Learning and NLP. Through PET-Saúde Digital, I built SESAU Digital, a management platform now in production at the Juazeiro do Norte City Health Department.",
     ],
     stats: [
       { value: 5, suffix: "+", label: "years working in tech" },
       { value: 8, suffix: "+", label: "production VMs under my care" },
       { value: 18, label: "public health systems mapped" },
-      { value: 2, label: "institutional systems built from scratch" },
+      { value: 3, label: "institutional systems built from scratch" },
     ],
     principlesTitle: "How I work",
     principles: [
@@ -68,7 +70,7 @@ export const en: Dictionary = {
   },
   experience: {
     eyebrow: "Journey",
-    title: ["Where I", "delivered"],
+    title: ["Where I've", "delivered"],
     lead: "A public university, a consultancy, a national research network and city health management. Different contexts, the same bar: it has to work in production.",
     now: "Current",
     more: "View full journey",
@@ -89,17 +91,18 @@ export const en: Dictionary = {
         tags: ["React", "Node.js", "Spring Boot", "MySQL", "SQL Server", "Proxmox", "NGINX"],
       },
       {
-        company: "PET-Saúde · Digital Health Program",
+        company: "PET-Saúde Digital · Juazeiro do Norte City Health Department",
         mark: "PS",
-        role: "Student Monitor (scholarship)",
+        role: "Student Monitor · Developer of SESAU Digital",
         period: "Aug 2025 — Present",
         location: "Juazeiro do Norte, Brazil",
         current: true,
         points: [
-          "Mapped 18 health information systems in use at the City Health Department and documented the lack of interoperability between them.",
-          "Proposed 7 BI dashboards tied to Primary Care funding indicators (Previne Brasil / ID-APS).",
+          "Built SESAU Digital, now in production at the department: a digital document protocol with e-signatures and public QR-code validation, PPI planning checked against DATASUS production data, and sector-level RDQA reporting.",
+          "The system covers all 72 units of the department's official structure, backed by 236 automated tests, a chained audit trail and compliance with Brazil's data protection law (LGPD) and e-signature law (Lei 14.063/2020).",
+          "Mapped 18 health information systems in use at the department and documented the lack of interoperability between them.",
         ],
-        tags: ["Power BI", "DATASUS", "e-SUS", "Interoperability"],
+        tags: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "DATASUS", "LGPD"],
       },
       {
         company: "DBC Company",
@@ -163,7 +166,7 @@ export const en: Dictionary = {
       {
         company: "Compass UOL",
         mark: "CU",
-        role: "Scholarship · AWS & Machine Learning",
+        role: "Trainee (scholarship) · AWS & Machine Learning",
         period: "Nov 2022 — Apr 2023",
         location: "Remote",
         points: [
@@ -198,9 +201,24 @@ export const en: Dictionary = {
   projects: {
     eyebrow: "Projects",
     title: ["Selected", "work"],
-    lead: "Six deliveries that show the range: firmware, web, research, data and quality.",
+    lead: "Six deliveries that show the range: public health, firmware, web, research, data and quality.",
     all: "View all repositories",
     items: [
+      {
+        id: "sesau",
+        kicker: "In production · Public health",
+        title: "SESAU Digital",
+        description:
+          "Management platform for the Juazeiro do Norte City Health Department, with three modules on one base: a digital document protocol with e-signatures and public QR-code validation, PPI planning checked against DATASUS production data, and sector-level RDQA reporting. Integrity comes from cryptographic hashes, signature seals and a chained audit trail.",
+        stack: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "Zod", "React PDF"],
+        metrics: [
+          { value: "72", label: "units covered" },
+          { value: "236", label: "automated tests" },
+          { value: "132/132", label: "PPI reports reconciled" },
+        ],
+        links: [],
+        note: "Institutional system",
+      },
       {
         id: "pulso",
         kicker: "Edge AI · IoT",
@@ -260,15 +278,6 @@ export const en: Dictionary = {
           },
         ],
       },
-      {
-        id: "labs",
-        kicker: "Backend · REST API",
-        title: "Labs Management API",
-        description:
-          "Node.js and Express API with JWT authentication, image upload, PDF reporting and tests with Jest and Supertest.",
-        stack: ["Node.js", "Express", "MongoDB", "JWT", "Jest"],
-        links: [{ label: "Code", href: `${GH}/api-gerenciamento-salas` }],
-      },
     ],
   },
   skills: {
@@ -310,8 +319,8 @@ export const en: Dictionary = {
       {
         title: "B.Sc. in Information Systems",
         school: "IFCE · Crato Campus",
-        period: "2021 — 2026",
-        note: "Thesis: defect prediction in commits with Machine Learning and NLP.",
+        period: "2021 — present",
+        note: "Final stage: thesis defense pending. Research on defect prediction in commits with Machine Learning and NLP.",
       },
       {
         title: "Technical Degree in Computing",
@@ -341,7 +350,7 @@ export const en: Dictionary = {
     lead: "Have a role, a project or a hard problem? I reply fast.",
     copy: "Copy email",
     copied: "Email copied",
-    availability: ["Remote", "Hybrid", "On-site in Cariri", "Full-time or contract"],
+    availability: ["Remote", "Hybrid", "On-site in Cariri", "Full-time or contract", "Open to relocation"],
     form: {
       name: "Your name",
       email: "Your email",

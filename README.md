@@ -58,6 +58,7 @@ npm run dev        # http://localhost:3000/curriculo
 | `npm run dev` | Servidor de desenvolvimento |
 | `npm run build` | Gera o site estático em `out/` (inclui checagem de tipos) |
 | `npm run lint` | ESLint |
+| `npm run cv` | Gera os PDFs do currículo (PT e EN) a partir de `cv/*.html` |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run check` | Lint e build, como o CI |
 

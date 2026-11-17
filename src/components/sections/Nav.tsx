@@ -127,7 +127,7 @@ export function Nav() {
             </button>
             <LangToggle className="hidden bg-ink-2/60 backdrop-blur-md sm:flex" />
             <a
-              href={SITE.cv}
+              href={t.meta.cv}
               download
               className="hidden h-10 items-center gap-2 rounded-full bg-fg px-4 text-[0.86rem] font-medium text-ink transition-transform hover:scale-[1.03] active:scale-95 sm:flex"
             >
@@ -224,7 +224,7 @@ export function Nav() {
                 </a>
               </div>
               <a
-                href={SITE.cv}
+                href={t.meta.cv}
                 download
                 className="flex h-10 items-center gap-2 rounded-full bg-fg px-4 text-sm font-medium text-ink"
               >

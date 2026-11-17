@@ -9,7 +9,7 @@ export const SITE = {
   email: "jhonatangoncalves2002@gmail.com",
   github: "https://github.com/jhonatan-goncalves-pereira",
   linkedin: "https://www.linkedin.com/in/jhonatan-goncalves-pereira",
-  cv: `${BASE_PATH}/cv-jhonatan-goncalves-pereira.pdf`,
+  whatsapp: "https://wa.me/5588999220204",
   timeZone: "America/Fortaleza",
 } as const;
 
