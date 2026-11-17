@@ -9,7 +9,7 @@ export type SectionId =
   | "education"
   | "contact";
 
-export type ProjectId = "pulso" | "sis" | "tcc" | "bi" | "qa" | "labs";
+export type ProjectId = "sesau" | "pulso" | "sis" | "tcc" | "bi" | "qa";
 
 export interface Stat {
   value: number;
@@ -63,7 +63,8 @@ export interface CourseItem {
 }
 
 export interface Dictionary {
-  meta: { title: string; description: string };
+  /** `cv` is the PDF served for this language (see `npm run cv`). */
+  meta: { title: string; description: string; cv: string };
   nav: {
     items: { id: SectionId; label: string }[];
     cta: string;

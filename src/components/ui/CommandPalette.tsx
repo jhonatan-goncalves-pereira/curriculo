@@ -6,7 +6,7 @@ import { copyText, toggleLang, useT } from "@/lib/hooks";
 import { lockScroll, scrollToId } from "@/lib/scroll";
 import { SITE } from "@/lib/site";
 import { paletteOpen, useStore } from "@/lib/store";
-import { ArrowUpRight, Copy, Download, GitHub, Languages, LinkedIn, Search } from "./Icons";
+import { ArrowUpRight, Copy, Download, GitHub, Languages, LinkedIn, Search, WhatsApp } from "./Icons";
 
 interface Command {
   id: string;
@@ -73,7 +73,7 @@ function Palette() {
         group: t.palette.groups.actions,
         label: t.palette.actions.downloadCv,
         icon: <Download />,
-        run: openUrl(SITE.cv),
+        run: openUrl(t.meta.cv),
       },
       {
         id: "switch-lang",
@@ -95,6 +95,13 @@ function Palette() {
         label: "LinkedIn",
         icon: <LinkedIn />,
         run: openUrl(SITE.linkedin),
+      },
+      {
+        id: "whatsapp",
+        group: t.palette.groups.links,
+        label: "WhatsApp",
+        icon: <WhatsApp />,
+        run: openUrl(SITE.whatsapp),
       },
     ];
   }, [t]);

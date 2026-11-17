@@ -5,7 +5,7 @@ import { useEffect, useState, type CSSProperties } from "react";
 import { useLocalTime, useT } from "@/lib/hooks";
 import { SITE } from "@/lib/site";
 import { appReady, useStore } from "@/lib/store";
-import { ArrowDown, Download, GitHub, LinkedIn, MapPin } from "../ui/Icons";
+import { ArrowDown, Download, GitHub, LinkedIn, MapPin, WhatsApp } from "../ui/Icons";
 import { Magnetic } from "../ui/Interactive";
 import { Rise } from "../ui/Reveal";
 
@@ -107,7 +107,7 @@ export function Hero() {
             </Magnetic>
             <Magnetic>
               <a
-                href={SITE.cv}
+                href={t.meta.cv}
                 download
                 className="flex h-13 items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.03] px-6 text-[0.95rem] font-medium backdrop-blur-sm transition-colors hover:border-white/35 hover:bg-white/[0.07]"
               >
@@ -133,6 +133,15 @@ export function Hero() {
                 className="grid size-11 place-items-center rounded-full text-[1.15rem] text-muted transition-colors hover:bg-white/[0.06] hover:text-fg"
               >
                 <LinkedIn />
+              </a>
+              <a
+                href={SITE.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="grid size-11 place-items-center rounded-full text-[1.15rem] text-muted transition-colors hover:bg-white/[0.06] hover:text-fg"
+              >
+                <WhatsApp />
               </a>
             </div>
           </div>
