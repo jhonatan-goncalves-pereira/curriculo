@@ -100,7 +100,7 @@ export function Projects() {
     <section id="projects" data-scene="3" className="section-y relative">
       <div className="shell">
         <div className="flex flex-wrap items-end justify-between gap-8">
-          <SectionHeading index="03" eyebrow={p.eyebrow} title={p.title} lead={p.lead} />
+          <SectionHeading index="04" eyebrow={p.eyebrow} title={p.title} lead={p.lead} />
           <Reveal delay={0.15}>
             <a
               href={`${SITE.github}?tab=repositories`}

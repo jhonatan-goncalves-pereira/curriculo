@@ -13,6 +13,7 @@ export const en: Dictionary = {
   nav: {
     items: [
       { id: "about", label: "About" },
+      { id: "products", label: "Products" },
       { id: "experience", label: "Experience" },
       { id: "projects", label: "Projects" },
       { id: "skills", label: "Stack" },
@@ -48,7 +49,7 @@ export const en: Dictionary = {
       { value: 5, suffix: "+", label: "years working in tech" },
       { value: 8, suffix: "+", label: "production VMs under my care" },
       { value: 18, label: "public health systems mapped" },
-      { value: 3, label: "institutional systems built from scratch" },
+      { value: 4, label: "institutional systems built from scratch" },
     ],
     principlesTitle: "How I work",
     principles: [
@@ -67,6 +68,76 @@ export const en: Dictionary = {
     ],
     photoAlt: "Portrait of Jhonatan Gonçalves Pereira",
     photoCaption: "Cariri, Ceará",
+  },
+  products: {
+    eyebrow: "Products",
+    title: ["Live systems", "for public health"],
+    lead: "Two products I built from scratch for public health in Juazeiro do Norte, open for you to explore right now. Behind both is what I do most: turning public health data into decisions, without manual rework.",
+    visit: "Open",
+    items: [
+      {
+        id: "sesau",
+        kicker: "City Health Department · in production",
+        name: "SESAU Digital",
+        domain: "sesau-digital.vercel.app",
+        href: "https://sesau-digital.vercel.app/",
+        description:
+          "A paperless health department: documents with e-signatures, public health planning (PPI) as open data and each unit's four-month report, all at one address with a single login.",
+        highlights: [
+          "Digital Protocol: creates, signs, numbers and routes official documents, with public QR-code validation.",
+          "PPI Management: reads the State Health Department's official reports and checks planning against approved production in DATASUS.",
+          "Sector-level RDQA: each unit fills in its part, and the system produces the signed report and the dashboards for the public hearing.",
+        ],
+        metrics: [
+          { value: "72", label: "units in the system" },
+          { value: "236", label: "automated tests" },
+          { value: "132/132", label: "PPI reports reconciled" },
+        ],
+        stack: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "React PDF", "Three.js"],
+        imageAlt: "SESAU Digital home page, with a 3D map of the outpatient planning received by Juazeiro do Norte",
+      },
+      {
+        id: "cms",
+        kicker: "City Health Council · live",
+        name: "CMS Digital",
+        domain: "cms-juazeiro.vercel.app",
+        href: "https://cms-juazeiro.vercel.app/",
+        description:
+          "Management for the City Health Council: council members, committees, meetings with attendance, quorum and voting, a library of resolutions and the follow-up of RDQA, RAG and health plans, with a public transparency portal.",
+        highlights: [
+          "The council's bylaws become system rules: quorum, parity, absences and deadlines trigger automatic alerts.",
+          "RDQA, RAG and plans tracked from receipt to resolution, with written opinions and the legal deadlines of Brazil's LC 141/2012.",
+          "Meeting calls by email and WhatsApp, certificates with QR codes and a hash-chained audit trail.",
+        ],
+        metrics: [
+          { value: "20", label: "seats with parity" },
+          { value: "39", label: "automated tests" },
+          { value: "3", label: "access roles" },
+        ],
+        stack: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "React PDF", "Vercel"],
+        imageAlt: "CMS Digital home page, with the wheel of the council's 20 seats",
+      },
+    ],
+    dataTitle: "Data for health management",
+    dataLead: "What runs under these systems, and what I can bring to any health department:",
+    data: [
+      {
+        title: "PPI × production",
+        body: "Agreed health planning checked against approved production in DATASUS, by value and by volume.",
+      },
+      {
+        title: "Reports without rework",
+        body: "Each unit feeds its own part; the four-month report comes out ready, signed and with dashboards.",
+      },
+      {
+        title: "Indicator dashboards",
+        body: "Power BI with row-level security and DAX measures so managers can track health indicators.",
+      },
+      {
+        title: "Public health data mapped",
+        body: "18 health information systems mapped at the department, with integration gaps documented.",
+      },
+    ],
   },
   experience: {
     eyebrow: "Journey",
@@ -99,7 +170,8 @@ export const en: Dictionary = {
         current: true,
         points: [
           "Built SESAU Digital, now in production at the department: a digital document protocol with e-signatures and public QR-code validation, PPI planning checked against DATASUS production data, and sector-level RDQA reporting.",
-          "The system covers all 72 units of the department's official structure, backed by 236 automated tests, a chained audit trail and compliance with Brazil's data protection law (LGPD) and e-signature law (Lei 14.063/2020).",
+          "Built CMS Digital for the City Health Council: council members, committees, meetings with quorum and voting, a library of resolutions and RDQA/RAG follow-up, with the council's bylaws automated.",
+          "Checked the city's outpatient PPI (R$6.1 million a month, patients from 27 municipalities) against approved production in DATASUS: readings that used to take days of manual work.",
           "Mapped 18 health information systems in use at the department and documented the lack of interoperability between them.",
         ],
         tags: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "DATASUS", "LGPD"],
@@ -158,10 +230,11 @@ export const en: Dictionary = {
         period: "Aug 2022 — Aug 2023",
         location: "Juazeiro do Norte, Brazil",
         points: [
-          "Built executive Power BI dashboards with dynamic RLS and 12+ DAX measures for health management.",
+          "Built executive Power BI dashboards with dynamic RLS and 12+ DAX measures, consolidating data from several sources for health management.",
+          "Set up dashboards to monitor the health indicators used by city management.",
           "Digitized administrative processes with web systems in JavaScript, PHP and MySQL.",
         ],
-        tags: ["Power BI", "DAX", "PHP", "MySQL", "JavaScript"],
+        tags: ["Power BI", "DAX", "SQL", "Health indicators", "PHP", "MySQL"],
       },
       {
         company: "Compass UOL",
@@ -201,24 +274,9 @@ export const en: Dictionary = {
   projects: {
     eyebrow: "Projects",
     title: ["Selected", "work"],
-    lead: "Six deliveries that show the range: public health, firmware, web, research, data and quality.",
+    lead: "Six more deliveries that show the range: firmware, web, research, data analysis and quality.",
     all: "View all repositories",
     items: [
-      {
-        id: "sesau",
-        kicker: "In production · Public health",
-        title: "SESAU Digital",
-        description:
-          "Management platform for the Juazeiro do Norte City Health Department, with three modules on one base: a digital document protocol with e-signatures and public QR-code validation, PPI planning checked against DATASUS production data, and sector-level RDQA reporting. Integrity comes from cryptographic hashes, signature seals and a chained audit trail.",
-        stack: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "Zod", "React PDF"],
-        metrics: [
-          { value: "72", label: "units covered" },
-          { value: "236", label: "automated tests" },
-          { value: "132/132", label: "PPI reports reconciled" },
-        ],
-        links: [],
-        note: "Institutional system",
-      },
       {
         id: "pulso",
         kicker: "Edge AI · IoT",
@@ -260,6 +318,16 @@ export const en: Dictionary = {
         description:
           "Executive Power BI dashboards for the Health Department, with dynamic RLS and 12+ DAX measures consolidating multiple sources.",
         stack: ["Power BI", "DAX", "SQL", "DATASUS"],
+        links: [],
+        note: "Institutional data",
+      },
+      {
+        id: "ppi",
+        kicker: "Data analysis · Python",
+        title: "PPI analytics dashboard",
+        description:
+          "The first version of Juazeiro do Norte's PPI analysis: it downloads the official reports for each period, outpatient (SIA) and hospital (SIH), turns them into tables with pandas and shows the numbers in interactive charts. It became the PPI module of SESAU Digital.",
+        stack: ["Python", "pandas", "Plotly", "Streamlit"],
         links: [],
         note: "Institutional data",
       },
@@ -308,7 +376,7 @@ export const en: Dictionary = {
       },
       {
         label: "Data, ML & Edge",
-        items: ["Python", "scikit-learn", "DistilBERT / NLP", "Power BI · DAX", "R", "ESP32", "MQTT"],
+        items: ["Python", "pandas", "Plotly", "Power BI · DAX", "DATASUS", "scikit-learn", "DistilBERT / NLP", "R", "ESP32", "MQTT"],
       },
     ],
   },

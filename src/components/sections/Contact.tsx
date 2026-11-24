@@ -165,7 +165,7 @@ export function Contact() {
     <section id="contact" data-scene="5" className="section-y relative">
       <div className="shell grid gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-7">
-          <SectionHeading index="06" eyebrow={c.eyebrow} labelAs="p" />
+          <SectionHeading index="07" eyebrow={c.eyebrow} labelAs="p" />
           <Reveal delay={0.05} blur>
             <h2 className="display mt-6 text-[clamp(3.6rem,12vw,10rem)]">
               {c.title[0]}{" "}

@@ -87,7 +87,7 @@ export function Experience() {
       <div className="shell grid gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-28">
-            <SectionHeading index="02" eyebrow={e.eyebrow} title={e.title} lead={e.lead} />
+            <SectionHeading index="03" eyebrow={e.eyebrow} title={e.title} lead={e.lead} />
             <Reveal delay={0.18}>
               <a
                 href={t.meta.cv}
