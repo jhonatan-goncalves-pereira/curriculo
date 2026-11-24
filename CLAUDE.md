@@ -13,6 +13,7 @@ Responda em português do Brasil. O site é bilíngue: todo texto existe em PT e
 | Ilustração de um card de projeto | `src/components/sections/ProjectVisual.tsx` (uma por `ProjectId`) |
 | Currículo em PDF | `cv/pt.html` e `cv/en.html`; `npm run cv` gera os PDFs em `public/` |
 
+- A seção **Produtos** (`products` em pt.ts/en.ts, componente `src/components/sections/Products.tsx`) mostra os sistemas no ar com print da página inicial. Os prints ficam em `src/assets/products/` (JPEG 1440×900, tirados com o Edge headless) e são escolhidos por `ProductId`.
 - O primeiro item de `projects.items` vira o card grande, em destaque.
 - O botão "Baixar CV" usa `meta.cv` de cada idioma: quem vê o site em inglês baixa o CV em inglês.
 
@@ -20,7 +21,7 @@ Responda em português do Brasil. O site é bilíngue: todo texto existe em PT e
 
 - Só fatos verdadeiros e verificáveis. Número sem fonte não entra.
 - **Diploma:** o bacharelado está em andamento, na reta final (falta a defesa do TCC). Não escrever "bacharel" nem ano de conclusão até a defesa acontecer.
-- **Propriedade intelectual:** nada de código, telas com dados ou logotipos de terceiros (URCA, SESAU, FIT, empresas parceiras). Sistemas institucionais entram só com descrição e números públicos dos relatórios.
+- **Propriedade intelectual:** nada de código nem telas com dados pessoais. Sistemas institucionais entram com descrição, números públicos dos relatórios e, se estiverem abertos ao público, link e print da página pública (como o SESAU Digital e o CMS Digital). Não usar logotipo de terceiro como marca própria, e nada do FIT ou de empresa parceira do PNAAT.
 - **Residência PNAAT:** o termo de bolsa exige que divulgação sobre a residência passe antes pelo FIT. Não detalhar o trabalho feito na indústria parceira.
 - **Coerência:** site, CV em PT e CV em EN dizem a mesma coisa. Mudou experiência ou projeto no site? Atualize `cv/*.html` e rode `npm run cv`.
 - O inglês da versão EN é para recrutador estrangeiro: frases curtas, naturais e sem tradução literal.

@@ -13,6 +13,7 @@ export const pt: Dictionary = {
   nav: {
     items: [
       { id: "about", label: "Sobre" },
+      { id: "products", label: "Produtos" },
       { id: "experience", label: "Experiência" },
       { id: "projects", label: "Projetos" },
       { id: "skills", label: "Stack" },
@@ -48,7 +49,7 @@ export const pt: Dictionary = {
       { value: 5, suffix: "+", label: "anos atuando em tecnologia" },
       { value: 8, suffix: "+", label: "VMs em produção sob minha gestão" },
       { value: 18, label: "sistemas de saúde mapeados no SUS" },
-      { value: 3, label: "sistemas institucionais criados do zero" },
+      { value: 4, label: "sistemas institucionais criados do zero" },
     ],
     principlesTitle: "Como eu trabalho",
     principles: [
@@ -67,6 +68,77 @@ export const pt: Dictionary = {
     ],
     photoAlt: "Retrato de Jhonatan Gonçalves Pereira",
     photoCaption: "Cariri, Ceará",
+  },
+  products: {
+    eyebrow: "Produtos",
+    title: ["Sistemas no ar", "para a saúde"],
+    lead: "Dois produtos que construí do zero para a saúde pública de Juazeiro do Norte, abertos para você ver agora. Por trás dos dois está o que mais faço: transformar dados do SUS em decisão, sem retrabalho.",
+    visit: "Acessar",
+    items: [
+      {
+        id: "sesau",
+        kicker: "Secretaria Municipal de Saúde · em produção",
+        name: "SESAU Digital",
+        domain: "sesau-digital.vercel.app",
+        href: "https://sesau-digital.vercel.app/",
+        description:
+          "A Secretaria de Saúde sem papel: documentos com assinatura eletrônica, a programação do SUS (PPI) em dados abertos e o relatório quadrimestral de cada setor, num só endereço e com um só login.",
+        highlights: [
+          "Protocolo Digital: cria, assina, numera e tramita documentos oficiais, com validação pública por QR Code.",
+          "Gestão da PPI: lê os relatórios oficiais da SESA-CE e cruza a programação com a produção aprovada no DATASUS.",
+          "RDQA por setor: cada setor preenche a sua parte e o sistema gera o documento assinado e os painéis da audiência pública.",
+        ],
+        metrics: [
+          { value: "72", label: "setores no sistema" },
+          { value: "236", label: "testes automatizados" },
+          { value: "132/132", label: "relatórios da PPI conferidos" },
+        ],
+        stack: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "React PDF", "Three.js"],
+        imageAlt:
+          "Página inicial do SESAU Digital, com o mapa 3D da PPI ambulatorial recebida por Juazeiro do Norte",
+      },
+      {
+        id: "cms",
+        kicker: "Conselho Municipal de Saúde · no ar",
+        name: "CMS Digital",
+        domain: "cms-juazeiro.vercel.app",
+        href: "https://cms-juazeiro.vercel.app/",
+        description:
+          "Gestão do Conselho Municipal de Saúde: conselheiros, comissões, reuniões com presença, quórum e votação, acervo de resoluções e acompanhamento de RDQA, RAG e planos, com portal público de transparência.",
+        highlights: [
+          "O Regimento Interno vira regra no sistema: quórum, paridade, faltas e prazos geram alertas automáticos.",
+          "RDQA, RAG e planos acompanhados do recebimento à deliberação, com parecer no sistema e os prazos da LC nº 141/2012.",
+          "Convocação por e-mail e WhatsApp, declarações com QR Code e auditoria encadeada por hash.",
+        ],
+        metrics: [
+          { value: "20", label: "cadeiras com paridade" },
+          { value: "39", label: "testes automatizados" },
+          { value: "3", label: "perfis de acesso" },
+        ],
+        stack: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "React PDF", "Vercel"],
+        imageAlt: "Página inicial do CMS Digital, com a roda das 20 cadeiras do Plenário",
+      },
+    ],
+    dataTitle: "Dados para gestão em saúde",
+    dataLead: "O que roda por baixo desses sistemas, e que eu levo para qualquer secretaria:",
+    data: [
+      {
+        title: "PPI × produção",
+        body: "Programação pactuada cruzada com a produção aprovada no DATASUS, em valor e em quantidade.",
+      },
+      {
+        title: "RDQA sem retrabalho",
+        body: "Cada setor alimenta a sua parte; o relatório quadrimestral sai pronto, assinado e com painéis.",
+      },
+      {
+        title: "Painéis de indicadores",
+        body: "Power BI com segurança por linha (RLS) e medidas DAX para a gestão acompanhar os indicadores de saúde.",
+      },
+      {
+        title: "Dados do SUS mapeados",
+        body: "18 sistemas de informação em saúde mapeados na Secretaria, com as lacunas de integração documentadas.",
+      },
+    ],
   },
   experience: {
     eyebrow: "Trajetória",
@@ -99,7 +171,8 @@ export const pt: Dictionary = {
         current: true,
         points: [
           "Criei o SESAU Digital, em produção na Secretaria: protocolo digital com assinatura eletrônica e validação pública por QR Code, gestão da PPI cruzada com a produção do DATASUS e RDQA por setor.",
-          "O sistema cobre os 72 setores da estrutura oficial, com 236 testes automatizados, trilha de auditoria encadeada e conformidade com a LGPD e a Lei 14.063/2020 (assinaturas eletrônicas).",
+          "Criei o CMS Digital para o Conselho Municipal de Saúde: conselheiros, comissões, reuniões com quórum e votação, acervo de resoluções e acompanhamento de RDQA e RAG, com o Regimento Interno automatizado.",
+          "Cruzei a PPI ambulatorial do município (R$ 6,1 milhões por mês, pacientes de 27 municípios) com a produção aprovada no DATASUS: leituras que antes levavam dias de trabalho manual.",
           "Mapeei 18 sistemas de informação em saúde em uso na Secretaria e documentei a ausência de interoperabilidade entre eles.",
         ],
         tags: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "DATASUS", "LGPD"],
@@ -158,10 +231,11 @@ export const pt: Dictionary = {
         period: "Ago 2022 — Ago 2023",
         location: "Juazeiro do Norte, CE",
         points: [
-          "Construí dashboards executivos em Power BI com RLS dinâmico e 12+ medidas DAX para a gestão da saúde.",
+          "Construí dashboards executivos em Power BI com RLS dinâmico e 12+ medidas DAX, consolidando dados de várias fontes para a gestão da saúde.",
+          "Montei painéis de monitoramento de indicadores de saúde usados pela gestão municipal.",
           "Digitalizei processos administrativos com sistemas web em JavaScript, PHP e MySQL.",
         ],
-        tags: ["Power BI", "DAX", "PHP", "MySQL", "JavaScript"],
+        tags: ["Power BI", "DAX", "SQL", "Indicadores de saúde", "PHP", "MySQL"],
       },
       {
         company: "Compass UOL",
@@ -201,24 +275,9 @@ export const pt: Dictionary = {
   projects: {
     eyebrow: "Projetos",
     title: ["Trabalho", "selecionado"],
-    lead: "Seis entregas que mostram o alcance: saúde pública, firmware, web, pesquisa, dados e qualidade.",
+    lead: "Mais seis entregas que mostram o alcance: firmware, web, pesquisa, análise de dados e qualidade.",
     all: "Ver todos os repositórios",
     items: [
-      {
-        id: "sesau",
-        kicker: "Em produção · Saúde pública",
-        title: "SESAU Digital",
-        description:
-          "Plataforma de gestão da Secretaria de Saúde de Juazeiro do Norte, com três módulos sobre a mesma base: protocolo digital com assinatura eletrônica e validação pública por QR Code, gestão da PPI cruzada com a produção do DATASUS e RDQA por setor. A integridade vem de hashes criptográficos, selos nas assinaturas e trilha de auditoria encadeada.",
-        stack: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "Zod", "React PDF"],
-        metrics: [
-          { value: "72", label: "setores cobertos" },
-          { value: "236", label: "testes automatizados" },
-          { value: "132/132", label: "relatórios da PPI conferidos" },
-        ],
-        links: [],
-        note: "Sistema institucional",
-      },
       {
         id: "pulso",
         kicker: "Edge AI · IoT",
@@ -260,6 +319,16 @@ export const pt: Dictionary = {
         description:
           "Dashboards executivos em Power BI para a Secretaria de Saúde, com RLS dinâmico e 12+ medidas DAX consolidando múltiplas fontes.",
         stack: ["Power BI", "DAX", "SQL", "DATASUS"],
+        links: [],
+        note: "Dados institucionais",
+      },
+      {
+        id: "ppi",
+        kicker: "Análise de dados · Python",
+        title: "Painel analítico da PPI",
+        description:
+          "Primeira versão da análise da PPI de Juazeiro do Norte: baixa os relatórios oficiais por competência, do ambulatório (SIA) e dos hospitais (SIH), transforma em tabelas com pandas e mostra os números em gráficos interativos. Virou o módulo de PPI do SESAU Digital.",
+        stack: ["Python", "pandas", "Plotly", "Streamlit"],
         links: [],
         note: "Dados institucionais",
       },
@@ -308,7 +377,7 @@ export const pt: Dictionary = {
       },
       {
         label: "Dados, ML & Edge",
-        items: ["Python", "scikit-learn", "DistilBERT / NLP", "Power BI · DAX", "R", "ESP32", "MQTT"],
+        items: ["Python", "pandas", "Plotly", "Power BI · DAX", "DATASUS", "scikit-learn", "DistilBERT / NLP", "R", "ESP32", "MQTT"],
       },
     ],
   },

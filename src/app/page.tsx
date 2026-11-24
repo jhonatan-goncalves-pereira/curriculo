@@ -7,6 +7,7 @@ import { Footer } from "@/components/sections/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { Marquee } from "@/components/sections/Marquee";
 import { Nav } from "@/components/sections/Nav";
+import { Products } from "@/components/sections/Products";
 import { Projects } from "@/components/sections/Projects";
 import { Skills } from "@/components/sections/Skills";
 import { SceneMount } from "@/components/webgl/SceneMount";
@@ -34,6 +35,7 @@ export default function Home() {
         <Hero />
         <Marquee />
         <About />
+        <Products />
         <Experience />
         <Projects />
         <Skills />

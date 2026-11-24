@@ -3,13 +3,36 @@ export type Lang = "pt" | "en";
 export type SectionId =
   | "home"
   | "about"
+  | "products"
   | "experience"
   | "projects"
   | "skills"
   | "education"
   | "contact";
 
-export type ProjectId = "sesau" | "pulso" | "sis" | "tcc" | "bi" | "qa";
+export type ProjectId = "pulso" | "sis" | "tcc" | "bi" | "qa" | "ppi";
+
+/** Live products shown with a screenshot (images live in src/assets/products). */
+export type ProductId = "sesau" | "cms";
+
+export interface ProductItem {
+  id: ProductId;
+  kicker: string;
+  name: string;
+  /** Shown in the fake browser bar above the screenshot. */
+  domain: string;
+  href: string;
+  description: string;
+  highlights: string[];
+  metrics: { value: string; label: string }[];
+  stack: string[];
+  imageAlt: string;
+}
+
+export interface DataPoint {
+  title: string;
+  body: string;
+}
 
 export interface Stat {
   value: number;
@@ -94,6 +117,16 @@ export interface Dictionary {
     principles: Principle[];
     photoAlt: string;
     photoCaption: string;
+  };
+  products: {
+    eyebrow: string;
+    title: [string, string];
+    lead: string;
+    visit: string;
+    items: ProductItem[];
+    dataTitle: string;
+    dataLead: string;
+    data: DataPoint[];
   };
   experience: {
     eyebrow: string;
