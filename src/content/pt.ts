@@ -189,14 +189,14 @@ export const pt: Dictionary = {
     less: "Mostrar menos",
     items: [
       {
-        company: "Residência PNAAT · FIT, Softex Cariri e UFCA",
+        company: "Residência PNAAT · Esplêndida Calçados",
         mark: "PN",
         role: "Residente de Desenvolvimento de Software (Full Stack)",
         period: "Out 2026 — Presente",
         location: "Cariri, CE",
         current: true,
         points: [
-          "Alocado numa fábrica de calçados injetados, desenvolvi com mais três residentes um sistema de apontamento de produção e refugo (OEE) que entrou em uso real na linha em 6 semanas.",
+          "Pelo PNAAT (FIT, Softex Cariri e UFCA), fui alocado na Esplêndida Calçados, fábrica de calçados injetados, e desenvolvi com mais três residentes um sistema de apontamento de produção e refugo (OEE) que entrou em uso real na linha em 6 semanas.",
           "Tablets offline-first (React, TypeScript, IndexedDB) e API em FastAPI e PostgreSQL, com 371 testes automáticos.",
           "Infraestrutura no servidor da própria fábrica: HTTPS, acesso remoto seguro e publicação por botão, com backup e volta automática (Bitbucket Pipelines).",
           "Levantamento no chão de fábrica, manuais, vídeos e treinamento dos usuários, seguindo o método Kaizen do programa (PDCA, Pareto, Before & After).",
@@ -336,9 +336,9 @@ export const pt: Dictionary = {
       {
         id: "oee",
         kicker: "Indústria · em uso na linha",
-        title: "Sistema OEE de chão de fábrica",
+        title: "Esplêndida OEE",
         description:
-          "Apontamento de produção e refugo para uma fábrica de calçados injetados. Os tablets funcionam sem rede, e o painel mostra produção, qualidade, Pareto de defeitos e o andamento de cada pedido no mesmo dia. Em uso na linha desde novembro de 2026.",
+          "Apontamento de produção e refugo para a Esplêndida Calçados, fábrica de calçados injetados no Cariri. Os tablets funcionam sem rede, e o painel mostra produção, qualidade, Pareto de defeitos e o andamento de cada pedido no mesmo dia. Em uso na linha desde novembro de 2026.",
         stack: ["FastAPI", "PostgreSQL", "React", "TypeScript", "PWA offline-first", "Playwright", "Bitbucket Pipelines"],
         metrics: [
           { value: "6 sem.", label: "até o uso real" },
@@ -424,7 +424,7 @@ export const pt: Dictionary = {
     title: ["Do caderno", "ao tablet"],
     lead: "A fábrica anotava a produção num caderno, e o refugo ia para o moinho sem contagem. Em seis semanas, saímos do levantamento na linha para o uso real: cada ponto de contagem ganhou um tablet que funciona sem rede, e o PCP, a qualidade e a gerência passaram a ver o andamento de cada remessa no mesmo dia. Cada regra do sistema veio de uma conversa com quem faz a peça.",
     facts: [
-      { label: "Onde", value: "Uma fábrica de calçados injetados no Cariri (CE), pela Residência PNAAT" },
+      { label: "Onde", value: "Esplêndida Calçados, fábrica de calçados injetados no Cariri (CE), pela Residência PNAAT" },
       { label: "Quando", value: "Outubro a dezembro de 2026, em sprints de duas semanas" },
       { label: "Equipe", value: "4 residentes, orientados por Weliton Rodrigues e Flavian Fernandes" },
       { label: "Meu papel", value: "Full stack: tablet offline, API, infraestrutura e entrega contínua, com cerca de 2/3 dos commits" },

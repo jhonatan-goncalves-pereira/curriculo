@@ -188,14 +188,14 @@ export const en: Dictionary = {
     less: "Show less",
     items: [
       {
-        company: "PNAAT Residency · FIT, Softex Cariri and UFCA",
+        company: "PNAAT Residency · Esplêndida Calçados",
         mark: "PN",
         role: "Software Development Resident (Full Stack)",
         period: "Oct 2026 — Present",
         location: "Cariri, Brazil",
         current: true,
         points: [
-          "Placed at an injection-molded footwear factory, I built with three other residents a production and scrap tracking system (OEE) that went into real use on the line in 6 weeks.",
+          "Through PNAAT (FIT, Softex Cariri and UFCA), I was placed at Esplêndida Calçados, an injection-molded footwear factory, and built with three other residents a production and scrap tracking system (OEE) that went into real use on the line in 6 weeks.",
           "Offline-first tablets (React, TypeScript, IndexedDB) and a FastAPI and PostgreSQL API, with 371 automated tests.",
           "Infrastructure on the factory's own server: HTTPS, secure remote access and one-click releases with backup and automatic rollback (Bitbucket Pipelines).",
           "Shop-floor requirements gathering, manuals, videos and user training, following the program's Kaizen method (PDCA, Pareto, Before & After).",
@@ -335,9 +335,9 @@ export const en: Dictionary = {
       {
         id: "oee",
         kicker: "Industry · in use on the line",
-        title: "Shop-floor OEE system",
+        title: "Esplêndida OEE",
         description:
-          "Production and scrap tracking for an injection-molded footwear factory. The tablets work offline, and the dashboard shows production, quality, a Pareto of defects and the progress of each order on the same day. In use on the line since November 2026.",
+          "Production and scrap tracking for Esplêndida Calçados, an injection-molded footwear factory in Cariri, Brazil. The tablets work offline, and the dashboard shows production, quality, a Pareto of defects and the progress of each order on the same day. In use on the line since November 2026.",
         stack: ["FastAPI", "PostgreSQL", "React", "TypeScript", "PWA offline-first", "Playwright", "Bitbucket Pipelines"],
         metrics: [
           { value: "6 wks", label: "to real use" },
@@ -423,7 +423,7 @@ export const en: Dictionary = {
     title: ["From notebook", "to tablet"],
     lead: "The factory logged production in a paper notebook, and scrap went to the grinder uncounted. In six weeks we went from shop-floor research to real use: every counting point got a tablet that works offline, and planning, quality and management started seeing the progress of each order on the same day. Every rule in the system came from a conversation with the people who make the parts.",
     facts: [
-      { label: "Where", value: "An injection-molded footwear factory in Cariri, Brazil, through the PNAAT Residency" },
+      { label: "Where", value: "Esplêndida Calçados, an injection-molded footwear factory in Cariri, Brazil, through the PNAAT Residency" },
       { label: "When", value: "October to December 2026, in two-week sprints" },
       { label: "Team", value: "4 residents, advised by Weliton Rodrigues and Flavian Fernandes" },
       { label: "My role", value: "Full stack: offline tablet, API, infrastructure and continuous delivery, with about 2/3 of the commits" },
