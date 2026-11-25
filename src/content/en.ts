@@ -71,8 +71,8 @@ export const en: Dictionary = {
   },
   products: {
     eyebrow: "Products",
-    title: ["Live systems", "for public health"],
-    lead: "Two products I built from scratch for public health in Juazeiro do Norte, open for you to explore right now. Behind both is what I do most: turning public health data into decisions, without manual rework.",
+    title: ["Live systems", "in real use"],
+    lead: "Four products I built from scratch that people use every day: two in public health in Juazeiro do Norte and two at the Regional University of Cariri. All open for you to explore right now.",
     visit: "Open",
     items: [
       {
@@ -117,9 +117,49 @@ export const en: Dictionary = {
         stack: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "React PDF", "Vercel"],
         imageAlt: "CMS Digital home page, with the wheel of the council's 20 seats",
       },
+      {
+        id: "siseventos",
+        kicker: "Regional University of Cariri · in production",
+        name: "SIS Eventos",
+        domain: "siseventos.urca.br",
+        href: "https://siseventos.urca.br/",
+        description:
+          "The university's conferences, academic weeks, exhibitions and courses in one place: registration, paper submission, attendance and certificates, from ticket to certificate and paperless.",
+        highlights: [
+          "Registration in seconds from a phone or computer, with an instant receipt.",
+          "Attendance by QR code, on the entrance screen or in the speaker's roll call, even offline.",
+          "Certificates with a code and QR anyone can verify, sent straight to LinkedIn. Installable app, no app store needed.",
+        ],
+        metrics: [
+          { value: "641", label: "registrations in a single stage of University Week" },
+          { value: "62", label: "certificates issued in a single day" },
+        ],
+        stack: ["TypeScript", "React", "Node.js", "PWA", "QR Code"],
+        imageAlt: "SIS Eventos home page, showcasing the university's events",
+      },
+      {
+        id: "sisagenda",
+        kicker: "Regional University of Cariri · in production",
+        name: "SIS Agenda",
+        domain: "sisagenda.urca.br",
+        href: "https://sisagenda.urca.br/",
+        description:
+          "Resource booking for the university: rooms and labs, equipment, vehicles and department services, with real-time availability and approval by the person in charge.",
+        highlights: [
+          "Requests in minutes, approved by the person in charge, with the answer by email.",
+          "A calendar with every booking, history and real-time status, to avoid schedule clashes.",
+          "Bookings in Google Calendar and on the phone, sign-in with Google and an installable app.",
+        ],
+        metrics: [
+          { value: "385+", label: "approved bookings" },
+          { value: "4", label: "resource types: rooms, equipment, vehicles and services" },
+        ],
+        stack: ["React", "Vite", "Node.js", "Express", "Prisma", "PWA"],
+        imageAlt: "SIS Agenda home page, the university's booking system",
+      },
     ],
     dataTitle: "Data for health management",
-    dataLead: "What runs under these systems, and what I can bring to any health department:",
+    dataLead: "What runs under SESAU Digital and CMS Digital, and what I can bring to any health department:",
     data: [
       {
         title: "PPI × production",
@@ -274,7 +314,7 @@ export const en: Dictionary = {
   projects: {
     eyebrow: "Projects",
     title: ["Selected", "work"],
-    lead: "Six more deliveries that show the range: firmware, web, research, data analysis and quality.",
+    lead: "Five more deliveries that show the range: firmware, research, data analysis and quality.",
     all: "View all repositories",
     items: [
       {
@@ -290,16 +330,6 @@ export const en: Dictionary = {
           { value: "5", label: "states recognized" },
         ],
         links: [{ label: "Code", href: `${GH}/pulsopnaat` }],
-      },
-      {
-        id: "sis",
-        kicker: "In production · URCA",
-        title: "SisEventos & SisAgenda",
-        description:
-          "Institutional systems for academic events and scheduling, built from scratch: proposal workflow, certificates with validation codes and RBAC.",
-        stack: ["React", "Vite", "Node.js", "Express", "MySQL", "JWT"],
-        links: [],
-        note: "Institutional code",
       },
       {
         id: "tcc",

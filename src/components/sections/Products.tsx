@@ -3,6 +3,8 @@
 import Image, { type StaticImageData } from "next/image";
 import cmsShot from "@/assets/products/cms-digital.jpg";
 import sesauShot from "@/assets/products/sesau-digital.jpg";
+import sisagendaShot from "@/assets/products/sisagenda.jpg";
+import siseventosShot from "@/assets/products/siseventos.jpg";
 import type { ProductId, ProductItem } from "@/content/types";
 import { useT } from "@/lib/hooks";
 import { ArrowUpRight, Check } from "../ui/Icons";
@@ -14,6 +16,8 @@ import { SectionHeading } from "../ui/SectionHeading";
 const SHOTS: Record<ProductId, StaticImageData> = {
   sesau: sesauShot,
   cms: cmsShot,
+  siseventos: siseventosShot,
+  sisagenda: sisagendaShot,
 };
 
 function ProductCard({ product, visit, flip }: { product: ProductItem; visit: string; flip: boolean }) {
@@ -67,7 +71,11 @@ function ProductCard({ product, visit, flip }: { product: ProductItem; visit: st
           ))}
         </ul>
 
-        <dl className="mt-6 grid grid-cols-3 gap-4 border-y border-line py-5">
+        <dl
+          className={`mt-6 grid gap-4 border-y border-line py-5 ${
+            product.metrics.length === 2 ? "grid-cols-2" : "grid-cols-3"
+          }`}
+        >
           {product.metrics.map((m) => (
             <div key={m.label} className="flex flex-col-reverse gap-1">
               <dt className="text-[0.78rem] leading-snug text-dim">{m.label}</dt>

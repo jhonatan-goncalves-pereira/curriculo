@@ -10,10 +10,10 @@ export type SectionId =
   | "education"
   | "contact";
 
-export type ProjectId = "pulso" | "sis" | "tcc" | "bi" | "qa" | "ppi";
+export type ProjectId = "pulso" | "tcc" | "bi" | "qa" | "ppi";
 
 /** Live products shown with a screenshot (images live in src/assets/products). */
-export type ProductId = "sesau" | "cms";
+export type ProductId = "sesau" | "cms" | "siseventos" | "sisagenda";
 
 export interface ProductItem {
   id: ProductId;

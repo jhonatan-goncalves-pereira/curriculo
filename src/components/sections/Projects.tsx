@@ -117,12 +117,20 @@ export function Projects() {
         <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-6">
           {p.items.map((project, i) => {
             const featured = i === 0;
+            const n = p.items.length;
+            // Desktop: the featured card fills 2 rows next to 2 cards, then rows of 3.
+            // Cards of an incomplete last row stretch so the grid never leaves a hole.
+            const lastRow = Math.max(0, n - 3) % 3;
+            const inLastRow = i >= n - lastRow && i >= 3;
+            const lgSpan = inLastRow ? (lastRow === 1 ? "lg:col-span-6" : "lg:col-span-3") : "lg:col-span-2";
+            // Tablet: pairs after the featured card; a lone last card takes the full row.
+            const mdSpan = (n - 1) % 2 === 1 && i === n - 1 ? "md:col-span-2" : "";
             return (
               <Reveal
                 key={project.id}
                 delay={(i % 3) * 0.07}
                 className={
-                  featured ? "md:col-span-2 lg:col-span-4 lg:row-span-2" : "lg:col-span-2"
+                  featured ? "md:col-span-2 lg:col-span-4 lg:row-span-2" : `${lgSpan} ${mdSpan}`.trim()
                 }
               >
                 <Card project={project} featured={featured} />

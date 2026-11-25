@@ -71,8 +71,8 @@ export const pt: Dictionary = {
   },
   products: {
     eyebrow: "Produtos",
-    title: ["Sistemas no ar", "para a saúde"],
-    lead: "Dois produtos que construí do zero para a saúde pública de Juazeiro do Norte, abertos para você ver agora. Por trás dos dois está o que mais faço: transformar dados do SUS em decisão, sem retrabalho.",
+    title: ["Sistemas no ar", "em uso real"],
+    lead: "Quatro produtos que construí do zero e que estão em uso: dois na saúde pública de Juazeiro do Norte e dois na Universidade Regional do Cariri. Todos abertos para você ver agora.",
     visit: "Acessar",
     items: [
       {
@@ -118,9 +118,49 @@ export const pt: Dictionary = {
         stack: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle ORM", "React PDF", "Vercel"],
         imageAlt: "Página inicial do CMS Digital, com a roda das 20 cadeiras do Plenário",
       },
+      {
+        id: "siseventos",
+        kicker: "Universidade Regional do Cariri · em produção",
+        name: "SIS Eventos",
+        domain: "siseventos.urca.br",
+        href: "https://siseventos.urca.br/",
+        description:
+          "Congressos, semanas acadêmicas, mostras e cursos da URCA num só lugar: inscrições, envio de trabalhos, presença e certificados, do ingresso ao certificado e sem papel.",
+        highlights: [
+          "Inscrição em segundos pelo celular ou pelo computador, com comprovante na hora.",
+          "Presença por QR Code, no telão da entrada ou na chamada do ministrante, até sem internet.",
+          "Certificado com código e QR para qualquer pessoa conferir, que vai direto para o LinkedIn. App instalável, sem loja de aplicativos.",
+        ],
+        metrics: [
+          { value: "641", label: "inscrições numa só etapa da Semana Universitária" },
+          { value: "62", label: "certificados emitidos num só dia" },
+        ],
+        stack: ["TypeScript", "React", "Node.js", "PWA", "QR Code"],
+        imageAlt: "Página inicial do SIS Eventos, com a vitrine dos eventos da URCA",
+      },
+      {
+        id: "sisagenda",
+        kicker: "Universidade Regional do Cariri · em produção",
+        name: "SIS Agenda",
+        domain: "sisagenda.urca.br",
+        href: "https://sisagenda.urca.br/",
+        description:
+          "O agendamento de recursos da URCA: espaços e laboratórios, equipamentos, veículos e atendimentos dos departamentos, com disponibilidade em tempo real e aprovação pelo responsável.",
+        highlights: [
+          "Solicitação em minutos, com aprovação pelo responsável e resposta por e-mail.",
+          "Calendário com tudo o que foi agendado, histórico e status em tempo real, para evitar conflito de horário.",
+          "Agendamentos no Google Agenda e no celular, entrada com a conta Google e app instalável.",
+        ],
+        metrics: [
+          { value: "385+", label: "agendamentos aprovados" },
+          { value: "4", label: "tipos de recurso: espaços, equipamentos, veículos e atendimentos" },
+        ],
+        stack: ["React", "Vite", "Node.js", "Express", "Prisma", "PWA"],
+        imageAlt: "Página inicial do SIS Agenda, o sistema de agendamentos da URCA",
+      },
     ],
     dataTitle: "Dados para gestão em saúde",
-    dataLead: "O que roda por baixo desses sistemas, e que eu levo para qualquer secretaria:",
+    dataLead: "O que roda por baixo do SESAU Digital e do CMS Digital, e que eu levo para qualquer secretaria:",
     data: [
       {
         title: "PPI × produção",
@@ -275,7 +315,7 @@ export const pt: Dictionary = {
   projects: {
     eyebrow: "Projetos",
     title: ["Trabalho", "selecionado"],
-    lead: "Mais seis entregas que mostram o alcance: firmware, web, pesquisa, análise de dados e qualidade.",
+    lead: "Mais cinco entregas que mostram o alcance: firmware, pesquisa, análise de dados e qualidade.",
     all: "Ver todos os repositórios",
     items: [
       {
@@ -291,16 +331,6 @@ export const pt: Dictionary = {
           { value: "5", label: "estados reconhecidos" },
         ],
         links: [{ label: "Código", href: `${GH}/pulsopnaat` }],
-      },
-      {
-        id: "sis",
-        kicker: "Em produção · URCA",
-        title: "SisEventos & SisAgenda",
-        description:
-          "Sistemas institucionais de eventos e agendamentos acadêmicos, criados do zero: fluxo de propostas, certificados com código de validação e RBAC.",
-        stack: ["React", "Vite", "Node.js", "Express", "MySQL", "JWT"],
-        links: [],
-        note: "Código institucional",
       },
       {
         id: "tcc",

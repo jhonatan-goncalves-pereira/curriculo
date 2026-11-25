@@ -76,40 +76,6 @@ function Pulso() {
   );
 }
 
-const BOOKED = new Set([2, 3, 9, 12, 13, 17, 22, 25]);
-const TODAY = 12;
-
-function Sis() {
-  return (
-    <div className="absolute inset-0 flex items-center gap-4 p-5">
-      <div className="grid flex-1 grid-cols-7 gap-1.5">
-        {Array.from({ length: 28 }, (_, i) => (
-          <span
-            key={i}
-            className={`aspect-square rounded-md border ${
-              i === TODAY
-                ? "border-mint bg-mint"
-                : BOOKED.has(i)
-                  ? "border-mint/30 bg-mint/15"
-                  : "border-line bg-white/[0.02]"
-            }`}
-          />
-        ))}
-      </div>
-      <div className="flex w-[34%] flex-col gap-2 rounded-xl border border-line bg-ink-3 p-3">
-        <span className="h-1.5 w-3/4 rounded-full bg-white/20" />
-        <span className="h-1.5 w-1/2 rounded-full bg-white/10" />
-        <span className="mt-2 flex items-center gap-1.5 font-mono text-[0.62rem] text-mint">
-          <span className="grid size-4 place-items-center rounded-full bg-mint/15">
-            <Check className="text-[0.6rem]" />
-          </span>
-          RBAC
-        </span>
-      </div>
-    </div>
-  );
-}
-
 const COMMITS = [
   { x: 40, y: 62, risk: false },
   { x: 110, y: 62, risk: false },
@@ -265,7 +231,6 @@ function Ppi() {
 
 const VISUALS: Record<ProjectId, () => React.JSX.Element> = {
   pulso: Pulso,
-  sis: Sis,
   tcc: Tcc,
   bi: Bi,
   qa: Qa,
