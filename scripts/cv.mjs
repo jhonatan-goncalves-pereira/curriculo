@@ -1,9 +1,10 @@
-// Gera os PDFs do currículo a partir de cv/pt.html e cv/en.html.
+// Gera os PDFs do currículo a partir de cv/pt.html e cv/en.html e a imagem de
+// compartilhamento (public/og.jpg, 1200×630) a partir de cv/og.html.
 // Uso: npm run cv  (precisa do Microsoft Edge ou do Google Chrome instalado;
 // para outro navegador, defina a variável BROWSER com o caminho do executável).
 
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdtempSync, rmSync, statSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -33,24 +34,57 @@ const jobs = [
 // Perfil temporário: evita conflito com o navegador aberto do usuário.
 const profile = mkdtempSync(path.join(tmpdir(), "cv-browser-"));
 
+// O orçamento de tempo dá folga para as fontes de cv/fonts carregarem antes da foto.
+const common = [
+  "--headless=new",
+  "--disable-gpu",
+  "--no-first-run",
+  "--virtual-time-budget=4000",
+  `--user-data-dir=${profile}`,
+];
+
+const report = (target) =>
+  console.log(`ok  ${target}  (${Math.round(statSync(path.join(root, target)).size / 1024)} KB)`);
+
 try {
   for (const [source, target] of jobs) {
     const output = path.join(root, target);
     execFileSync(
       browser,
       [
-        "--headless=new",
-        "--disable-gpu",
-        "--no-first-run",
+        ...common,
         "--no-pdf-header-footer",
-        `--user-data-dir=${profile}`,
         `--print-to-pdf=${output}`,
         pathToFileURL(path.join(root, source)).href,
       ],
       { stdio: "ignore" },
     );
-    console.log(`ok  ${target}  (${Math.round(statSync(output).size / 1024)} KB)`);
+    report(target);
   }
+
+  // Imagem de compartilhamento: o navegador fotografa em PNG e o sharp
+  // (que já vem com o Next) converte para JPEG, bem mais leve para o WhatsApp.
+  const png = path.join(profile, "og.png");
+  execFileSync(
+    browser,
+    [
+      ...common,
+      "--hide-scrollbars",
+      "--force-device-scale-factor=1",
+      "--window-size=1200,630",
+      `--screenshot=${png}`,
+      pathToFileURL(path.join(root, "cv/og.html")).href,
+    ],
+    { stdio: "ignore" },
+  );
+  const { default: sharp } = await import("sharp");
+  const og = path.join(root, "public/og.jpg");
+  const jpg = await sharp(readFileSync(png))
+    .resize(1200, 630, { fit: "cover", position: "left top" })
+    .jpeg({ quality: 86, progressive: true, mozjpeg: true })
+    .toBuffer();
+  writeFileSync(og, jpg);
+  report("public/og.jpg");
 } finally {
   rmSync(profile, { recursive: true, force: true });
 }

@@ -22,7 +22,8 @@ const hand = Kalam({
   display: "swap",
 });
 
-const OG_IMAGE = `${BASE_PATH}/og.jpg`;
+// Suba o ?v= quando trocar a imagem: WhatsApp e LinkedIn guardam a antiga em cache.
+const OG_IMAGE = `${BASE_PATH}/og.jpg?v=2`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.origin),

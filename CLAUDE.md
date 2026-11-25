@@ -11,7 +11,8 @@ Responda em português do Brasil. O site é bilíngue: todo texto existe em PT e
 | Formato desses dados | `src/content/types.ts` |
 | E-mail, WhatsApp, GitHub, LinkedIn | `src/lib/site.ts` |
 | Ilustração de um card de projeto | `src/components/sections/ProjectVisual.tsx` (uma por `ProjectId`) |
-| Currículo em PDF | `cv/pt.html` e `cv/en.html`; `npm run cv` gera os PDFs em `public/` |
+| Currículo em PDF | `cv/pt.html` e `cv/en.html` (visual em `cv/cv.css`, fontes em `cv/fonts`); `npm run cv` gera os PDFs em `public/` |
+| Imagem de compartilhamento | `cv/og.html` (1200×630); o mesmo `npm run cv` salva `public/og.jpg`. Mudou a imagem? Suba o `?v=` de `OG_IMAGE` em `src/app/layout.tsx`, senão WhatsApp e LinkedIn mostram a antiga |
 
 - A seção **Produtos** (`products` em pt.ts/en.ts, componente `src/components/sections/Products.tsx`) mostra os sistemas no ar com print da página inicial. Os prints ficam em `src/assets/products/` (JPEG 1440×900, tirados com o Edge headless) e são escolhidos por `ProductId`.
 - O primeiro item de `projects.items` vira o card grande, em destaque.
@@ -31,7 +32,7 @@ Responda em português do Brasil. O site é bilíngue: todo texto existe em PT e
 ```bash
 npm run lint
 npm run build   # checa tipos e gera out/
-npm run cv      # só se o currículo mudou (precisa do Edge ou do Chrome)
+npm run cv      # só se o currículo ou a imagem de compartilhamento mudou (precisa do Edge ou do Chrome)
 ```
 
 ## Publicar

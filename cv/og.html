@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Imagem de compartilhamento — Jhonatan Gonçalves</title>
+    <!--
+      Imagem que aparece quando o link do site é compartilhado (WhatsApp, LinkedIn…).
+      1200×630. `npm run cv` fotografa esta página e salva em public/og.jpg.
+      A esfera é desenhada com um sorteio fixo (SEED), então sai sempre igual.
+    -->
+    <style>
+      @font-face {
+        font-family: "Schibsted Grotesk";
+        src: url("fonts/schibsted-grotesk.woff2") format("woff2");
+        font-weight: 400 800;
+        font-display: block;
+      }
+      @font-face {
+        font-family: "Kalam";
+        src: url("fonts/kalam-700.woff2") format("woff2");
+        font-weight: 700;
+        font-display: block;
+      }
+
+      :root {
+        --paper: #fcfcf8;
+        --ink: #1e2a4a;
+        --dim: #687088;
+        --pen: #1f3a93;
+        --red: #d9434b;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+
+      body {
+        position: relative;
+        font-family: "Schibsted Grotesk", "Segoe UI", Arial, sans-serif;
+        color: var(--ink);
+        background-color: var(--paper);
+        /* Pauta azul e margem vermelha, como no site. */
+        background-image:
+          linear-gradient(to right, transparent 63px, rgb(217 67 75 / 0.5) 63px, rgb(217 67 75 / 0.5) 65px, transparent 65px),
+          repeating-linear-gradient(to bottom, transparent 0 31px, rgb(110 160 214 / 0.3) 31px 32px);
+        background-position: 0 0, 0 14px;
+      }
+
+      canvas {
+        position: absolute;
+        inset: 0;
+      }
+
+      .copy {
+        position: absolute;
+        left: 112px;
+        top: 112px;
+      }
+
+      h1 {
+        font-weight: 750;
+        font-size: 124px;
+        line-height: 0.9;
+        letter-spacing: -0.04em;
+      }
+
+      h1 span {
+        display: block;
+        margin-top: 4px;
+        font-family: "Kalam", "Segoe Print", cursive;
+        font-weight: 700;
+        font-size: 128px;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        color: var(--pen);
+      }
+
+      .role {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 26px;
+        font-size: 27px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+      }
+
+      .role i {
+        width: 36px;
+        height: 2px;
+        background: rgb(31 58 147 / 0.35);
+      }
+
+      .role em {
+        font-family: "Kalam", "Segoe Print", cursive;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        color: var(--pen);
+      }
+
+      .url {
+        position: absolute;
+        left: 112px;
+        bottom: 46px;
+        font-size: 22px;
+        font-weight: 500;
+        color: var(--dim);
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="sphere" width="1200" height="630" aria-hidden="true"></canvas>
+
+    <div class="copy">
+      <h1>Jhonatan <span>Gonçalves</span></h1>
+      <p class="role">Desenvolvedor Full Stack <i></i> <em>Sistemas &amp; Infra</em></p>
+    </div>
+    <p class="url">jhonatan-goncalves-pereira.github.io/curriculo</p>
+
+    <script>
+      // Esfera de pontos de tinta: vermelho em cima, azul embaixo, como a cena do site.
+      const SEED = 20261125;
+      const CX = 976;
+      const CY = 315;
+      const R = 212;
+      const COUNT = 5200;
+
+      let state = SEED;
+      const rand = () => {
+        state |= 0;
+        state = (state + 0x6d2b79f5) | 0;
+        let t = Math.imul(state ^ (state >>> 15), 1 | state);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+
+      const ctx = document.getElementById("sphere").getContext("2d");
+      const tilt = -0.42;
+      const golden = Math.PI * (3 - Math.sqrt(5));
+      const dots = [];
+
+      for (let i = 0; i < COUNT; i++) {
+        // Distribuição de Fibonacci com um pouco de ruído, para não parecer grade.
+        const y0 = 1 - (2 * (i + 0.5)) / COUNT;
+        const ring = Math.sqrt(1 - y0 * y0);
+        const a = golden * i + (rand() - 0.5) * 0.35;
+        const shell = 1 - Math.pow(rand(), 3) * 0.12;
+        let x = Math.cos(a) * ring * shell;
+        let y = y0 * shell;
+        let z = Math.sin(a) * ring * shell;
+
+        // Inclina a esfera para a luz vir de cima, à direita.
+        const yz = y * Math.cos(tilt) - z * Math.sin(tilt);
+        z = y * Math.sin(tilt) + z * Math.cos(tilt);
+        y = yz;
+
+        const depth = (z + 1) / 2; // 0 = fundo, 1 = frente
+        const warm = Math.min(1, Math.max(0, 0.5 + y * 0.55 + x * 0.25 + (rand() - 0.5) * 0.4));
+        const red = rand() < warm;
+        dots.push({
+          px: CX + x * R,
+          py: CY - y * R,
+          r: (0.4 + depth * 1.15) * (rand() < 0.04 ? 1.7 : 1) * (0.7 + rand() * 0.6),
+          alpha: 0.22 + depth * 0.68,
+          color: red ? "217, 67, 75" : rand() < 0.5 ? "31, 58, 147" : "30, 42, 74",
+          depth,
+        });
+      }
+
+      dots.sort((p, q) => p.depth - q.depth);
+      for (const d of dots) {
+        ctx.beginPath();
+        ctx.arc(d.px, d.py, d.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${d.color}, ${d.alpha.toFixed(3)})`;
+        ctx.fill();
+      }
+    </script>
+  </body>
+</html>

@@ -1,4 +1,40 @@
-/* Currículo em uma página A4. Gerado em PDF por `npm run cv` (scripts/cv.mjs). */
+/* Currículo em uma página A4. Gerado em PDF por `npm run cv` (scripts/cv.mjs).
+   Mesma identidade do site: folha de caderno (papel, pauta azul, margem
+   vermelha), texto em tinta de caneta azul e títulos escritos à mão.
+   As fontes ficam em cv/fonts (licença OFL) para o PDF sair igual sem internet. */
+
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src: url("fonts/schibsted-grotesk.woff2") format("woff2");
+  font-weight: 400 800;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Kalam";
+  src: url("fonts/kalam-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Kalam";
+  src: url("fonts/kalam-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: block;
+}
+
+:root {
+  --paper: #fcfcf8;
+  --ink: #1e2a4a;
+  --muted: #475066;
+  --dim: #687088;
+  --pen: #1f3a93;
+  --red: #d9434b;
+  --rule: rgb(110 160 214 / 0.2);
+  --rule-gap: 6.4mm;
+  --hand: "Kalam", "Segoe Print", cursive;
+}
 
 @page {
   size: A4;
@@ -18,10 +54,20 @@ body {
 }
 
 body {
-  font-family: "Segoe UI", "Inter", Arial, sans-serif;
-  font-size: 8.5pt;
+  font-family: "Schibsted Grotesk", "Segoe UI", Arial, sans-serif;
+  font-size: 8.1pt;
   line-height: 1.38;
-  color: #1f2937;
+  color: var(--muted);
+  background-color: var(--paper);
+  /* Pauta do caderno, bem clara para não brigar com o texto. */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(var(--rule-gap) - 0.2mm),
+    var(--rule) calc(var(--rule-gap) - 0.2mm),
+    var(--rule) var(--rule-gap)
+  );
+  background-position: 0 3.2mm;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
@@ -31,23 +77,42 @@ a {
   text-decoration: none;
 }
 
+strong {
+  font-weight: 650;
+  color: var(--ink);
+}
+
 .page {
   display: grid;
-  grid-template-columns: 67mm 1fr;
+  grid-template-columns: 66mm 1fr;
   width: 210mm;
   height: 297mm;
   overflow: hidden;
 }
 
-/* ---------- Coluna lateral ---------- */
+/* Títulos de seção: anotação à mão com o sublinhado vermelho do site. */
+.side h2,
+.main h2 {
+  display: block;
+  width: fit-content;
+  margin-bottom: 1.7mm;
+  padding: 0 0.6mm 1.5mm 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8' preserveAspectRatio='none'%3E%3Cpath d='M2 5C30 2 62 7 118 3' fill='none' stroke='%23d9434b' stroke-width='1.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E")
+    no-repeat left bottom / 100% 1.7mm;
+  font-family: var(--hand);
+  font-size: 12pt;
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--pen);
+}
+
+/* ---------- Coluna lateral (fica antes da margem vermelha) ---------- */
 
 .side {
   display: flex;
   flex-direction: column;
-  gap: 4.6mm;
-  padding: 10mm 6.5mm 8mm 7.5mm;
-  background: #0f1720;
-  color: #b6c2d1;
+  gap: 4.4mm;
+  padding: 10mm 5mm 8mm 7.5mm;
 }
 
 .photo {
@@ -55,84 +120,79 @@ a {
   width: 25mm;
   height: 25mm;
   margin: 0 auto;
-  border: 0.7mm solid #5ef2c2;
+  border: 0.8mm solid var(--paper);
   border-radius: 50%;
+  box-shadow: 0 0 0 0.35mm var(--pen);
   object-fit: cover;
 }
 
 .name {
   margin-top: 3mm;
   text-align: center;
-  color: #fff;
 }
 
 .name h1 {
-  font-size: 15.5pt;
-  font-weight: 700;
-  line-height: 1.1;
+  font-size: 17pt;
+  font-weight: 750;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
 
 .name h1 span {
   display: block;
-  font-weight: 300;
-  color: #cbd5e1;
+  margin-top: 0.6mm;
+  font-family: var(--hand);
+  font-size: 15pt;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--pen);
 }
 
 .role {
-  margin-top: 1.6mm;
-  font-size: 6.8pt;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #5ef2c2;
-}
-
-.side h2 {
-  margin-bottom: 1.8mm;
-  padding-bottom: 1.1mm;
-  border-bottom: 0.2mm solid #26323f;
-  font-size: 6.8pt;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #5ef2c2;
+  margin-top: 1.8mm;
+  font-size: 7.8pt;
+  font-weight: 500;
+  color: var(--muted);
 }
 
 .side ul {
   display: grid;
   gap: 0.9mm;
   list-style: none;
-  font-size: 7.5pt;
-  color: #e2e8f0;
-  word-break: break-word;
+  font-size: 7pt;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+/* Links longos quebram só onde o HTML marca com <wbr>. */
+.nw {
+  white-space: nowrap;
 }
 
 .stack dt {
-  margin-top: 1.2mm;
+  margin-top: 1.1mm;
   font-size: 7.4pt;
-  font-weight: 600;
-  color: #fff;
+  font-weight: 650;
+  color: var(--ink);
 }
 
 .stack dd {
-  font-size: 7.4pt;
+  font-size: 7.3pt;
 }
 
 .edu {
   display: grid;
-  gap: 1.6mm;
+  gap: 1.5mm;
 }
 
 .edu p {
-  font-size: 7.4pt;
-}
-
-.edu strong {
-  color: #fff;
-  font-weight: 600;
+  font-size: 7.3pt;
 }
 
 .edu .when {
   font-size: 6.9pt;
-  color: #5ef2c2;
+  color: var(--pen);
 }
 
 /* ---------- Coluna principal ---------- */
@@ -140,29 +200,20 @@ a {
 .main {
   display: flex;
   flex-direction: column;
-  gap: 3.6mm;
-  padding: 10mm 9.5mm 7mm 8.5mm;
+  gap: 3.4mm;
+  padding: 9mm 9mm 6mm 8mm;
+  /* A margem vermelha do caderno separa as duas colunas. */
+  border-left: 0.35mm solid rgb(217 67 75 / 0.55);
 }
 
 .summary {
-  padding: 2.8mm 3.4mm;
-  border-left: 1mm solid #5ef2c2;
-  background: #f1f5f9;
-  font-size: 8.4pt;
-}
-
-.main h2 {
-  margin-bottom: 2mm;
-  padding-bottom: 1.1mm;
-  border-bottom: 0.25mm solid #cbd5e1;
-  font-size: 7.2pt;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #0f1720;
+  font-size: 8.35pt;
+  line-height: 1.42;
+  color: var(--ink);
 }
 
 .job {
-  margin-bottom: 2.3mm;
+  margin-bottom: 2.2mm;
 }
 
 .job header,
@@ -176,24 +227,23 @@ a {
 .job h3,
 .proj h3 {
   font-size: 8.8pt;
-  color: #0f1720;
+  font-weight: 700;
+  color: var(--ink);
 }
 
 .when-tag {
   flex-shrink: 0;
-  padding: 0.3mm 1.5mm;
-  border-radius: 1mm;
-  background: #f1f5f9;
-  font-family: Consolas, "Courier New", monospace;
-  font-size: 6.8pt;
-  color: #475569;
+  font-size: 7pt;
+  font-variant-numeric: tabular-nums;
+  color: var(--dim);
   white-space: nowrap;
 }
 
 .job .title {
   margin: 0.3mm 0 0.8mm;
-  font-size: 8pt;
-  color: #0e9f7a;
+  font-size: 7.9pt;
+  font-weight: 500;
+  color: var(--pen);
 }
 
 .job ul {
@@ -203,24 +253,23 @@ a {
 }
 
 .job li::marker {
-  color: #0e9f7a;
+  color: var(--pen);
 }
 
 .proj {
-  margin-bottom: 1.9mm;
+  margin-bottom: 1.8mm;
 }
 
 .proj .tech {
   flex-shrink: 0;
-  font-family: Consolas, "Courier New", monospace;
-  font-size: 6.6pt;
-  color: #64748b;
+  font-size: 6.9pt;
+  color: var(--dim);
 }
 
 .foot {
   margin-top: auto;
-  font-size: 7.2pt;
-  font-style: italic;
+  font-family: var(--hand);
+  font-size: 10pt;
   text-align: center;
-  color: #64748b;
+  color: var(--pen);
 }
