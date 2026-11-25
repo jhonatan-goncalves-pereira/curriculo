@@ -12,8 +12,8 @@ export const en: Dictionary = {
   },
   nav: {
     items: [
-      { id: "about", label: "About" },
       { id: "products", label: "Products" },
+      { id: "about", label: "About" },
       { id: "experience", label: "Experience" },
       { id: "projects", label: "Projects" },
       { id: "skills", label: "Stack" },
@@ -29,8 +29,8 @@ export const en: Dictionary = {
     status: "Open to remote roles · UTC−3",
     rolesPrefix: "Full Stack Developer",
     roles: ["Digital Health", "Systems & Infra", "QA Automation", "BI & Data"],
-    lead: "I ship end to end, from the React interface to the Java or Node API, and from the database to the server that keeps it all running. My systems run in production at a public university and a city health department.",
-    primary: "View projects",
+    lead: "I ship end to end, from the React interface to the Java or Node API, and from the database to the server that keeps it all running. My systems run in production at a public university, a city health department and a factory floor.",
+    primary: "See live systems",
     secondary: "Download CV",
     location: "Juazeiro do Norte, CE · Brazil",
     current: "Currently at URCA",
@@ -188,6 +188,21 @@ export const en: Dictionary = {
     less: "Show less",
     items: [
       {
+        company: "PNAAT Residency · FIT, Softex Cariri and UFCA",
+        mark: "PN",
+        role: "Software Development Resident (Full Stack)",
+        period: "Oct 2026 — Present",
+        location: "Cariri, Brazil",
+        current: true,
+        points: [
+          "Placed at an injection-molded footwear factory, I built with three other residents a production and scrap tracking system (OEE) that went into real use on the line in 6 weeks.",
+          "Offline-first tablets (React, TypeScript, IndexedDB) and a FastAPI and PostgreSQL API, with 371 automated tests.",
+          "Infrastructure on the factory's own server: HTTPS, secure remote access and one-click releases with backup and automatic rollback (Bitbucket Pipelines).",
+          "Shop-floor requirements gathering, manuals, videos and user training, following the program's Kaizen method (PDCA, Pareto, Before & After).",
+        ],
+        tags: ["FastAPI", "PostgreSQL", "React", "TypeScript", "PWA", "Playwright"],
+      },
+      {
         company: "URCA · Regional University of Cariri",
         mark: "UR",
         role: "Full Stack Developer · Systems & Infrastructure Analyst",
@@ -314,9 +329,34 @@ export const en: Dictionary = {
   projects: {
     eyebrow: "Projects",
     title: ["Selected", "work"],
-    lead: "Five more deliveries that show the range: firmware, research, data analysis and quality.",
+    lead: "Seven deliveries that show the range: industry, computer vision, firmware, research, data analysis and quality.",
     all: "View all repositories",
     items: [
+      {
+        id: "oee",
+        kicker: "Industry · in use on the line",
+        title: "Shop-floor OEE system",
+        description:
+          "Production and scrap tracking for an injection-molded footwear factory. The tablets work offline, and the dashboard shows production, quality, a Pareto of defects and the progress of each order on the same day. In use on the line since November 2026.",
+        stack: ["FastAPI", "PostgreSQL", "React", "TypeScript", "PWA offline-first", "Playwright", "Bitbucket Pipelines"],
+        metrics: [
+          { value: "6 wks", label: "to real use" },
+          { value: "371", label: "automated tests" },
+          { value: "11", label: "injection machines covered" },
+        ],
+        links: [{ label: "Read the case study", href: "#case" }],
+        note: "Internal factory system",
+      },
+      {
+        id: "vision",
+        kicker: "Computer vision · in progress",
+        title: "Vision and waste station",
+        description:
+          "The residency's next step: a station at the end of the conveyor counts parts by camera, flags defects to compare with the inspector's sorting and, with the scale, measures sprue and purge waste per mold. A pilot is planned with an error target of 5% or less.",
+        stack: ["Raspberry Pi 5", "Hailo-8L", "Python", "SQLite", "Computer vision"],
+        links: [],
+        note: "In progress",
+      },
       {
         id: "pulso",
         kicker: "Edge AI · IoT",
@@ -378,6 +418,143 @@ export const en: Dictionary = {
       },
     ],
   },
+  caseStudy: {
+    eyebrow: "Case study",
+    title: ["From notebook", "to tablet"],
+    lead: "The factory logged production in a paper notebook, and scrap went to the grinder uncounted. In six weeks we went from shop-floor research to real use: every counting point got a tablet that works offline, and planning, quality and management started seeing the progress of each order on the same day. Every rule in the system came from a conversation with the people who make the parts.",
+    facts: [
+      { label: "Where", value: "An injection-molded footwear factory in Cariri, Brazil, through the PNAAT Residency" },
+      { label: "When", value: "October to December 2026, in two-week sprints" },
+      { label: "Team", value: "4 residents, advised by Weliton Rodrigues and Flavian Fernandes" },
+      { label: "My role", value: "Full stack: offline tablet, API, infrastructure and continuous delivery, with about 2/3 of the commits" },
+    ],
+    metrics: [
+      { value: "6 wks", label: "from day one to real use" },
+      { value: "371", label: "automated tests" },
+      { value: "99.4%", label: "quality on the first day of use" },
+    ],
+    problemTitle: "The problem",
+    problem: [
+      "Production in a notebook: knowing how much of an order was left meant adding it up by hand.",
+      "Scrap with no record: it went to the grinder with no count, no cause, no machine and no one responsible.",
+      "Planning in the dark: an order left the ERP on paper and only came back when it was done or late.",
+    ],
+    builtTitle: "What each person got",
+    built: [
+      {
+        who: "Shop floor",
+        what: "A tablet with big buttons and a photo of every part: good parts, sorting with the defect, rework with its cause, a one-minute undo and a PIN per operator.",
+      },
+      {
+        who: "Planning",
+        what: "Orders imported straight from the ERP's PDF, with a check before saving; deadlines and finish estimates; catalog, stations, molds and sprue weight.",
+      },
+      {
+        who: "Quality",
+        what: "Defects per stage, printable inspection sheets, sorting in pairs and the cost of rework.",
+      },
+      {
+        who: "Management",
+        what: "Role-based dashboards with production, quality, a Pareto of scrap causes and planned vs. actual for each order, also from outside the factory.",
+      },
+    ],
+    howTitle: "How it was built",
+    how: [
+      {
+        title: "Works offline",
+        body: "The tablet stores everything in IndexedDB and syncs when the network comes back. Every entry is born with a UUID, so resending never counts twice.",
+      },
+      {
+        title: "Nothing gets deleted",
+        body: "Corrections are reversals with a reason, and the history stays auditable.",
+      },
+      {
+        title: "Factory rules in code",
+        body: "Each counting point is checked against the previous one, and no stage approves more than the one before released.",
+      },
+      {
+        title: "ERP without database access",
+        body: "Orders, purchase orders and the parts catalog are read from PDF reports, with a cropped photo of each part.",
+      },
+      {
+        title: "On the factory's own server",
+        body: "HTTPS, backup and integration run as system tasks and come back on their own after a power cut. Outside access goes through a tunnel, with no open router port.",
+      },
+      {
+        title: "One-click releases",
+        body: "Tests and dependency audits on every PR. A release backs up the database, applies migrations, checks itself and rolls back on its own if anything fails.",
+      },
+    ],
+    beforeAfterTitle: "Built with the line, not for the line",
+    beforeAfterHead: ["How it was", "What the factory showed us", "What changed in the system"],
+    beforeAfter: [
+      [
+        "Injection logged the defect on the spot",
+        "Defects only show up at sorting, hours later",
+        "Injection only counts; the defect is entered at the inspector's sorting",
+      ],
+      [
+        "Orders picked by number",
+        "The line found an order by the date in the paper's footer and by the models",
+        "Number up front, with the date and models as support",
+      ],
+      [
+        "Straps and soles by code",
+        "Operators recognize a part by its photo, not its code",
+        "A catalog with a photo of every part, grouped by reference",
+      ],
+      [
+        "Sorting by right and left foot",
+        "Parts arrive in a bag with no foot known, and scrap counted twice",
+        "Sorting in pairs, with the foot only when known; old data fixed by reversal",
+      ],
+      [
+        "Any operator on any machine",
+        "Each person should log only on their own stations",
+        "A per-machine limit, set by planning",
+      ],
+    ],
+    resultsTitle: "Results",
+    results: [
+      "In real use on the line since November 19, 2026. On day one, the inspector logged 336 pairs of straps on one machine, at 99.4% quality.",
+      "Changes requested by management during real use were released the same day.",
+      "11 injection machines, sorting, 2 conveyors, shipping and the grinder covered, with 5 access roles.",
+      "371 automated tests, end-to-end browser tests and load tested at 10 times a shift's volume.",
+      "5 manuals, 3 video tutorials and in-person user training.",
+    ],
+    learningsTitle: "What I learned",
+    learnings: [
+      "The shop floor corrects the model: defects only show up at sorting, operators recognize parts by photo, and scrap arrives in pairs.",
+      "Trustworthy data comes from never deleting anything: the scrap that counted twice was found and fixed with the user, by reversal, without losing history.",
+      "Training the people who use it is part of the delivery: a manual per role, videos and support at the station.",
+    ],
+    stack: [
+      "Python",
+      "FastAPI",
+      "SQLAlchemy",
+      "PostgreSQL",
+      "React",
+      "TypeScript",
+      "PWA",
+      "IndexedDB (Dexie)",
+      "pytest",
+      "Playwright",
+      "Bitbucket Pipelines",
+      "Caddy",
+      "Tailscale",
+    ],
+    note: "An internal factory system: there is no public link, and no real production data appears here. The tablet screen above is an illustration.",
+    mock: {
+      station: "Machine 07",
+      offline: "Offline, 1 queued",
+      produced: "Produced",
+      scrap: "Scrap",
+      quality: "Quality",
+      good: "Good parts",
+      select: "Sorting",
+      undo: "Undo (60 s)",
+    },
+  },
   skills: {
     eyebrow: "Stack",
     title: ["Tools I", "master"],
@@ -386,27 +563,27 @@ export const en: Dictionary = {
     groups: [
       {
         label: "Frontend",
-        items: ["React", "Next.js", "TypeScript", "JavaScript", "Vite", "Tailwind CSS", "HTML5 / CSS3"],
+        items: ["React", "Next.js", "TypeScript", "JavaScript", "Vite", "Tailwind CSS", "PWA offline-first", "HTML5 / CSS3"],
       },
       {
         label: "Backend",
-        items: ["Java", "Spring Boot", "Node.js", "Express", "PHP", "REST APIs", "JWT"],
+        items: ["Java", "Spring Boot", "Node.js", "Express", "Python · FastAPI", "PHP", "REST APIs", "JWT"],
       },
       {
         label: "Databases",
-        items: ["PostgreSQL", "MySQL", "SQL Server", "Oracle", "Prisma ORM"],
+        items: ["PostgreSQL", "MySQL", "SQL Server", "Oracle", "Prisma ORM", "Drizzle ORM", "SQLAlchemy"],
       },
       {
         label: "Infra & DevOps",
-        items: ["Linux", "Docker", "Proxmox / KVM", "NGINX", "DNS / TLS", "GitHub Actions", "AWS EC2 · S3 · Lambda"],
+        items: ["Linux", "Docker", "Proxmox / KVM", "NGINX", "DNS / TLS", "GitHub Actions", "Bitbucket Pipelines", "Caddy · Tailscale", "AWS EC2 · S3 · Lambda"],
       },
       {
         label: "QA & Testing",
-        items: ["Cypress", "Selenium", "JUnit", "REST Assured", "Postman", "Pytest", "Allure"],
+        items: ["Cypress", "Selenium", "Playwright", "JUnit", "REST Assured", "Postman", "Pytest", "Allure"],
       },
       {
         label: "Data, ML & Edge",
-        items: ["Python", "pandas", "Plotly", "Power BI · DAX", "DATASUS", "scikit-learn", "DistilBERT / NLP", "R", "ESP32", "MQTT"],
+        items: ["Python", "pandas", "Plotly", "Power BI · DAX", "DATASUS", "scikit-learn", "DistilBERT / NLP", "R", "Raspberry Pi · Hailo", "ESP32", "MQTT"],
       },
     ],
   },
@@ -428,6 +605,7 @@ export const en: Dictionary = {
     ],
     coursesTitle: "Further training",
     courses: [
+      { title: "Software residency in industry (Kaizen method)", issuer: "PNAAT · FIT, Softex Cariri and UFCA", year: "2026" },
       { title: "Embedded Systems and Edge AI", issuer: "PNAAT · FIT / Softex", year: "2026" },
       { title: "Quality Engineering · Python Automation · AWS", issuer: "Compass UOL · AI/R", year: "2026" },
       { title: "ICT Residency · Full Stack", issuer: "IFCE Fortaleza", year: "2023" },

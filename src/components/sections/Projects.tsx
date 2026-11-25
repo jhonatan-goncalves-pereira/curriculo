@@ -3,7 +3,7 @@
 import type { ProjectItem } from "@/content/types";
 import { useT } from "@/lib/hooks";
 import { SITE } from "@/lib/site";
-import { ArrowUpRight, GitHub } from "../ui/Icons";
+import { ArrowDown, ArrowUpRight, GitHub } from "../ui/Icons";
 import { TiltCard } from "../ui/Interactive";
 import { Reveal } from "../ui/Reveal";
 import { SectionHeading } from "../ui/SectionHeading";
@@ -61,24 +61,31 @@ function Card({ project, featured }: { project: ProjectItem; featured: boolean }
           </ul>
 
           <div className="mt-auto flex flex-wrap items-center gap-2 pt-6">
-            {project.links.map((link, i) => (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${link.label}: ${project.title}`}
-                className={`group/link flex h-10 items-center gap-2 rounded-full px-4 text-[0.86rem] font-medium transition-colors ${
-                  i === 0
-                    ? "bg-fg text-ink hover:bg-mint"
-                    : "border border-line text-fg hover:border-white/30"
-                }`}
-              >
-                {i === 0 && <GitHub />}
-                {link.label}
-                <ArrowUpRight className="transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
-              </a>
-            ))}
+            {project.links.map((link, i) => {
+              // "#..." links jump to a section of this page (e.g. the case study).
+              const internal = link.href.startsWith("#");
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  {...(internal ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+                  aria-label={`${link.label}: ${project.title}`}
+                  className={`group/link flex h-10 items-center gap-2 rounded-full px-4 text-[0.86rem] font-medium transition-colors ${
+                    i === 0
+                      ? "bg-fg text-ink hover:bg-mint"
+                      : "border border-line text-fg hover:border-white/30"
+                  }`}
+                >
+                  {link.href.includes("github.com") && <GitHub />}
+                  {link.label}
+                  {internal ? (
+                    <ArrowDown className="transition-transform duration-300 group-hover/link:translate-y-0.5" />
+                  ) : (
+                    <ArrowUpRight className="transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+                  )}
+                </a>
+              );
+            })}
             {project.note && (
               <span className="flex h-10 items-center gap-2 rounded-full border border-dashed border-line px-4 font-mono text-[0.72rem] text-dim">
                 <span aria-hidden className="size-1 rounded-full bg-dim" />

@@ -41,7 +41,7 @@ export function Education() {
   return (
     <section id="education" className="relative pb-[clamp(6rem,13vw,11rem)]">
       <div className="shell">
-        <SectionHeading index="06" eyebrow={e.eyebrow} title={e.title} />
+        <SectionHeading index="07" eyebrow={e.eyebrow} title={e.title} />
 
         <div className="mt-14 grid gap-4 md:grid-cols-2">
           {e.degrees.map((degree, i) => (

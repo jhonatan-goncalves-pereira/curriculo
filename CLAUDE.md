@@ -22,7 +22,7 @@ Responda em português do Brasil. O site é bilíngue: todo texto existe em PT e
 - Só fatos verdadeiros e verificáveis. Número sem fonte não entra.
 - **Diploma:** o bacharelado está em andamento, na reta final (falta a defesa do TCC). Não escrever "bacharel" nem ano de conclusão até a defesa acontecer.
 - **Propriedade intelectual:** nada de código nem telas com dados pessoais. Sistemas institucionais entram com descrição, números públicos dos relatórios e, se estiverem abertos ao público, link e print da página pública (como o SESAU Digital e o CMS Digital). Não usar logotipo de terceiro como marca própria, e nada do FIT ou de empresa parceira do PNAAT.
-- **Residência PNAAT:** o termo de bolsa exige que divulgação sobre a residência passe antes pelo FIT. Não detalhar o trabalho feito na indústria parceira.
+- **Residência PNAAT (estudo de caso do OEE, `caseStudy` em pt.ts/en.ts e `CaseStudy.tsx`):** sem nome nem logo da fábrica até haver autorização; nada de domínio, IP, nome de servidor ou de rede, link de repositório, nome de funcionário ou de cliente, número de remessa, volume ou preço. Nenhum print com dados reais: a tela do tablet é uma ilustração com números fictícios. O termo de bolsa pede que a divulgação passe antes pelo FIT.
 - **Coerência:** site, CV em PT e CV em EN dizem a mesma coisa. Mudou experiência ou projeto no site? Atualize `cv/*.html` e rode `npm run cv`.
 - O inglês da versão EN é para recrutador estrangeiro: frases curtas, naturais e sem tradução literal.
 

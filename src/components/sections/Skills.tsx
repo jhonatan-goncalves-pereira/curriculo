@@ -13,7 +13,7 @@ export function Skills() {
   return (
     <section id="skills" data-scene="4" className="section-y relative">
       <div className="shell">
-        <SectionHeading index="05" eyebrow={s.eyebrow} title={s.title} lead={s.lead} />
+        <SectionHeading index="06" eyebrow={s.eyebrow} title={s.title} lead={s.lead} />
 
         <div className="mt-14 grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
           <Reveal className="lg:col-span-5">

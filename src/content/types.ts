@@ -4,13 +4,49 @@ export type SectionId =
   | "home"
   | "about"
   | "products"
+  | "case"
   | "experience"
   | "projects"
   | "skills"
   | "education"
   | "contact";
 
-export type ProjectId = "pulso" | "tcc" | "bi" | "qa" | "ppi";
+export type ProjectId = "oee" | "vision" | "pulso" | "tcc" | "bi" | "qa" | "ppi";
+
+/** A long-form case study (today: the shop-floor OEE system from the PNAAT residency). */
+export interface CaseStudy {
+  eyebrow: string;
+  title: [string, string];
+  lead: string;
+  facts: { label: string; value: string }[];
+  metrics: { value: string; label: string }[];
+  problemTitle: string;
+  problem: string[];
+  builtTitle: string;
+  built: { who: string; what: string }[];
+  howTitle: string;
+  how: { title: string; body: string }[];
+  beforeAfterTitle: string;
+  beforeAfterHead: [string, string, string];
+  beforeAfter: [string, string, string][];
+  resultsTitle: string;
+  results: string[];
+  learningsTitle: string;
+  learnings: string[];
+  stack: string[];
+  note: string;
+  /** Labels inside the illustrated tablet screen (fictional, neutral data). */
+  mock: {
+    station: string;
+    offline: string;
+    produced: string;
+    scrap: string;
+    quality: string;
+    good: string;
+    select: string;
+    undo: string;
+  };
+}
 
 /** Live products shown with a screenshot (images live in src/assets/products). */
 export type ProductId = "sesau" | "cms" | "siseventos" | "sisagenda";
@@ -144,6 +180,7 @@ export interface Dictionary {
     items: ProjectItem[];
     all: string;
   };
+  caseStudy: CaseStudy;
   skills: {
     eyebrow: string;
     title: [string, string];

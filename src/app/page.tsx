@@ -9,6 +9,7 @@ import { Marquee } from "@/components/sections/Marquee";
 import { Nav } from "@/components/sections/Nav";
 import { Products } from "@/components/sections/Products";
 import { Projects } from "@/components/sections/Projects";
+import { CaseStudy } from "@/components/sections/CaseStudy";
 import { Skills } from "@/components/sections/Skills";
 import { SceneMount } from "@/components/webgl/SceneMount";
 import { CursorGlow, ScrollProgress } from "@/components/ui/Chrome";
@@ -34,10 +35,11 @@ export default function Home() {
       <main id="main" className="relative z-10">
         <Hero />
         <Marquee />
-        <About />
         <Products />
+        <About />
         <Experience />
         <Projects />
+        <CaseStudy />
         <Skills />
         <Education />
         <Contact />

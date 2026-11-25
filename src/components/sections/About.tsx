@@ -14,7 +14,7 @@ export function About() {
   return (
     <section id="about" data-scene="1" className="section-y relative">
       <div className="shell">
-        <SectionHeading index="01" eyebrow={a.eyebrow} />
+        <SectionHeading index="02" eyebrow={a.eyebrow} />
 
         <WordScrub
           text={a.statement}

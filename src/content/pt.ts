@@ -12,8 +12,8 @@ export const pt: Dictionary = {
   },
   nav: {
     items: [
-      { id: "about", label: "Sobre" },
       { id: "products", label: "Produtos" },
+      { id: "about", label: "Sobre" },
       { id: "experience", label: "Experiência" },
       { id: "projects", label: "Projetos" },
       { id: "skills", label: "Stack" },
@@ -29,8 +29,8 @@ export const pt: Dictionary = {
     status: "Disponível para vagas remotas e projetos",
     rolesPrefix: "Desenvolvedor Full Stack",
     roles: ["Saúde digital", "Sistemas & Infra", "Automação de QA", "BI & Dados"],
-    lead: "Entrego de ponta a ponta: da interface em React à API em Java ou Node, do banco de dados ao servidor que mantém tudo no ar. Meus sistemas rodam em produção numa universidade pública e numa secretaria municipal de saúde.",
-    primary: "Ver projetos",
+    lead: "Entrego de ponta a ponta: da interface em React à API em Java ou Node, do banco de dados ao servidor que mantém tudo no ar. Meus sistemas rodam em produção numa universidade pública, numa secretaria municipal de saúde e no chão de uma fábrica.",
+    primary: "Ver sistemas no ar",
     secondary: "Baixar CV",
     location: "Juazeiro do Norte, CE · Brasil",
     current: "Hoje na URCA",
@@ -189,6 +189,21 @@ export const pt: Dictionary = {
     less: "Mostrar menos",
     items: [
       {
+        company: "Residência PNAAT · FIT, Softex Cariri e UFCA",
+        mark: "PN",
+        role: "Residente de Desenvolvimento de Software (Full Stack)",
+        period: "Out 2026 — Presente",
+        location: "Cariri, CE",
+        current: true,
+        points: [
+          "Alocado numa fábrica de calçados injetados, desenvolvi com mais três residentes um sistema de apontamento de produção e refugo (OEE) que entrou em uso real na linha em 6 semanas.",
+          "Tablets offline-first (React, TypeScript, IndexedDB) e API em FastAPI e PostgreSQL, com 371 testes automáticos.",
+          "Infraestrutura no servidor da própria fábrica: HTTPS, acesso remoto seguro e publicação por botão, com backup e volta automática (Bitbucket Pipelines).",
+          "Levantamento no chão de fábrica, manuais, vídeos e treinamento dos usuários, seguindo o método Kaizen do programa (PDCA, Pareto, Before & After).",
+        ],
+        tags: ["FastAPI", "PostgreSQL", "React", "TypeScript", "PWA", "Playwright"],
+      },
+      {
         company: "URCA · Universidade Regional do Cariri",
         mark: "UR",
         role: "Desenvolvedor Full Stack · Analista de Sistemas e Infraestrutura",
@@ -315,9 +330,34 @@ export const pt: Dictionary = {
   projects: {
     eyebrow: "Projetos",
     title: ["Trabalho", "selecionado"],
-    lead: "Mais cinco entregas que mostram o alcance: firmware, pesquisa, análise de dados e qualidade.",
+    lead: "Sete entregas que mostram o alcance: indústria, visão computacional, firmware, pesquisa, análise de dados e qualidade.",
     all: "Ver todos os repositórios",
     items: [
+      {
+        id: "oee",
+        kicker: "Indústria · em uso na linha",
+        title: "Sistema OEE de chão de fábrica",
+        description:
+          "Apontamento de produção e refugo para uma fábrica de calçados injetados. Os tablets funcionam sem rede, e o painel mostra produção, qualidade, Pareto de defeitos e o andamento de cada pedido no mesmo dia. Em uso na linha desde novembro de 2026.",
+        stack: ["FastAPI", "PostgreSQL", "React", "TypeScript", "PWA offline-first", "Playwright", "Bitbucket Pipelines"],
+        metrics: [
+          { value: "6 sem.", label: "até o uso real" },
+          { value: "371", label: "testes automáticos" },
+          { value: "11", label: "injetoras atendidas" },
+        ],
+        links: [{ label: "Ler o estudo de caso", href: "#case" }],
+        note: "Sistema interno da fábrica",
+      },
+      {
+        id: "vision",
+        kicker: "Visão computacional · em andamento",
+        title: "Estação de visão e desperdício",
+        description:
+          "A próxima etapa da residência: uma estação no fim da esteira conta as peças por câmera, aponta defeitos para comparar com a seleção do inspetor e, junto da balança, mede o desperdício de galho e purga por molde. Piloto previsto com meta de erro de até 5%.",
+        stack: ["Raspberry Pi 5", "Hailo-8L", "Python", "SQLite", "Visão computacional"],
+        links: [],
+        note: "Em andamento",
+      },
       {
         id: "pulso",
         kicker: "Edge AI · IoT",
@@ -379,6 +419,143 @@ export const pt: Dictionary = {
       },
     ],
   },
+  caseStudy: {
+    eyebrow: "Estudo de caso",
+    title: ["Do caderno", "ao tablet"],
+    lead: "A fábrica anotava a produção num caderno, e o refugo ia para o moinho sem contagem. Em seis semanas, saímos do levantamento na linha para o uso real: cada ponto de contagem ganhou um tablet que funciona sem rede, e o PCP, a qualidade e a gerência passaram a ver o andamento de cada remessa no mesmo dia. Cada regra do sistema veio de uma conversa com quem faz a peça.",
+    facts: [
+      { label: "Onde", value: "Uma fábrica de calçados injetados no Cariri (CE), pela Residência PNAAT" },
+      { label: "Quando", value: "Outubro a dezembro de 2026, em sprints de duas semanas" },
+      { label: "Equipe", value: "4 residentes, orientados por Weliton Rodrigues e Flavian Fernandes" },
+      { label: "Meu papel", value: "Full stack: tablet offline, API, infraestrutura e entrega contínua, com cerca de 2/3 dos commits" },
+    ],
+    metrics: [
+      { value: "6 sem.", label: "do primeiro dia ao uso real" },
+      { value: "371", label: "testes automáticos" },
+      { value: "99,4%", label: "de qualidade no primeiro dia de uso" },
+    ],
+    problemTitle: "O problema",
+    problem: [
+      "Produção no caderno: saber quanto faltava de um pedido exigia somar à mão.",
+      "Refugo sem registro: ia para o moinho sem contagem, sem causa, sem máquina e sem responsável.",
+      "PCP sem retorno: a remessa saía do ERP em papel e só voltava quando estava pronta ou atrasada.",
+    ],
+    builtTitle: "O que cada pessoa ganhou",
+    built: [
+      {
+        who: "Chão de fábrica",
+        what: "Tablet com botões grandes e a foto de cada peça: peças boas, seleção com o defeito, retrabalho com a causa, desfazer por um minuto e PIN por operador.",
+      },
+      {
+        who: "PCP",
+        what: "Remessas importadas direto do PDF do ERP, com conferência; prazo e previsão de término; catálogo, postos, moldes e peso do galho.",
+      },
+      {
+        who: "Qualidade",
+        what: "Defeitos por etapa, fichas de inspeção para imprimir, seleção em pares e custo do retrabalho.",
+      },
+      {
+        who: "Gerência",
+        what: "Painel por perfil com produção, qualidade, Pareto das causas de refugo e previsto × realizado de cada remessa, também de fora da fábrica.",
+      },
+    ],
+    howTitle: "Como foi feito",
+    how: [
+      {
+        title: "Funciona sem rede",
+        body: "O tablet guarda tudo no IndexedDB e sincroniza quando a rede volta. Cada lançamento nasce com um UUID, então reenviar nunca conta duas vezes.",
+      },
+      {
+        title: "Nada se apaga",
+        body: "A correção é por estorno, com justificativa, e o histórico fica auditável.",
+      },
+      {
+        title: "Regras da fábrica no código",
+        body: "Cada ponto de contagem confere com o anterior, e nenhuma etapa aprova mais do que a anterior liberou.",
+      },
+      {
+        title: "ERP sem acesso ao banco",
+        body: "Remessas, pedidos e o catálogo de peças são lidos dos relatórios em PDF, já com a foto de cada peça recortada.",
+      },
+      {
+        title: "No servidor da própria fábrica",
+        body: "HTTPS, backup e integração rodam como tarefas do sistema e voltam sozinhos depois de queda de energia. O acesso de fora é por túnel, sem abrir porta no roteador.",
+      },
+      {
+        title: "Publicação por um botão",
+        body: "Testes e auditoria de dependências em cada PR. A publicação copia o banco, aplica as migrações, confere e volta sozinha se algo falhar.",
+      },
+    ],
+    beforeAfterTitle: "Construído com a linha, não para a linha",
+    beforeAfterHead: ["Como estava", "O que a fábrica mostrou", "O que mudou no sistema"],
+    beforeAfter: [
+      [
+        "A injeção marcava o defeito na hora",
+        "O defeito só aparece na seleção, horas depois",
+        "A injeção só conta; o defeito entra na seleção do inspetor",
+      ],
+      [
+        "Remessa escolhida pelo número",
+        "A linha achava a remessa pela data do rodapé do papel e pelos modelos",
+        "Número em destaque, com a data e os modelos de apoio",
+      ],
+      [
+        "Alça e solado pelo código",
+        "A operadora reconhece a peça pela foto, não pelo código",
+        "Catálogo com a foto de cada peça, agrupado por referência",
+      ],
+      [
+        "Seleção pelo pé direito e esquerdo",
+        "As peças chegam no saco, sem saber o pé, e o refugo contava em dobro",
+        "Seleção em pares, com o pé só quando se sabe; os dados antigos corrigidos por estorno",
+      ],
+      [
+        "Qualquer operador em qualquer máquina",
+        "Cada pessoa deve apontar só nos postos dela",
+        "Limite por máquina, definido pelo PCP",
+      ],
+    ],
+    resultsTitle: "Resultados",
+    results: [
+      "Em uso real na linha desde 19/11/2026. No primeiro dia, a inspetora lançou 336 pares de alça numa injetora, com 99,4% de qualidade.",
+      "As mudanças pedidas pela gerência no uso real foram publicadas no mesmo dia.",
+      "11 injetoras, a seleção, 2 esteiras, a expedição e o moinho atendidos, com 5 perfis de acesso.",
+      "371 testes automáticos, testes de ponta a ponta no navegador e carga testada com 10 vezes o volume de um turno.",
+      "5 manuais, 3 vídeos tutoriais e treinamento presencial dos usuários.",
+    ],
+    learningsTitle: "O que aprendi",
+    learnings: [
+      "O chão de fábrica corrige o modelo: o defeito só aparece na seleção, a operadora reconhece a peça pela foto e o refugo chega em pares.",
+      "Dado confiável vem de não apagar nada: o refugo que contava em dobro foi achado e corrigido com a usuária, por estorno, sem perder o histórico.",
+      "Treinar quem usa faz parte da entrega: manual por função, vídeo e acompanhamento no posto.",
+    ],
+    stack: [
+      "Python",
+      "FastAPI",
+      "SQLAlchemy",
+      "PostgreSQL",
+      "React",
+      "TypeScript",
+      "PWA",
+      "IndexedDB (Dexie)",
+      "pytest",
+      "Playwright",
+      "Bitbucket Pipelines",
+      "Caddy",
+      "Tailscale",
+    ],
+    note: "Sistema interno da fábrica: não há link público, e nenhum dado real de produção aparece aqui. A tela do tablet acima é uma ilustração.",
+    mock: {
+      station: "Injetora 07",
+      offline: "Sem rede, 1 na fila",
+      produced: "Produzidas",
+      scrap: "Refugo",
+      quality: "Qualidade",
+      good: "Peças boas",
+      select: "Seleção",
+      undo: "Desfazer (60 s)",
+    },
+  },
   skills: {
     eyebrow: "Stack",
     title: ["Ferramentas que", "domino"],
@@ -387,27 +564,27 @@ export const pt: Dictionary = {
     groups: [
       {
         label: "Frontend",
-        items: ["React", "Next.js", "TypeScript", "JavaScript", "Vite", "Tailwind CSS", "HTML5 / CSS3"],
+        items: ["React", "Next.js", "TypeScript", "JavaScript", "Vite", "Tailwind CSS", "PWA offline-first", "HTML5 / CSS3"],
       },
       {
         label: "Backend",
-        items: ["Java", "Spring Boot", "Node.js", "Express", "PHP", "REST APIs", "JWT"],
+        items: ["Java", "Spring Boot", "Node.js", "Express", "Python · FastAPI", "PHP", "REST APIs", "JWT"],
       },
       {
         label: "Banco de dados",
-        items: ["PostgreSQL", "MySQL", "SQL Server", "Oracle", "Prisma ORM"],
+        items: ["PostgreSQL", "MySQL", "SQL Server", "Oracle", "Prisma ORM", "Drizzle ORM", "SQLAlchemy"],
       },
       {
         label: "Infra & DevOps",
-        items: ["Linux", "Docker", "Proxmox / KVM", "NGINX", "DNS / TLS", "GitHub Actions", "AWS EC2 · S3 · Lambda"],
+        items: ["Linux", "Docker", "Proxmox / KVM", "NGINX", "DNS / TLS", "GitHub Actions", "Bitbucket Pipelines", "Caddy · Tailscale", "AWS EC2 · S3 · Lambda"],
       },
       {
         label: "QA & Testes",
-        items: ["Cypress", "Selenium", "JUnit", "REST Assured", "Postman", "Pytest", "Allure"],
+        items: ["Cypress", "Selenium", "Playwright", "JUnit", "REST Assured", "Postman", "Pytest", "Allure"],
       },
       {
         label: "Dados, ML & Edge",
-        items: ["Python", "pandas", "Plotly", "Power BI · DAX", "DATASUS", "scikit-learn", "DistilBERT / NLP", "R", "ESP32", "MQTT"],
+        items: ["Python", "pandas", "Plotly", "Power BI · DAX", "DATASUS", "scikit-learn", "DistilBERT / NLP", "R", "Raspberry Pi · Hailo", "ESP32", "MQTT"],
       },
     ],
   },
@@ -429,6 +606,7 @@ export const pt: Dictionary = {
     ],
     coursesTitle: "Formações complementares",
     courses: [
+      { title: "Residência em software na indústria (método Kaizen)", issuer: "PNAAT · FIT, Softex Cariri e UFCA", year: "2026" },
       { title: "Sistemas Embarcados e Edge AI", issuer: "PNAAT · FIT / Softex", year: "2026" },
       { title: "Quality Engineering · Python Automation · AWS", issuer: "Compass UOL · AI/R", year: "2026" },
       { title: "Residência em TIC · Full Stack", issuer: "IFCE Fortaleza", year: "2023" },

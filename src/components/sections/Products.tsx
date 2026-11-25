@@ -113,7 +113,7 @@ export function Products() {
   return (
     <section id="products" data-scene="3" className="section-y relative">
       <div className="shell">
-        <SectionHeading index="02" eyebrow={p.eyebrow} title={p.title} lead={p.lead} />
+        <SectionHeading index="01" eyebrow={p.eyebrow} title={p.title} lead={p.lead} />
 
         <div className="mt-14 grid gap-6">
           {p.items.map((product, i) => (

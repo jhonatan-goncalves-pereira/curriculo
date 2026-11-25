@@ -96,7 +96,7 @@ export function Hero() {
           <div style={after(0.74)} className="intro-fade mt-9 flex flex-wrap items-center gap-3">
             <Magnetic>
               <a
-                href="#projects"
+                href="#products"
                 className="group flex h-13 items-center gap-3 rounded-full bg-fg pl-6 pr-2 text-[0.95rem] font-medium text-ink"
               >
                 {t.hero.primary}

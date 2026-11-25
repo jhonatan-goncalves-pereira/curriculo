@@ -189,6 +189,60 @@ function Qa() {
   );
 }
 
+/* OEE = availability × performance × quality. Decorative, made-up values. */
+const OEE_PARTS = [
+  { k: "D", v: 0.92 },
+  { k: "P", v: 0.88 },
+  { k: "Q", v: 0.99 },
+];
+
+function Oee() {
+  return (
+    <div className="absolute inset-0 flex items-center gap-6 p-6 md:gap-10 md:p-10 lg:gap-14 lg:p-14">
+      <div className="flex flex-1 flex-col gap-4 lg:gap-7">
+        {OEE_PARTS.map((part) => (
+          <div key={part.k} className="flex items-center gap-3 font-mono text-[0.72rem] text-dim lg:text-[0.9rem]">
+            <span className="w-3 text-fg">{part.k}</span>
+            <span className="relative h-2.5 flex-1 overflow-hidden rounded-full bg-white/[0.06] lg:h-4">
+              <span
+                className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-mint/50 to-mint"
+                style={{ width: `${part.v * 100}%` }}
+              />
+            </span>
+            <span className="w-9 text-right">{Math.round(part.v * 100)}%</span>
+          </div>
+        ))}
+      </div>
+      <div className="grid size-28 shrink-0 place-items-center rounded-full border border-mint/30 bg-mint/[0.06] md:size-40 lg:size-56">
+        <div className="text-center">
+          <p className="display text-[2rem] text-fg md:text-[2.8rem] lg:text-[3.8rem]">80%</p>
+          <p className="font-mono text-[0.62rem] text-dim">D × P × Q</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* Parts crossing a virtual line on the conveyor: counting by camera. */
+function Vision() {
+  return (
+    <div className="absolute inset-0 p-5">
+      <svg viewBox="0 0 400 140" className="h-full w-full" preserveAspectRatio="xMidYMid meet">
+        <rect x="0" y="52" width="400" height="36" rx="6" fill="rgb(255 255 255 / 0.04)" />
+        <line x1="250" y1="28" x2="250" y2="112" stroke="#5ef2c2" strokeWidth="1.5" strokeDasharray="4 4" />
+        {[0, 1, 2].map((i) => (
+          <rect key={i} y="60" width="34" height="20" rx="4" fill="#8b7cff" fillOpacity="0.6">
+            <animate attributeName="x" values="-40;400" dur="4.5s" begin={`${i * -1.5}s`} repeatCount="indefinite" />
+          </rect>
+        ))}
+        <text x="258" y="24" fill="#5ef2c2" fontFamily="ui-monospace, monospace" fontSize="11">
+          +1
+        </text>
+      </svg>
+    </div>
+  );
+}
+
 /* Planned (violet) versus approved production (mint) per group of procedures. */
 const PPI_ROWS = [
   { label: "SIA", planned: 0.92, done: 0.61 },
@@ -230,6 +284,8 @@ function Ppi() {
 }
 
 const VISUALS: Record<ProjectId, () => React.JSX.Element> = {
+  oee: Oee,
+  vision: Vision,
   pulso: Pulso,
   tcc: Tcc,
   bi: Bi,
