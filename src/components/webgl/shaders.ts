@@ -151,7 +151,8 @@ void main() {
   float glow = pow(smoothstep(0.5, 0.0, d), 1.9);
 
   vec3 color = mix(uColorA, uColorB, vTint);
-  color = mix(color, vec3(1.0), vSpark * 0.75);
+  // Faíscas viram pingos de tinta vermelha (branco some no papel).
+  color = mix(color, uColorB, vSpark * 0.6);
 
   gl_FragColor = vec4(color, glow * vAlpha * uOpacity);
 }

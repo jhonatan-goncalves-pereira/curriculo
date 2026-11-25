@@ -137,6 +137,10 @@ export interface Dictionary {
     rolesPrefix: string;
     roles: string[];
     lead: string;
+    /** Nota do topo: o número anotado à mão, o mesmo número no sistema e a legenda. */
+    noteHand: string;
+    noteSystem: string;
+    noteCaption: string;
     primary: string;
     secondary: string;
     location: string;

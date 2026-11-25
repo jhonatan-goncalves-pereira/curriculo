@@ -46,10 +46,10 @@ const FOV = (42 * Math.PI) / 180;
 const CAMERA_Z = 7.5;
 const MAX_DPR = 1.75;
 
-/* Brand mint (#5ef2c2) and violet (#8b7cff), converted to linear light: the
-   shader blends in linear space, which keeps the mix saturated instead of muddy. */
-const MINT = [0.112, 0.888, 0.539];
-const VIOLET = [0.258, 0.202, 1.0];
+/* Tinta de caneta azul (#1F3A93) e vermelho da margem (#D9434B), em luz linear:
+   o shader mistura em espaço linear, o que mantém a cor viva em vez de turva. */
+const MINT = [0.014, 0.037, 0.292];
+const VIOLET = [0.694, 0.056, 0.07];
 
 const UNIFORMS = [
   "uProjection",
@@ -140,10 +140,11 @@ export function startScene(canvas: HTMLCanvasElement, count: number): (() => voi
     gl.uniform1f(locations.uSize, 30);
     gl.uniform1f(locations.uTanFov, Math.tan(FOV / 2));
 
-    // Additive glow: order does not matter, so no depth buffer is needed.
+    // Tinta sobre papel: mistura normal (a soma de luz da versão escura some no fundo claro).
+    // O canvas usa alfa pré-multiplicado, por isso o alfa tem a sua própria função.
     gl.disable(gl.DEPTH_TEST);
     gl.enable(gl.BLEND);
-    gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+    gl.blendFuncSeparate(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     gl.clearColor(0, 0, 0, 0);
   };
 

@@ -21,9 +21,9 @@ function trace(amp: number, cycles: number, harmonic: number, phase: number, mid
 }
 
 const TRACES = [
-  { d: trace(22, 5, 3, 0, 46), color: "#5ef2c2", width: 1.6 },
-  { d: trace(14, 8, 2, 1.3, 98), color: "#8b7cff", width: 1.4 },
-  { d: trace(9, 13, 2, 2.1, 142), color: "rgb(255 255 255 / 0.4)", width: 1.2 },
+  { d: trace(22, 5, 3, 0, 46), color: "#1F3A93", width: 1.6 },
+  { d: trace(14, 8, 2, 1.3, 98), color: "#D9434B", width: 1.4 },
+  { d: trace(9, 13, 2, 2.1, 142), color: "rgb(30 42 74 / 0.4)", width: 1.2 },
 ];
 
 function WaveTile() {
@@ -49,7 +49,7 @@ function Pulso() {
   return (
     <div className="absolute inset-0 flex">
       <div className="relative flex-1 overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_14%,#000_86%,transparent)]">
-        <div className="absolute inset-0 bg-[linear-gradient(rgb(255_255_255/0.04)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.04)_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgb(30_42_74/0.04)_1px,transparent_1px),linear-gradient(90deg,rgb(30_42_74/0.04)_1px,transparent_1px)] bg-[size:40px_40px]" />
         <div className="absolute inset-y-6 left-0 flex w-[200%] animate-wave">
           <WaveTile />
           <WaveTile />
@@ -89,17 +89,17 @@ function Tcc() {
   return (
     <div className="absolute inset-0 flex flex-col justify-between p-5">
       <svg viewBox="0 0 430 90" className="w-full overflow-visible">
-        <path d="M40 62H390" stroke="rgb(255 255 255 / 0.16)" strokeWidth="1.5" />
+        <path d="M40 62H390" stroke="rgb(30 42 74 / 0.16)" strokeWidth="1.5" />
         <path
           d="M110 62C145 62 145 28 180 28H320C355 28 355 62 390 62"
           fill="none"
-          stroke="rgb(139 124 255 / 0.55)"
+          stroke="rgb(217 67 75 / 0.55)"
           strokeWidth="1.5"
         />
         {COMMITS.map((c) => (
           <g key={`${c.x}-${c.y}`}>
             {c.risk && (
-              <circle cx={c.x} cy={c.y} r="13" fill="none" stroke="#ffb86b" strokeOpacity="0.45">
+              <circle cx={c.x} cy={c.y} r="13" fill="none" stroke="#C2410C" strokeOpacity="0.45">
                 <animate attributeName="r" values="8;17;8" dur="2.4s" repeatCount="indefinite" />
                 <animate
                   attributeName="stroke-opacity"
@@ -113,8 +113,8 @@ function Tcc() {
               cx={c.x}
               cy={c.y}
               r="6"
-              fill={c.risk ? "#ffb86b" : "#0a0c11"}
-              stroke={c.risk ? "#ffb86b" : "#5ef2c2"}
+              fill={c.risk ? "#C2410C" : "#FCFCF8"}
+              stroke={c.risk ? "#C2410C" : "#1F3A93"}
               strokeWidth="1.75"
             />
           </g>
@@ -122,8 +122,8 @@ function Tcc() {
       </svg>
       <div className="flex items-center gap-3">
         <span className="font-mono text-[0.68rem] text-dim">p(defect)</span>
-        <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/[0.07]">
-          <span className="block h-full w-[78%] rounded-full bg-gradient-to-r from-mint via-[#ffe08a] to-[#ffb86b]" />
+        <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-fg/[0.07]">
+          <span className="block h-full w-[78%] rounded-full bg-gradient-to-r from-mint via-[#E8A93B] to-[#C2410C]" />
         </span>
       </div>
     </div>
@@ -143,7 +143,7 @@ function Bi() {
         <path
           d="M0 34 14 28 28 30 43 19 57 22 71 10 86 13 100 3"
           fill="none"
-          stroke="#8b7cff"
+          stroke="#D9434B"
           strokeWidth="1.5"
           vectorEffect="non-scaling-stroke"
           strokeLinecap="round"
@@ -203,7 +203,7 @@ function Oee() {
         {OEE_PARTS.map((part) => (
           <div key={part.k} className="flex items-center gap-3 font-mono text-[0.72rem] text-dim lg:text-[0.9rem]">
             <span className="w-3 text-fg">{part.k}</span>
-            <span className="relative h-2.5 flex-1 overflow-hidden rounded-full bg-white/[0.06] lg:h-4">
+            <span className="relative h-2.5 flex-1 overflow-hidden rounded-full bg-fg/[0.06] lg:h-4">
               <span
                 className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-mint/50 to-mint"
                 style={{ width: `${part.v * 100}%` }}
@@ -228,14 +228,14 @@ function Vision() {
   return (
     <div className="absolute inset-0 p-5">
       <svg viewBox="0 0 400 140" className="h-full w-full" preserveAspectRatio="xMidYMid meet">
-        <rect x="0" y="52" width="400" height="36" rx="6" fill="rgb(255 255 255 / 0.04)" />
-        <line x1="250" y1="28" x2="250" y2="112" stroke="#5ef2c2" strokeWidth="1.5" strokeDasharray="4 4" />
+        <rect x="0" y="52" width="400" height="36" rx="6" fill="rgb(30 42 74 / 0.04)" />
+        <line x1="250" y1="28" x2="250" y2="112" stroke="#1F3A93" strokeWidth="1.5" strokeDasharray="4 4" />
         {[0, 1, 2].map((i) => (
-          <rect key={i} y="60" width="34" height="20" rx="4" fill="#8b7cff" fillOpacity="0.6">
+          <rect key={i} y="60" width="34" height="20" rx="4" fill="#D9434B" fillOpacity="0.6">
             <animate attributeName="x" values="-40;400" dur="4.5s" begin={`${i * -1.5}s`} repeatCount="indefinite" />
           </rect>
         ))}
-        <text x="258" y="24" fill="#5ef2c2" fontFamily="ui-monospace, monospace" fontSize="11">
+        <text x="258" y="24" fill="#1F3A93" fontFamily="ui-monospace, monospace" fontSize="11">
           +1
         </text>
       </svg>
@@ -257,7 +257,7 @@ function Ppi() {
       {PPI_ROWS.map((row) => (
         <div key={row.label} className="flex items-center gap-3">
           <span className="w-8">{row.label}</span>
-          <div className="relative h-3 flex-1 overflow-hidden rounded-full bg-white/[0.05]">
+          <div className="relative h-3 flex-1 overflow-hidden rounded-full bg-fg/[0.05]">
             <span
               className="absolute inset-y-0 left-0 rounded-full bg-violet/35"
               style={{ width: `${row.planned * 100}%` }}

@@ -12,23 +12,23 @@ import { SectionHeading } from "../ui/SectionHeading";
 function TabletMock({ m }: { m: CaseStudyContent["mock"] }) {
   const counters = [
     { label: m.produced, value: "48", color: "text-mint" },
-    { label: m.scrap, value: "1", color: "text-[#ff7a90]" },
+    { label: m.scrap, value: "1", color: "text-[#D9434B]" },
     { label: m.quality, value: "98%", color: "text-fg" },
   ];
   return (
     <div aria-hidden className="relative mx-auto w-full max-w-[34rem] select-none">
-      <div className="rounded-[2rem] border border-line bg-ink-3 p-3 shadow-[0_40px_100px_-40px_rgb(0_0_0/0.9)]">
+      <div className="rounded-[2rem] border border-line bg-ink-3 p-3 shadow-[0_40px_100px_-40px_rgb(30_42_74/0.28)]">
         <div className="overflow-hidden rounded-[1.4rem] border border-line bg-ink/80">
           <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-3">
             <span className="text-[0.9rem] font-medium">{m.station}</span>
-            <span className="flex items-center gap-2 rounded-full border border-[#ffb86b]/40 bg-[#ffb86b]/10 px-2.5 py-1 text-[0.7rem] text-[#ffb86b]">
-              <span className="size-1.5 animate-pulse-dot rounded-full bg-[#ffb86b]" />
+            <span className="flex items-center gap-2 rounded-full border border-[#C2410C]/40 bg-[#C2410C]/10 px-2.5 py-1 text-[0.7rem] text-[#C2410C]">
+              <span className="size-1.5 animate-pulse-dot rounded-full bg-[#C2410C]" />
               {m.offline}
             </span>
           </div>
           <div className="grid grid-cols-3 gap-2 p-4">
             {counters.map((c) => (
-              <div key={c.label} className="rounded-xl border border-line bg-white/[0.02] px-2 py-3 text-center">
+              <div key={c.label} className="rounded-xl border border-line bg-fg/[0.02] px-2 py-3 text-center">
                 <p className="text-[0.68rem] text-dim">{c.label}</p>
                 <p className={`display mt-1 text-[1.7rem] ${c.color}`}>{c.value}</p>
               </div>
@@ -38,7 +38,7 @@ function TabletMock({ m }: { m: CaseStudyContent["mock"] }) {
             <span className="grid h-24 place-items-center rounded-2xl bg-mint text-[1rem] font-semibold text-ink">
               {m.good}
             </span>
-            <span className="grid h-24 place-items-center rounded-2xl bg-[#ff6b86] text-[1rem] font-semibold text-ink">
+            <span className="grid h-24 place-items-center rounded-2xl bg-[#D9434B] text-[1rem] font-semibold text-ink">
               {m.select}
             </span>
           </div>
@@ -90,7 +90,7 @@ export function CaseStudy() {
             <h3 className="text-[1.5rem] font-medium tracking-tight">{c.problemTitle}</h3>
             <ul className="mt-5 grid gap-3">
               {c.problem.map((item) => (
-                <li key={item} className="text-pretty border-l-2 border-[#ff6b86]/60 pl-4 leading-relaxed text-muted">
+                <li key={item} className="text-pretty border-l-2 border-[#D9434B]/60 pl-4 leading-relaxed text-muted">
                   {item}
                 </li>
               ))}
@@ -124,7 +124,7 @@ export function CaseStudy() {
         <Reveal>
           <h3 className="mt-20 text-[1.5rem] font-medium tracking-tight">{c.beforeAfterTitle}</h3>
           <div className="mt-6 overflow-hidden rounded-2xl border border-line">
-            <div className="hidden bg-white/[0.03] text-[0.85rem] text-dim md:grid md:grid-cols-3">
+            <div className="hidden bg-fg/[0.03] text-[0.85rem] text-dim md:grid md:grid-cols-3">
               {c.beforeAfterHead.map((h) => (
                 <p key={h} className="px-5 py-3">
                   {h}

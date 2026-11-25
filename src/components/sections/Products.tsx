@@ -32,12 +32,12 @@ function ProductCard({ product, visit, flip }: { product: ProductItem; visit: st
           flip ? "lg:order-2 lg:border-l" : "lg:border-r"
         }`}
       >
-        <div className="w-full overflow-hidden rounded-xl border border-line bg-ink-3 shadow-[0_30px_80px_-30px_rgb(0_0_0/0.8)]">
+        <div className="w-full overflow-hidden rounded-xl border border-line bg-ink-3 shadow-[0_30px_80px_-30px_rgb(30_42_74/0.28)]">
           <div className="flex items-center gap-1.5 border-b border-line px-3 py-2.5">
-            <span aria-hidden className="size-2 rounded-full bg-white/15" />
-            <span aria-hidden className="size-2 rounded-full bg-white/15" />
-            <span aria-hidden className="size-2 rounded-full bg-white/15" />
-            <span className="ml-3 flex min-w-0 flex-1 items-center gap-2 rounded-md bg-white/[0.04] px-2.5 py-1 font-mono text-[0.68rem] text-dim">
+            <span aria-hidden className="size-2 rounded-full bg-fg/15" />
+            <span aria-hidden className="size-2 rounded-full bg-fg/15" />
+            <span aria-hidden className="size-2 rounded-full bg-fg/15" />
+            <span className="ml-3 flex min-w-0 flex-1 items-center gap-2 rounded-md bg-fg/[0.04] px-2.5 py-1 font-mono text-[0.68rem] text-dim">
               <span aria-hidden className="size-1.5 shrink-0 animate-pulse-dot rounded-full bg-mint" />
               <span className="truncate">{product.domain}</span>
             </span>
@@ -128,9 +128,8 @@ export function Products() {
             <h3 className="text-[1.35rem] font-medium tracking-tight">{p.dataTitle}</h3>
             <p className="mt-2 max-w-[60ch] text-pretty text-muted">{p.dataLead}</p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {p.data.map((item, i) => (
-                <li key={item.title} className="panel flex flex-col gap-2 p-5">
-                  <span className="font-mono text-[0.7rem] text-mint">{String(i + 1).padStart(2, "0")}</span>
+              {p.data.map((item) => (
+                <li key={item.title} className="panel flex flex-col gap-2 border-t-2 border-t-violet/60 p-5">
                   <p className="font-medium">{item.title}</p>
                   <p className="text-pretty text-[0.9rem] leading-relaxed text-muted">{item.body}</p>
                 </li>

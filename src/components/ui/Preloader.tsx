@@ -45,7 +45,7 @@ export function Preloader() {
         Full Stack, Systems <span className="text-fg">&amp; Infra</span>
       </p>
 
-      <span className="absolute inset-x-0 bottom-0 h-[3px] bg-white/5">
+      <span className="absolute inset-x-0 bottom-0 h-[3px] bg-fg/5">
         <span className="preloader-bar block h-full origin-left bg-gradient-to-r from-mint to-violet" />
       </span>
     </div>

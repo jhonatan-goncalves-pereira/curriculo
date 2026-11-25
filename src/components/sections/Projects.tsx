@@ -73,7 +73,7 @@ function Card({ project, featured }: { project: ProjectItem; featured: boolean }
                   className={`group/link flex h-10 items-center gap-2 rounded-full px-4 text-[0.86rem] font-medium transition-colors ${
                     i === 0
                       ? "bg-fg text-ink hover:bg-mint"
-                      : "border border-line text-fg hover:border-white/30"
+                      : "border border-line text-fg hover:border-fg/30"
                   }`}
                 >
                   {link.href.includes("github.com") && <GitHub />}
@@ -113,7 +113,7 @@ export function Projects() {
               href={`${SITE.github}?tab=repositories`}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 border-b border-white/20 pb-1 text-[0.95rem] transition-colors hover:border-mint hover:text-mint"
+              className="group flex items-center gap-2 border-b border-fg/20 pb-1 text-[0.95rem] transition-colors hover:border-mint hover:text-mint"
             >
               {p.all}
               <ArrowUpRight className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

@@ -12,7 +12,7 @@ import { SectionHeading } from "../ui/SectionHeading";
 type Status = "idle" | "sending" | "success" | "error";
 
 const FIELD =
-  "w-full rounded-xl border border-line bg-white/[0.03] px-4 py-3.5 text-[0.96rem] text-fg outline-none transition-colors placeholder:text-dim hover:border-white/20 focus:border-mint focus:bg-mint/[0.03]";
+  "w-full rounded-xl border border-line bg-fg/[0.03] px-4 py-3.5 text-[0.96rem] text-fg outline-none transition-colors placeholder:text-dim hover:border-fg/20 focus:border-mint focus:bg-mint/[0.03]";
 
 function ContactForm() {
   const t = useT();
@@ -108,7 +108,7 @@ function ContactForm() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 className={`inline-flex items-center gap-2 ${
-                  status === "success" ? "text-mint" : "text-[#ffb86b]"
+                  status === "success" ? "text-mint" : "text-[#C2410C]"
                 }`}
               >
                 {status === "success" && <Check />}
@@ -196,7 +196,7 @@ export function Contact() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex h-12 items-center gap-2.5 rounded-full border border-line bg-ink-2/70 px-5 text-[0.92rem] transition-colors hover:border-white/30"
+                  className="group flex h-12 items-center gap-2.5 rounded-full border border-line bg-ink-2/70 px-5 text-[0.92rem] transition-colors hover:border-fg/30"
                 >
                   {link.icon}
                   {link.label}

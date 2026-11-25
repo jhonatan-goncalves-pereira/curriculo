@@ -165,7 +165,7 @@ function Palette() {
         role="dialog"
         aria-modal="true"
         aria-label={t.nav.search}
-        className="w-full max-w-[560px] overflow-hidden rounded-2xl border border-white/10 bg-ink-2/95 shadow-[0_40px_120px_-20px_rgb(0_0_0/0.9)]"
+        className="w-full max-w-[560px] overflow-hidden rounded-2xl border border-fg/10 bg-ink-2/95 shadow-[0_40px_120px_-20px_rgb(30_42_74/0.28)]"
         initial={{ opacity: 0, y: -14, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: -10, scale: 0.98 }}
@@ -219,7 +219,7 @@ function Palette() {
                   onPointerMove={() => setIndex(i)}
                   onClick={() => execute(command)}
                   className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-[0.93rem] transition-colors ${
-                    active ? "bg-white/[0.07] text-fg" : "text-muted"
+                    active ? "bg-fg/[0.07] text-fg" : "text-muted"
                   }`}
                 >
                   <span className={`text-[1.05rem] ${active ? "text-mint" : "text-dim"}`}>

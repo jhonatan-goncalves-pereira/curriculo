@@ -60,7 +60,7 @@ export function Hero() {
         <div className="max-w-[820px]">
           <p
             style={after(0.05)}
-            className="intro-fade inline-flex items-center gap-2.5 rounded-full border border-mint/25 bg-[#07130f]/80 px-4 py-2 text-[0.8rem] font-medium text-mint backdrop-blur-md"
+            className="intro-fade inline-flex items-center gap-2.5 rounded-full border border-mint/25 bg-ink-3/85 px-4 py-2 text-[0.8rem] font-medium text-mint backdrop-blur-md"
           >
             <span className="size-1.5 animate-pulse-dot rounded-full bg-mint" />
             {t.hero.status}
@@ -82,7 +82,7 @@ export function Hero() {
             className="intro-fade mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 text-[clamp(1.05rem,2.1vw,1.5rem)] font-medium tracking-tight"
           >
             {t.hero.rolesPrefix}
-            <span aria-hidden className="h-px w-8 bg-white/30" />
+            <span aria-hidden className="h-px w-8 bg-fg/30" />
             <RotatingRole roles={t.hero.roles} start={ready} />
           </p>
 
@@ -93,7 +93,30 @@ export function Hero() {
             {t.hero.lead}
           </p>
 
-          <div style={after(0.74)} className="intro-fade mt-9 flex flex-wrap items-center gap-3">
+          {/* "Do caderno ao sistema": a anotação à mão vira um registro do sistema. */}
+          <div style={after(0.7)} className="intro-fade mt-7 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <span className="hand-note accent text-[clamp(1.4rem,2.6vw,1.75rem)] leading-none text-mint">
+              {t.hero.noteHand}
+            </span>
+            <svg aria-hidden viewBox="0 0 64 20" className="hand-arrow h-5 w-14 text-violet">
+              <path
+                d="M2 12C18 4 38 4 54 10M46 4l9 6-9 5"
+                pathLength={1}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className="system-chip inline-flex items-center gap-2 rounded-full border border-line bg-ink-3 px-3.5 py-1.5 text-[0.88rem] font-medium shadow-[0_8px_24px_-16px_rgb(30_42_74/0.5)]">
+              <span aria-hidden className="size-1.5 animate-pulse-dot rounded-full bg-mint" />
+              {t.hero.noteSystem}
+            </span>
+            <p className="w-full text-[0.85rem] text-dim">{t.hero.noteCaption}</p>
+          </div>
+
+          <div style={after(0.8)} className="intro-fade mt-9 flex flex-wrap items-center gap-3">
             <Magnetic>
               <a
                 href="#products"
@@ -109,7 +132,7 @@ export function Hero() {
               <a
                 href={t.meta.cv}
                 download
-                className="flex h-13 items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.03] px-6 text-[0.95rem] font-medium backdrop-blur-sm transition-colors hover:border-white/35 hover:bg-white/[0.07]"
+                className="flex h-13 items-center gap-2.5 rounded-full border border-fg/15 bg-fg/[0.03] px-6 text-[0.95rem] font-medium backdrop-blur-sm transition-colors hover:border-fg/35 hover:bg-fg/[0.07]"
               >
                 {t.hero.secondary}
                 <Download className="text-[1.05rem]" />
@@ -121,7 +144,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="grid size-11 place-items-center rounded-full text-[1.15rem] text-muted transition-colors hover:bg-white/[0.06] hover:text-fg"
+                className="grid size-11 place-items-center rounded-full text-[1.15rem] text-muted transition-colors hover:bg-fg/[0.06] hover:text-fg"
               >
                 <GitHub />
               </a>
@@ -130,7 +153,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="grid size-11 place-items-center rounded-full text-[1.15rem] text-muted transition-colors hover:bg-white/[0.06] hover:text-fg"
+                className="grid size-11 place-items-center rounded-full text-[1.15rem] text-muted transition-colors hover:bg-fg/[0.06] hover:text-fg"
               >
                 <LinkedIn />
               </a>
@@ -139,7 +162,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
-                className="grid size-11 place-items-center rounded-full text-[1.15rem] text-muted transition-colors hover:bg-white/[0.06] hover:text-fg"
+                className="grid size-11 place-items-center rounded-full text-[1.15rem] text-muted transition-colors hover:bg-fg/[0.06] hover:text-fg"
               >
                 <WhatsApp />
               </a>
@@ -159,14 +182,14 @@ export function Hero() {
           </span>
           {time && (
             <span className="hidden items-center gap-3 sm:flex">
-              <span aria-hidden className="size-1 rounded-full bg-white/25" />
+              <span aria-hidden className="size-1 rounded-full bg-fg/25" />
               {t.hero.localTime} {time}
             </span>
           )}
         </p>
         <a href="#about" className="eyebrow group hidden items-center gap-3 sm:flex">
           {t.hero.scroll}
-          <span className="relative block h-10 w-px overflow-hidden bg-white/15">
+          <span className="relative block h-10 w-px overflow-hidden bg-fg/15">
             <span className="absolute inset-0 animate-scroll-cue bg-mint" />
           </span>
         </a>

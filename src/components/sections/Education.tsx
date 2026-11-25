@@ -15,7 +15,7 @@ function List({ title, items }: { title: string; items: CourseItem[] }) {
         {items.map((item, i) => (
           <li key={item.title}>
             <Reveal delay={i * 0.04}>
-              <div className="group flex items-baseline justify-between gap-6 border-b border-line py-4 transition-colors hover:border-white/25">
+              <div className="group flex items-baseline justify-between gap-6 border-b border-line py-4 transition-colors hover:border-fg/25">
                 <div>
                   <p className="font-medium tracking-tight transition-colors group-hover:text-mint">
                     {item.title}

@@ -2,7 +2,8 @@ import type { ReactNode } from "react";
 import { Reveal } from "./Reveal";
 
 interface SectionHeadingProps {
-  index: string;
+  /** Ordem da seção. Não é mais desenhada: as seções não são uma sequência. */
+  index?: string;
   eyebrow: string;
   /** First part in the display sans, second in the serif accent. */
   title?: [string, string];
@@ -12,25 +13,24 @@ interface SectionHeadingProps {
   labelAs?: "p" | "h2";
 }
 
-export function SectionHeading({
-  index,
-  eyebrow,
-  title,
-  lead,
-  className,
-  labelAs,
-}: SectionHeadingProps) {
+export function SectionHeading({ eyebrow, title, lead, className, labelAs }: SectionHeadingProps) {
   const Label = labelAs ?? (title ? "p" : "h2");
   return (
     <div className={className}>
       <Reveal>
-        {/* Without a display title the eyebrow is the section's heading. */}
-        <Label className="eyebrow flex items-center gap-3">
-          <span aria-hidden className="text-mint">
-            {index}
-          </span>
-          <span aria-hidden className="h-px w-10 bg-line" />
+        {/* Sem título grande, o rótulo é o título da seção. Escrito à caneta, sublinhado de vermelho. */}
+        <Label className="eyebrow inline-flex flex-col">
           {eyebrow}
+          <svg aria-hidden viewBox="0 0 120 8" preserveAspectRatio="none" className="mt-0.5 h-2 w-full text-violet">
+            <path
+              d="M2 5C30 2 62 7 118 3"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
         </Label>
       </Reveal>
       {title && (

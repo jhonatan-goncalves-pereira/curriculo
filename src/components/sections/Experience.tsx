@@ -21,7 +21,7 @@ function Entry({ item, now }: { item: ExperienceItem; now: string }) {
         className={`absolute -left-[calc(1.75rem+4.5px)] top-[3.05rem] hidden size-[9px] rounded-full border md:block ${
           item.current
             ? "animate-pulse-dot border-mint bg-mint"
-            : "border-white/25 bg-ink transition-colors group-hover:border-mint"
+            : "border-fg/25 bg-ink transition-colors group-hover:border-mint"
         }`}
       />
 
@@ -92,7 +92,7 @@ export function Experience() {
               <a
                 href={t.meta.cv}
                 download
-                className="mt-8 inline-flex items-center gap-2 border-b border-white/20 pb-1 text-[0.95rem] transition-colors hover:border-mint hover:text-mint"
+                className="mt-8 inline-flex items-center gap-2 border-b border-fg/20 pb-1 text-[0.95rem] transition-colors hover:border-mint hover:text-mint"
               >
                 {t.nav.cta}
                 <Download />
@@ -140,10 +140,10 @@ export function Experience() {
             type="button"
             onClick={() => setExpanded((v) => !v)}
             aria-expanded={expanded}
-            className="group mt-8 flex items-center gap-3 rounded-full border border-line bg-ink-2/70 py-2 pl-5 pr-2 text-[0.92rem] transition-colors hover:border-white/25 md:ml-7"
+            className="group mt-8 flex items-center gap-3 rounded-full border border-line bg-ink-2/70 py-2 pl-5 pr-2 text-[0.92rem] transition-colors hover:border-fg/25 md:ml-7"
           >
             {expanded ? e.less : `${e.more} (+${tail.length})`}
-            <span className="grid size-8 place-items-center rounded-full bg-white/[0.07] transition-colors group-hover:bg-mint group-hover:text-ink">
+            <span className="grid size-8 place-items-center rounded-full bg-fg/[0.07] transition-colors group-hover:bg-mint group-hover:text-ink">
               <Plus
                 className={`transition-transform duration-500 ${expanded ? "rotate-[135deg]" : ""}`}
               />

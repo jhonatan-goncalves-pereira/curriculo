@@ -131,16 +131,16 @@ export function TechSphere({ items, hint }: { items: readonly string[]; hint: st
         className="relative aspect-square w-full cursor-grab touch-pan-y select-none active:cursor-grabbing"
       >
         {/* Planet body: gives the labels something to orbit. */}
-        <div className="absolute inset-[13%] rounded-full bg-[radial-gradient(circle_at_35%_30%,rgb(94_242_194/0.16),rgb(139_124_255/0.09)_45%,transparent_70%)]" />
-        <div className="absolute inset-[11%] rounded-full border border-white/[0.07]" />
-        <div className="absolute inset-[11%] rounded-full border border-dashed border-white/[0.06] [transform:rotateX(72deg)]" />
+        <div className="absolute inset-[13%] rounded-full bg-[radial-gradient(circle_at_35%_30%,rgb(31_58_147/0.16),rgb(217_67_75/0.09)_45%,transparent_70%)]" />
+        <div className="absolute inset-[11%] rounded-full border border-fg/[0.07]" />
+        <div className="absolute inset-[11%] rounded-full border border-dashed border-fg/[0.06] [transform:rotateX(72deg)]" />
         {items.map((item, i) => (
           <span
             key={item}
             ref={(node) => {
               nodes.current[i] = node;
             }}
-            className="absolute left-1/2 top-1/2 whitespace-nowrap rounded-full border border-white/10 bg-ink-2/85 px-3.5 py-1.5 font-mono text-[0.8rem] text-fg will-change-transform"
+            className="absolute left-1/2 top-1/2 whitespace-nowrap rounded-full border border-fg/10 bg-ink-2/85 px-3.5 py-1.5 font-mono text-[0.8rem] text-fg will-change-transform"
           >
             {item}
           </span>

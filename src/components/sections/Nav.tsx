@@ -17,7 +17,7 @@ function LangToggle({ className = "" }: { className?: string }) {
       type="button"
       onClick={toggleLang}
       title={lang === "pt" ? "Switch to English" : "Mudar para Português"}
-      className={`flex h-10 items-center gap-1.5 rounded-full border border-line px-3.5 font-mono text-[0.72rem] tracking-wider transition-colors hover:border-white/25 ${className}`}
+      className={`flex h-10 items-center gap-1.5 rounded-full border border-line px-3.5 font-mono text-[0.72rem] tracking-wider transition-colors hover:border-fg/25 ${className}`}
     >
       <span className="sr-only">{lang === "pt" ? "Idioma:" : "Language:"}</span>
       <span className={lang === "pt" ? "text-fg" : "text-dim"}>PT</span>
@@ -119,7 +119,7 @@ export function Nav() {
             <button
               type="button"
               onClick={() => paletteOpen.set(true)}
-              className="hidden h-10 items-center gap-2 rounded-full border border-line bg-ink-2/60 px-3.5 text-dim backdrop-blur-md transition-colors hover:border-white/25 hover:text-fg md:flex"
+              className="hidden h-10 items-center gap-2 rounded-full border border-line bg-ink-2/60 px-3.5 text-dim backdrop-blur-md transition-colors hover:border-fg/25 hover:text-fg md:flex"
             >
               <Search className="text-[0.95rem]" />
               <span className="sr-only">{t.nav.search}</span>

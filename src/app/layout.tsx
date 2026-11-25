@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Geist_Mono, Kalam, Schibsted_Grotesk } from "next/font/google";
 import { pt } from "@/content/pt";
 import { BASE_PATH, SITE } from "@/lib/site";
 import "./globals.css";
 
-const geist = Geist({ variable: "--font-geist", subsets: ["latin"], display: "swap" });
+// Texto e interface: grotesca firme, de jornal. As variáveis CSS mantêm os nomes
+// antigos (--font-geist, --font-instrument) para não mexer nos tokens.
+const sans = Schibsted_Grotesk({ variable: "--font-geist", subsets: ["latin"], display: "swap" });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -12,12 +14,11 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const instrument = Instrument_Serif({
+// Anotações à caneta: segunda parte dos títulos, rótulos de seção e a nota do topo.
+const hand = Kalam({
   variable: "--font-instrument",
   subsets: ["latin"],
-  weight: "400",
-  // Only the italic is used (the "accent" utility); skipping upright saves a font file.
-  style: "italic",
+  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -68,8 +69,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#050608",
-  colorScheme: "dark",
+  themeColor: "#fcfcf8",
+  colorScheme: "light",
 };
 
 /* Structured data so search engines can show a rich profile result. */
@@ -123,7 +124,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="pt-BR"
-      className={`${geist.variable} ${geistMono.variable} ${instrument.variable}`}
+      className={`${sans.variable} ${geistMono.variable} ${hand.variable}`}
       suppressHydrationWarning
     >
       <head>

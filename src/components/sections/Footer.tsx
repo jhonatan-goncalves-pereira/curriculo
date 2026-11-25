@@ -33,7 +33,7 @@ export function Footer() {
           ))}
           <a
             href="#home"
-            className="ml-2 flex h-11 items-center gap-2 rounded-full border border-line px-4 text-[0.86rem] transition-colors hover:border-white/30"
+            className="ml-2 flex h-11 items-center gap-2 rounded-full border border-line px-4 text-[0.86rem] transition-colors hover:border-fg/30"
           >
             {t.footer.top}
             <ArrowUp />
@@ -44,7 +44,7 @@ export function Footer() {
       {/* Oversized wordmark, cropped by the viewport edge on purpose. */}
       <p
         aria-hidden
-        className="display pointer-events-none -mb-[0.16em] select-none whitespace-nowrap text-center text-[clamp(4rem,17.5vw,19rem)] leading-[0.8] text-transparent [-webkit-text-stroke:1px_rgb(255_255_255/0.26)] [mask-image:linear-gradient(#000_35%,transparent_105%)]"
+        className="display pointer-events-none -mb-[0.16em] select-none whitespace-nowrap text-center text-[clamp(4rem,17.5vw,19rem)] leading-[0.8] text-transparent [-webkit-text-stroke:1px_rgb(30_42_74/0.26)] [mask-image:linear-gradient(#000_35%,transparent_105%)]"
       >
         Jhonatan<span className="accent">.</span>
       </p>
